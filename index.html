@@ -3,208 +3,959 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Salyant | AI & IT Services | Enterprise Automation UK</title>
-<meta name="description" content="Salyant is a UK-based AI and IT services firm delivering enterprise-grade AI workflow automation, intelligent systems, and long-term operational support.">
-
+<title>Salyant | Enterprise AI & IT Services | UK Automation Experts</title>
+<meta name="description" content="Salyant delivers enterprise-grade AI workflow automation, intelligent systems integration, and long-term operational support across the UK. Trusted by organizations for scalable, governed automation solutions.">
+<meta name="keywords" content="AI automation, enterprise automation, IT services UK, systems integration, AI workflow, operational support, enterprise AI, automation governance">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Salyant Ltd">
+<meta name="geo.region" content="GB-LND">
+<meta name="geo.placename" content="London">
+<meta name="geo.position" content="51.5074;-0.1278">
+<link rel="canonical" href="https://www.salyant.co.uk">
 
-<meta property="og:title" content="Salyant | AI & IT Services">
+<meta property="og:title" content="Salyant | Enterprise AI & IT Services">
 <meta property="og:description" content="Enterprise-grade AI workflow automation and intelligent systems delivered from the United Kingdom.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://www.salyant.co.uk">
+<meta property="og:locale" content="en_GB">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Salyant Ltd",
+  "description": "UK-based AI and IT services firm specializing in enterprise-grade automation and intelligent systems",
+  "url": "https://www.salyant.co.uk",
+  "logo": "https://www.salyant.co.uk/logo.png",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "GB",
+    "addressLocality": "London"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "contact@salyant.co.uk",
+    "contactType": "Customer Service"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/company/salyant-ltd-uk"
+  ]
+}
+</script>
 
 <style>
 :root{
-  --brand:#0B5ED7;
-  --ink:#0f1f2e;
-  --muted:#5f6f73;
-  --bg:#f3f6f5;
-  --card:#ffffff;
-  --shadow:0 24px 40px rgba(0,0,0,.08);
+  --primary-blue:#0B5ED7;
+  --charcoal:#1a1a1a;
+  --warm-black:#2d2d2d;
+  --terracotta:#c4512f;
+  --sage:#7a8a7d;
+  --cream:#f5f3ef;
+  --sand:#e8e3da;
+  --gold:#d4a574;
+  --white:#ffffff;
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
-  font-family:Inter,system-ui,sans-serif;
-  background:var(--bg);
-  color:var(--ink);
-  line-height:1.7;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  background:var(--cream);
+  color:var(--charcoal);
+  line-height:1.6;
+  overflow-x:hidden;
 }
 
-.section{
-  padding:120px 0;
-}
-
-.section-inner{
-  max-width:1150px;
-  margin:0 auto;
-  padding:0 24px;
-}
-
-h1{
-  font-size:3.2rem;
-  font-weight:600;
-  letter-spacing:-0.02em;
-  margin-bottom:1.2rem;
-}
-
-h2{
-  font-size:2.1rem;
-  font-weight:600;
-  margin-bottom:2.5rem;
-}
-
-h3{
-  font-size:1.05rem;
-  font-weight:600;
-  margin-bottom:.6rem;
-}
-
-p{color:var(--muted);font-size:.95rem}
-
-/* NAV */
+/* NAVIGATION */
 nav{
   position:fixed;
   top:0;
   width:100%;
-  background:rgba(243,246,245,.96);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid rgba(0,0,0,.05);
+  background:rgba(255,255,255,.98);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(0,0,0,.08);
   z-index:1000;
+  box-shadow:0 2px 20px rgba(0,0,0,.03);
 }
 
 .nav-inner{
-  max-width:1150px;
-  margin:auto;
-  padding:0 24px;
-  height:80px;
+  max-width:1400px;
+  margin:0 auto;
+  padding:0 60px;
+  height:90px;
   display:flex;
   align-items:center;
   justify-content:space-between;
 }
 
-.wordmark{
+.logo{
   font-weight:700;
-  letter-spacing:.18em;
-  color:var(--brand);
-  font-size:.9rem;
+  font-size:1.4rem;
+  letter-spacing:.15em;
+  color:var(--primary-blue);
 }
 
 .nav-links{
-  list-style:none;
   display:flex;
-  gap:2.2rem;
+  gap:48px;
+  list-style:none;
+  align-items:center;
 }
 
 .nav-links a{
   text-decoration:none;
-  color:var(--ink);
+  color:var(--charcoal);
   font-weight:500;
+  font-size:.95rem;
+  transition:color .3s;
+  letter-spacing:.02em;
 }
 
-.nav-cta{
-  padding:10px 22px;
-  border-radius:999px;
-  background:var(--brand);
-  color:#fff;
-  text-decoration:none;
+.nav-links a:hover{
+  color:var(--primary-blue);
+}
+
+.cta-btn{
+  background:linear-gradient(135deg, #0B5ED7 0%, #7a8a7d 100%);
+  color:var(--white);
+  padding:12px 32px;
+  border-radius:4px;
   font-weight:600;
+  transition:all .3s;
+  border:none;
+  cursor:pointer;
+  font-size:.95rem;
+  box-shadow:0 4px 16px rgba(11,94,215,.3);
+}
+
+.cta-btn:hover{
+  background:linear-gradient(135deg, #7a8a7d 0%, #0B5ED7 100%);
+  transform:translateY(-2px);
+  box-shadow:0 8px 24px rgba(122,138,125,.4);
 }
 
 /* HERO */
 .hero{
-  padding-top:190px;
-  background:
-    linear-gradient(rgba(243,246,245,.9),rgba(243,246,245,.9)),
-    url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1600&auto=format&fit=crop");
+  padding:180px 60px 120px;
+  max-width:1400px;
+  margin:0 auto;
+  align-items:center;
+  min-height:90vh;
+  text-align:center;
+  position:relative;
+}
+
+.hero::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background:radial-gradient(circle at 20% 50%, rgba(11,94,215,.08) 0%, transparent 50%),
+             radial-gradient(circle at 80% 30%, rgba(196,81,47,.06) 0%, transparent 50%);
+  animation:float 8s ease-in-out infinite;
+  pointer-events:none;
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-20px)}
+}
+
+.hero-content{
+  position:relative;
+  z-index:1;
+  max-width:900px;
+  margin:0 auto;
+}
+
+.hero-content h1{
+  animation:fadeInUp 1s ease;
+}
+
+.hero-content p{
+  animation:fadeInUp 1.2s ease;
+}
+
+.hero-cta{
+  display:flex;
+  gap:16px;
+  justify-content:center;
+  animation:fadeInUp 1.4s ease;
+}
+
+@keyframes fadeInUp{
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.hero-content h1{
+  font-size:4.2rem;
+  font-weight:700;
+  line-height:1.1;
+  margin-bottom:24px;
+  color:var(--charcoal);
+  letter-spacing:-.02em;
+}
+
+.hero-content p{
+  font-size:1.2rem;
+  color:var(--warm-black);
+  margin-bottom:40px;
+  line-height:1.8;
+  font-weight:400;
+}
+
+.hero-cta{
+  display:flex;
+  gap:16px;
+}
+
+.btn-primary{
+  background:linear-gradient(135deg, #0B5ED7 0%, #c4512f 100%);
+  color:var(--white);
+  padding:16px 40px;
+  border-radius:4px;
+  font-weight:600;
+  border:none;
+  cursor:pointer;
+  font-size:1rem;
+  transition:all .3s;
+  box-shadow:0 8px 24px rgba(196,81,47,.35);
+}
+
+.btn-primary:hover{
+  background:linear-gradient(135deg, #c4512f 0%, #0B5ED7 100%);
+  transform:translateY(-2px);
+  box-shadow:0 12px 32px rgba(196,81,47,.5);
+}
+
+.btn-secondary{
+  background:transparent;
+  color:var(--charcoal);
+  padding:16px 40px;
+  border-radius:4px;
+  font-weight:600;
+  border:2px solid var(--charcoal);
+  cursor:pointer;
+  font-size:1rem;
+  transition:all .3s;
+}
+
+.btn-secondary:hover{
+  background:var(--charcoal);
+  color:var(--white);
+}
+
+.hero-slider{
+  position:relative;
+  height:600px;
+  border-radius:8px;
+  overflow:hidden;
+  box-shadow:0 40px 80px rgba(0,0,0,.15);
+  background:var(--warm-black);
+}
+
+.slide{
+  position:absolute;
+  width:100%;
+  height:100%;
+  opacity:0;
+  transition:opacity 1.5s ease-in-out;
   background-size:cover;
   background-position:center;
 }
 
-/* GRID */
-.grid{
+.slide::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,.02) 10px, rgba(255,255,255,.02) 20px);
+}
+
+.slide.s1{background:linear-gradient(135deg, #2d2d2d 0%, #7a8a7d 100%);}
+.slide.s2{background:linear-gradient(135deg, #7a8a7d 0%, #e8e3da 100%);}
+.slide.s3{background:linear-gradient(135deg, #1a1a1a 0%, #0B5ED7 100%);}
+
+.slide.active{
+  opacity:1;
+}
+
+.slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  background:linear-gradient(135deg, var(--sage) 0%, var(--sand) 100%);
+}
+
+/* STATS BAR */
+.stats-bar{
+  background:var(--charcoal);
+  padding:60px 60px;
+  margin:0 auto;
+  position:relative;
+  overflow:hidden;
+}
+
+.stats-bar::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:200%;
+  height:100%;
+  background:linear-gradient(90deg, transparent, rgba(212,165,116,.1), transparent);
+  animation:shimmer 3s infinite;
+}
+
+@keyframes shimmer{
+  0%{left:-100%}
+  100%{left:100%}
+}
+
+.stats-container{
+  max-width:1400px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:60px;
+  text-align:center;
+  position:relative;
+  z-index:1;
+}
+
+.stat-item{
+  opacity:0;
+  transform:scale(0.8);
+  animation:scaleIn 0.6s ease forwards;
+}
+
+.stat-item:nth-child(1){animation-delay:0.2s}
+.stat-item:nth-child(2){animation-delay:0.4s}
+.stat-item:nth-child(3){animation-delay:0.6s}
+.stat-item:nth-child(4){animation-delay:0.8s}
+
+@keyframes scaleIn{
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+.stat-item h3{
+  font-size:3rem;
+  font-weight:700;
+  color:var(--gold);
+  margin-bottom:8px;
+}
+
+.stat-item p{
+  color:var(--sand);
+  font-size:1rem;
+  font-weight:500;
+}
+
+/* STORY SECTION */
+.story-section{
+  padding:140px 60px;
+  max-width:1200px;
+  margin:0 auto;
+  text-align:center;
+  position:relative;
+}
+
+.story-section::before{
+  content:'';
+  position:absolute;
+  top:20%;
+  right:10%;
+  width:300px;
+  height:300px;
+  background:radial-gradient(circle, rgba(196,81,47,.06) 0%, transparent 70%);
+  animation:floatSlow 10s ease-in-out infinite;
+}
+
+@keyframes floatSlow{
+  0%,100%{transform:translate(0,0)}
+  50%{transform:translate(30px,-30px)}
+}
+
+.story-section h2{
+  animation:fadeInUp 0.8s ease;
+}
+
+.story-section p{
+  animation:fadeInUp 1s ease;
+}
+
+.story-section h2{
+  font-size:3rem;
+  font-weight:700;
+  margin-bottom:32px;
+  color:var(--charcoal);
+}
+
+.story-section p{
+  font-size:1.2rem;
+  line-height:1.9;
+  color:#555;
+  margin-bottom:20px;
+}
+
+/* SERVICES */
+.services{
+  padding:140px 60px;
+  max-width:1400px;
+  margin:0 auto;
+  position:relative;
+  overflow:hidden;
+}
+
+.services::before{
+  content:'';
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:600px;
+  height:600px;
+  background:radial-gradient(circle, rgba(122,138,125,.08) 0%, transparent 70%);
+  transform:translate(-50%,-50%);
+  animation:pulse 6s ease-in-out infinite;
+}
+
+@keyframes pulse{
+  0%,100%{transform:translate(-50%,-50%) scale(1)}
+  50%{transform:translate(-50%,-50%) scale(1.2)}
+}
+
+.services h2{
+  font-size:3rem;
+  font-weight:700;
+  margin-bottom:80px;
+  color:var(--charcoal);
+  text-align:center;
+  position:relative;
+  z-index:1;
+}
+
+.services-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:32px;
-  margin-top:3rem;
+  gap:40px;
+  position:relative;
+  z-index:1;
 }
 
-.card{
-  background:var(--card);
-  padding:2.4rem;
-  border-radius:20px;
-  box-shadow:var(--shadow);
+.service-card{
+  background:rgba(255,255,255,.7);
+  backdrop-filter:blur(20px);
+  padding:48px 40px;
+  border-radius:16px;
+  transition:all .4s cubic-bezier(.4,0,.2,1);
+  border:1px solid rgba(255,255,255,.5);
+  box-shadow:0 8px 32px rgba(0,0,0,.08);
+  position:relative;
+  overflow:hidden;
+  opacity:0;
+  transform:translateY(30px);
+  animation:fadeInUp 0.6s ease forwards;
 }
 
-/* VISUAL STRIP */
-.visual-strip img{
+.service-card:nth-child(1){animation-delay:0.1s}
+.service-card:nth-child(2){animation-delay:0.2s}
+.service-card:nth-child(3){animation-delay:0.3s}
+.service-card:nth-child(4){animation-delay:0.4s}
+.service-card:nth-child(5){animation-delay:0.5s}
+.service-card:nth-child(6){animation-delay:0.6s}
+
+.service-card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
   width:100%;
-  border-radius:26px;
-  margin:3.5rem 0;
+  height:100%;
+  background:linear-gradient(135deg, rgba(122,138,125,.1) 0%, rgba(212,165,116,.1) 100%);
+  opacity:0;
+  transition:opacity .4s;
+  pointer-events:none;
 }
 
-/* AUDIO */
-.audio-box{
-  margin:3rem auto 0;
-  max-width:700px;
-  background:var(--card);
-  padding:2rem;
-  border-radius:20px;
-  box-shadow:var(--shadow);
+.service-card:hover::before{
+  opacity:1;
 }
 
-/* FORM */
-form{
-  max-width:520px;
-  margin:3rem auto 0;
-  background:var(--card);
-  padding:2.6rem;
-  border-radius:20px;
-  box-shadow:var(--shadow);
+.service-card:hover{
+  transform:translateY(-12px);
+  box-shadow:0 20px 60px rgba(0,0,0,.15);
+  border-color:rgba(11,94,215,.3);
+  background:rgba(255,255,255,.85);
 }
 
-input,textarea{
-  width:100%;
-  padding:14px;
-  margin-bottom:1rem;
-  border-radius:8px;
-  border:1px solid #ccc;
-}
-
-button{
-  background:var(--brand);
-  color:#fff;
-  border:none;
-  padding:12px 26px;
-  border-radius:999px;
+.service-card h3{
+  font-size:1.4rem;
   font-weight:600;
+  margin-bottom:16px;
+  color:var(--charcoal);
+}
+
+.service-card p{
+  color:#666;
+  font-size:1rem;
+  line-height:1.7;
+}
+
+/* CAROUSEL SECTION */
+.carousel-section{
+  padding:100px 60px;
+  background:var(--sand);
+}
+
+.carousel-container{
+  max-width:1400px;
+  margin:0 auto;
+  position:relative;
+  height:600px;
+  border-radius:8px;
+  overflow:hidden;
+  box-shadow:0 40px 80px rgba(0,0,0,.12);
+}
+
+.carousel-slide{
+  position:absolute;
+  width:100%;
+  height:100%;
+  opacity:0;
+  transition:opacity 1.5s ease-in-out;
+  background-size:cover;
+  background-position:center;
+}
+
+.carousel-slide::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(255,255,255,.03) 20px, rgba(255,255,255,.03) 40px);
+}
+
+.carousel-slide.c1{background:linear-gradient(135deg, #c4512f 0%, #2d2d2d 100%);}
+.carousel-slide.c2{background:linear-gradient(135deg, #0B5ED7 0%, #7a8a7d 100%);}
+.carousel-slide.c3{background:linear-gradient(135deg, #d4a574 0%, #c4512f 100%);}
+
+.carousel-slide.active{
+  opacity:1;
+}
+
+.carousel-slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* WHY SALYANT */
+.why-section{
+  padding:140px 60px;
+  max-width:1400px;
+  margin:0 auto;
+  background:var(--cream);
+  position:relative;
+}
+
+.why-section::after{
+  content:'';
+  position:absolute;
+  bottom:10%;
+  left:5%;
+  width:400px;
+  height:400px;
+  background:radial-gradient(circle, rgba(11,94,215,.05) 0%, transparent 70%);
+  animation:floatSlow 12s ease-in-out infinite reverse;
+}
+
+.why-section h2{
+  font-size:3rem;
+  font-weight:700;
+  margin-bottom:80px;
+  color:var(--charcoal);
+  text-align:center;
+  position:relative;
+  z-index:1;
+}
+
+.why-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:40px;
+  position:relative;
+  z-index:1;
+}
+
+.why-card{
+  background:linear-gradient(135deg, rgba(255,255,255,.9) 0%, rgba(245,243,239,.8) 100%);
+  backdrop-filter:blur(10px);
+  padding:48px 40px;
+  border-radius:16px;
+  border:2px solid transparent;
+  transition:all .5s cubic-bezier(.4,0,.2,1);
+  opacity:0;
+  transform:translateY(30px);
+  animation:fadeInUp 0.6s ease forwards;
+  position:relative;
+  overflow:hidden;
+}
+
+.why-card::before{
+  content:'';
+  position:absolute;
+  top:-50%;
+  left:-50%;
+  width:200%;
+  height:200%;
+  background:conic-gradient(from 0deg, transparent, rgba(11,94,215,.15), transparent 30%);
+  animation:rotate 4s linear infinite;
+  opacity:0;
+  transition:opacity .5s;
+}
+
+.why-card::after{
+  content:'';
+  position:absolute;
+  inset:2px;
+  background:linear-gradient(135deg, rgba(255,255,255,.95) 0%, rgba(245,243,239,.9) 100%);
+  border-radius:14px;
+  z-index:1;
+}
+
+.why-card:hover::before{
+  opacity:1;
+}
+
+.why-card:hover{
+  transform:translateY(-12px);
+  border-color:rgba(11,94,215,.3);
+  box-shadow:0 30px 60px rgba(11,94,215,.15),
+             0 0 0 1px rgba(11,94,215,.1),
+             inset 0 1px 0 rgba(255,255,255,.8);
+}
+
+@keyframes rotate{
+  100%{transform:rotate(360deg)}
+}
+
+.why-card:nth-child(1){animation-delay:0.2s}
+.why-card:nth-child(2){animation-delay:0.4s}
+.why-card:nth-child(3){animation-delay:0.6s}
+
+.why-card h3{
+  font-size:1.4rem;
+  font-weight:600;
+  margin-bottom:16px;
+  color:var(--charcoal);
+  position:relative;
+  z-index:2;
+}
+
+.why-card p{
+  color:#666;
+  font-size:1rem;
+  line-height:1.7;
+  position:relative;
+  z-index:2;
+}
+
+/* IMAGE GALLERY */
+.gallery-section{
+  padding:100px 60px;
+  background:var(--white);
+}
+
+.gallery-grid{
+  max-width:1400px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+}
+
+.gallery-item{
+  height:350px;
+  border-radius:8px;
+  overflow:hidden;
+  box-shadow:0 20px 40px rgba(0,0,0,.1);
+  position:relative;
+  transition:transform .6s ease;
+  background-size:cover;
+  background-position:center;
+}
+
+.gallery-item::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 30% 50%, rgba(255,255,255,.05) 0%, transparent 50%);
+}
+
+.gallery-item.g1{background:linear-gradient(135deg, #7a8a7d 0%, #e8e3da 100%);}
+.gallery-item.g2{background:linear-gradient(135deg, #0B5ED7 0%, #2d2d2d 100%);}
+.gallery-item.g3{background:linear-gradient(135deg, #c4512f 0%, #d4a574 100%);}
+
+.gallery-item:hover{
+  transform:scale(1.05);
+  box-shadow:0 30px 60px rgba(0,0,0,.2);
+}
+
+/* CAREERS */
+.careers{
+  padding:140px 60px;
+  background:var(--warm-black);
+  color:var(--white);
+}
+
+.careers-inner{
+  max-width:900px;
+  margin:0 auto;
+  text-align:center;
+}
+
+.careers h2{
+  font-size:3rem;
+  font-weight:700;
+  margin-bottom:32px;
+  color:var(--white);
+}
+
+.careers p{
+  font-size:1.2rem;
+  line-height:1.8;
+  color:var(--sand);
+  margin-bottom:20px;
+}
+
+.careers strong{
+  color:var(--gold);
+}
+
+/* FAQ */
+.faq-section{
+  padding:140px 60px;
+  max-width:1000px;
+  margin:0 auto;
+}
+
+.faq-section h2{
+  font-size:3rem;
+  font-weight:700;
+  margin-bottom:60px;
+  color:var(--charcoal);
+  text-align:center;
+}
+
+.faq-item{
+  background:rgba(255,255,255,.6);
+  backdrop-filter:blur(30px);
+  margin-bottom:20px;
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.4);
+  box-shadow:0 8px 32px rgba(0,0,0,.06);
+  position:relative;
+}
+
+.faq-item::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:linear-gradient(135deg, rgba(232,227,218,.3) 0%, rgba(212,165,116,.2) 100%);
+  opacity:0;
+  transition:opacity .3s;
+  pointer-events:none;
+}
+
+.faq-item:hover::before{
+  opacity:1;
+}
+
+.faq-question{
+  padding:28px 32px;
+  font-size:1.2rem;
+  font-weight:600;
+  color:var(--charcoal);
   cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  transition:background .3s;
+}
+
+.faq-question:hover{
+  background:rgba(245,243,239,.5);
+}
+
+.faq-question::after{
+  content:'+';
+  font-size:1.8rem;
+  color:var(--primary-blue);
+  transition:transform .3s;
+}
+
+.faq-item.active .faq-question::after{
+  transform:rotate(45deg);
+}
+
+.faq-answer{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .4s ease;
+}
+
+.faq-item.active .faq-answer{
+  max-height:500px;
+}
+
+.faq-answer p{
+  padding:0 32px 28px;
+  color:#666;
+  line-height:1.8;
+  font-size:1rem;
+}
+
+/* CONTACT */
+.contact{
+  padding:140px 60px;
+  max-width:1400px;
+  margin:0 auto;
+}
+
+.contact h2{
+  font-size:3rem;
+  font-weight:700;
+  margin-bottom:60px;
+  color:var(--charcoal);
+  text-align:center;
+}
+
+.contact-form{
+  max-width:700px;
+  margin:0 auto;
+  background:var(--white);
+  padding:60px;
+  border-radius:8px;
+  box-shadow:0 20px 60px rgba(0,0,0,.08);
+}
+
+.form-group{
+  margin-bottom:24px;
+}
+
+.form-group label{
+  display:block;
+  margin-bottom:8px;
+  font-weight:600;
+  color:var(--charcoal);
+  font-size:.95rem;
+}
+
+.form-group input,
+.form-group textarea{
+  width:100%;
+  padding:16px;
+  border:1px solid #ddd;
+  border-radius:4px;
+  font-size:1rem;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  transition:all .3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
+  outline:none;
+  border-color:var(--primary-blue);
+  box-shadow:0 0 0 3px rgba(11,94,215,.1);
+}
+
+.form-group textarea{
+  resize:vertical;
+  min-height:150px;
+}
+
+.submit-btn{
+  width:100%;
+  background:linear-gradient(135deg, #d4a574 0%, #c4512f 100%);
+  color:var(--white);
+  padding:18px;
+  border-radius:4px;
+  font-weight:600;
+  border:none;
+  cursor:pointer;
+  font-size:1rem;
+  transition:all .3s;
+  box-shadow:0 8px 24px rgba(196,81,47,.35);
+}
+
+.submit-btn:hover{
+  background:linear-gradient(135deg, #c4512f 0%, #d4a574 100%);
+  transform:translateY(-2px);
+  box-shadow:0 12px 32px rgba(196,81,47,.5);
 }
 
 /* FOOTER */
 footer{
-  padding:60px 0;
+  background:var(--charcoal);
+  color:var(--sand);
+  padding:60px 60px;
   text-align:center;
-  font-size:.85rem;
-  color:var(--muted);
+}
+
+.footer-links{
+  margin-top:24px;
 }
 
 .footer-links a{
-  margin:0 12px;
-  color:var(--muted);
+  color:var(--sand);
   text-decoration:none;
+  margin:0 20px;
   font-weight:500;
+  transition:color .3s;
+}
+
+.footer-links a:hover{
+  color:var(--gold);
 }
 
 /* MOBILE */
-@media(max-width:900px){
-  .grid{grid-template-columns:1fr}
-  h1{font-size:2.5rem}
+@media(max-width:1024px){
+  .hero{
+    grid-template-columns:1fr;
+    padding:140px 40px 80px;
+  }
+  .hero-content h1{font-size:3rem}
+  .hero-slider{height:400px}
+  .services-grid,.why-grid{grid-template-columns:1fr}
+  .stats-container{grid-template-columns:repeat(2,1fr);gap:40px}
+  .nav-inner{padding:0 40px}
+  .nav-links{gap:24px}
+  .contact-form{padding:40px}
+  .gallery-grid{grid-template-columns:1fr}
+}
+
+@media(max-width:768px){
   .nav-links{display:none}
+  .hero-content h1{font-size:2.5rem}
+  .stats-container{grid-template-columns:1fr}
+  .services,.why-section,.contact{padding:80px 30px}
+  .contact-form{padding:30px}
+  .story-section{padding:80px 30px}
+  .faq-section{padding:80px 30px}
 }
 </style>
 </head>
@@ -213,98 +964,188 @@ footer{
 
 <nav>
   <div class="nav-inner">
-    <div class="wordmark">SALYANT</div>
+    <div class="logo">SALYANT</div>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#approach">Approach</a></li>
       <li><a href="#why">Why Salyant</a></li>
       <li><a href="#careers">Careers</a></li>
+      <li><button class="cta-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</button></li>
     </ul>
-    <a href="#contact" class="nav-cta">Contact</a>
   </div>
 </nav>
 
-<section class="section hero">
-  <div class="section-inner">
+<section class="hero">
+  <div class="hero-content">
     <h1>AI & IT services, built to last.</h1>
-    <p>
-      Salyant is a UK-based AI and IT services firm helping organisations
-      design, implement, and operate enterprise-grade automation and intelligent systems.
-    </p>
-
-    <div class="audio-box">
-      <strong>Audio overview</strong>
-      <audio controls src="audio-overview.mp3" style="width:100%;margin-top:1rem"></audio>
+    <p>Salyant is a UK-based AI and IT services firm helping organisations design, implement, and operate enterprise-grade automation and intelligent systems.</p>
+    <div class="hero-cta">
+      <button class="btn-primary" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Our Services</button>
+      <button class="btn-secondary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get in Touch</button>
     </div>
   </div>
 </section>
 
-<section id="services" class="section">
-  <div class="section-inner">
-    <h2>Services</h2>
-    <div class="grid">
-      <div class="card"><h3>AI workflow automation</h3><p>Design and delivery of governed automation integrating systems, data, and decision logic.</p></div>
-      <div class="card"><h3>Enterprise automation</h3><p>Secure, auditable, and scalable automation designed for long-term reliability.</p></div>
-      <div class="card"><h3>Systems integration</h3><p>Connecting APIs, platforms, and data into coherent operational systems.</p></div>
-      <div class="card"><h3>Operational support</h3><p>Ongoing optimisation, enhancement, and long-term system support.</p></div>
-      <div class="card"><h3>AI enablement</h3><p>Responsible use of AI to improve efficiency and decision-making.</p></div>
-      <div class="card"><h3>Architecture & governance</h3><p>Automation architectures aligned with enterprise governance expectations.</p></div>
+<section class="stats-bar">
+  <div class="stats-container">
+    <div class="stat-item">
+      <h3>100%</h3>
+      <p>Enterprise-Grade Delivery</p>
+    </div>
+    <div class="stat-item">
+      <h3>24/7</h3>
+      <p>Operational Support</p>
+    </div>
+    <div class="stat-item">
+      <h3>UK</h3>
+      <p>Based & Operated</p>
+    </div>
+    <div class="stat-item">
+      <h3>2025</h3>
+      <p>Founded with Purpose</p>
     </div>
   </div>
 </section>
 
-<section class="section visual-strip">
-  <div class="section-inner">
-    <img src="https://images.unsplash.com/photo-1531497865144-0464ef8fb9c8?q=80&w=1600&auto=format&fit=crop" alt="Professionals collaborating">
-  </div>
+<section class="story-section">
+  <h2>Our Story</h2>
+  <p>In an era where digital transformation has become essential rather than optional, we recognized a critical gap in the market. Organizations across the UK were struggling not with implementing technology, but with making it work sustainably over time.</p>
+  <p>Founded in 2025, Salyant emerged from a simple belief: enterprise automation should be built to last. We've seen too many ambitious AI projects that dazzle in demos but falter in production. Too many integrations that work brilliantly until they need to scale. Too many systems that lack the governance frameworks enterprises actually need.</p>
+  <p>Our approach is different. We design for the long term from day one—building systems that scale, adapt, and remain maintainable as your organization evolves. Every automation workflow we create, every integration we build, every AI implementation we deploy is architected with enterprise governance, operational continuity, and sustained performance in mind.</p>
 </section>
 
-<section id="why" class="section">
-  <div class="section-inner">
-    <h2>Why organisations choose Salyant</h2>
-    <div class="grid">
-      <div class="card"><h3>Enterprise mindset</h3><p>We design for scale, governance, and operational continuity from day one.</p></div>
-      <div class="card"><h3>Clear delivery model</h3><p>Structured engagement, clear milestones, and transparent communication.</p></div>
-      <div class="card"><h3>Long-term partnership</h3><p>Support does not end at delivery — we stay accountable as systems evolve.</p></div>
+<section id="services" class="services">
+  <h2>Services</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <h3>AI Workflow Automation</h3>
+      <p>Design and delivery of governed automation integrating systems, data, and decision logic for seamless operations.</p>
+    </div>
+    <div class="service-card">
+      <h3>Enterprise Automation</h3>
+      <p>Secure, auditable, and scalable automation designed for long-term reliability and compliance.</p>
+    </div>
+    <div class="service-card">
+      <h3>Systems Integration</h3>
+      <p>Connecting APIs, platforms, and data sources into coherent, high-performance operational systems.</p>
+    </div>
+    <div class="service-card">
+      <h3>Operational Support</h3>
+      <p>Ongoing optimization, enhancement, and dedicated long-term system support and maintenance.</p>
+    </div>
+    <div class="service-card">
+      <h3>AI Enablement</h3>
+      <p>Responsible implementation of AI technologies to improve efficiency, accuracy, and decision-making.</p>
+    </div>
+    <div class="service-card">
+      <h3>Architecture & Governance</h3>
+      <p>Enterprise automation architectures fully aligned with your governance and compliance expectations.</p>
     </div>
   </div>
 </section>
 
-<section id="careers" class="section">
-  <div class="section-inner">
+<section id="why" class="why-section">
+  <h2>Why Organisations Choose Salyant?</h2>
+  <div class="why-grid">
+    <div class="why-card">
+      <h3>Enterprise Mindset</h3>
+      <p>We design for scale, governance, and operational continuity from day one—no shortcuts, no technical debt.</p>
+    </div>
+    <div class="why-card">
+      <h3>Clear Delivery Model</h3>
+      <p>Structured engagement, transparent milestones, and consistent communication throughout every project phase.</p>
+    </div>
+    <div class="why-card">
+      <h3>Long-Term Partnership</h3>
+      <p>Support doesn't end at delivery—we stay accountable as your systems evolve and your needs change.</p>
+    </div>
+  </div>
+</section>
+
+<section id="careers" class="careers">
+  <div class="careers-inner">
     <h2>Careers</h2>
-    <div class="card" style="max-width:900px;margin:auto">
-      <p>
-        Salyant works with engineers, architects, and delivery professionals
-        who value structured problem-solving and long-term thinking.
-      </p>
-      <p>
-        To express interest, please email <strong>careers@salyant.co.uk</strong>.
-      </p>
+    <p>Salyant works with engineers, architects, and delivery professionals who value structured problem-solving and long-term thinking.</p>
+    <p>To express interest, please email <strong>careers@salyant.co.uk</strong></p>
+  </div>
+</section>
+
+<section class="faq-section">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <div class="faq-question">What industries does Salyant serve?</div>
+    <div class="faq-answer">
+      <p>We work across multiple sectors including financial services, healthcare, manufacturing, retail, and professional services. Our enterprise-grade solutions are designed to meet the stringent requirements of regulated industries while remaining flexible enough for organizations of all sizes.</p>
+    </div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question">How long does a typical automation project take?</div>
+    <div class="faq-answer">
+      <p>Project timelines vary based on scope and complexity. A focused workflow automation might take 6-12 weeks, while enterprise-wide system integration projects typically run 3-6 months. We provide detailed project plans with clear milestones during our initial discovery phase.</p>
+    </div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question">Do you provide ongoing support after implementation?</div>
+    <div class="faq-answer">
+      <p>Absolutely. Long-term operational support is core to our service model. We offer flexible support arrangements including 24/7 monitoring, regular optimization reviews, system enhancements, and dedicated technical support to ensure your automation continues to deliver value as your business evolves.</p>
+    </div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question">What makes Salyant different from other AI service providers?</div>
+    <div class="faq-answer">
+      <p>We focus on building systems that last. While many providers excel at proof-of-concepts and demos, we architect for production from day one—with proper governance, security, scalability, and maintainability. Our enterprise mindset means we consider compliance, auditability, and operational continuity in everything we build.</p>
+    </div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question">Where is Salyant based?</div>
+    <div class="faq-answer">
+      <p>Salyant is headquartered in London, United Kingdom. We serve organizations across the UK and work with clients who value UK-based delivery teams and data residency within British jurisdictions.</p>
     </div>
   </div>
 </section>
 
-<section id="contact" class="section">
-  <div class="section-inner">
-    <h2>Contact</h2>
-    <form action="mailto:contact@salyant.co.uk" method="post" enctype="text/plain">
-      <input type="text" name="name" placeholder="Your name" required>
-      <input type="email" name="email" placeholder="Your email" required>
-      <textarea name="message" rows="5" placeholder="Your message" required></textarea>
-      <button type="submit">Send message</button>
+<section id="contact" class="contact">
+  <h2>Contact</h2>
+  <div class="contact-form">
+    <form>
+      <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Send Message</button>
     </form>
   </div>
 </section>
 
 <footer>
-  © 2025 Salyant Ltd · Company No. 16837676 · London, United Kingdom
+  <p>© 2025 Salyant Ltd · Company No. 16837676 · London, United Kingdom</p>
   <div class="footer-links">
     <a href="#privacy">Privacy Policy</a>
     <a href="#cookies">Cookie Policy</a>
     <a href="https://www.linkedin.com/company/salyant-ltd-uk" target="_blank">LinkedIn</a>
   </div>
 </footer>
+
+<script>
+// FAQ Toggle
+document.addEventListener('DOMContentLoaded', function() {
+  const faqQuestions = document.querySelectorAll('.faq-question');
+  
+  faqQuestions.forEach(function(question) {
+    question.addEventListener('click', function() {
+      this.parentElement.classList.toggle('active');
+    });
+  });
+});
+</script>
 
 </body>
 </html>
