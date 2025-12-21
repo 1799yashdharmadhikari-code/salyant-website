@@ -4,358 +4,370 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Salyant | AI & IT Services & Enterprise Workflow Automation</title>
-
-<meta name="description" content="Salyant is a UK-based AI and IT services firm delivering enterprise-grade workflow automation, intelligent systems, and long-term operational support.">
+<!-- SEO CORE -->
+<title>Salyant | AI & IT Services | Enterprise Automation UK</title>
+<meta name="description" content="Salyant is a UK-based AI and IT services firm delivering enterprise-grade AI workflow automation, intelligent systems, and long-term operational support.">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Salyant Ltd">
 
-<!-- Open Graph / Social -->
+<!-- OPEN GRAPH / SOCIAL -->
 <meta property="og:title" content="Salyant | AI & IT Services">
-<meta property="og:description" content="Enterprise-grade AI workflow automation and intelligent systems, delivered from the United Kingdom.">
+<meta property="og:description" content="Enterprise-grade AI workflow automation and intelligent systems delivered from the United Kingdom.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://www.salyant.co.uk">
 <meta property="og:image" content="https://www.salyant.co.uk/logo.png">
 
 <meta name="twitter:card" content="summary_large_image">
 
+<!-- FONTS -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
   --ink:#0f1f2e;
   --muted:#5f6f73;
-  --earth:#6b7f75;
-  --clay:#c9b8a6;
-  --stone:#eef1ef;
   --accent:#2f5d62;
-  --glass:rgba(255,255,255,.65);
-  --border:rgba(255,255,255,.55);
-  --shadow:0 30px 60px rgba(20,30,40,.12);
+  --bg:#f2f4f3;
+  --card:#ffffff;
+  --shadow:0 25px 50px rgba(0,0,0,.08);
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
   font-family:Inter,system-ui,sans-serif;
-  background:linear-gradient(180deg,#f2f4f3,#e8ecea);
+  background:var(--bg);
   color:var(--ink);
   line-height:1.65;
-  overflow-x:hidden;
 }
 
-::selection{background:rgba(47,93,98,.18)}
-
-.container{max-width:1200px;margin:auto;padding:0 24px}
-
-/* AI ABSTRACT BACKGROUND */
-.ai-bg{
-  position:fixed;inset:0;z-index:-1;overflow:hidden;
-}
-.ai-orb{
-  position:absolute;width:600px;height:600px;border-radius:50%;
-  filter:blur(120px);opacity:.45;
-  animation:drift 35s linear infinite alternate;
-}
-.ai-orb.one{background:#b8cfc2;top:-20%;left:-15%}
-.ai-orb.two{background:#d8cfc0;bottom:-20%;right:-10%;animation-delay:-12s}
-.ai-orb.three{background:#a9c1c7;top:30%;right:20%;animation-delay:-22s}
-@keyframes drift{from{transform:translate(0,0)}to{transform:translate(80px,60px)}}
-
-/* GLASS */
-.glass{
-  background:var(--glass);
-  backdrop-filter:blur(26px);
-  border:1px solid var(--border);
-  box-shadow:var(--shadow);
-  border-radius:30px;
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:0 24px;
 }
 
-/* REVEAL */
-.reveal{opacity:0;transform:translateY(22px);transition:.9s ease}
-.reveal.visible{opacity:1;transform:none}
-
-/* NAV */
+/* ================= NAVIGATION ================= */
 nav{
-  position:fixed;top:0;width:100%;z-index:1000;
-  padding:1.6rem 0;transition:.3s ease;
+  position:fixed;
+  top:0;
+  width:100%;
+  background:rgba(242,244,243,.92);
+  backdrop-filter:blur(14px);
+  z-index:1000;
+  border-bottom:1px solid rgba(0,0,0,.05);
 }
-nav.scrolled{padding:.8rem 0}
+
 .nav-inner{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:1rem 1.8rem;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  height:84px;
 }
-.logo{height:42px}
-.nav-links{list-style:none;display:flex;gap:2.4rem}
-.nav-links a{text-decoration:none;color:var(--ink);font-weight:500}
 
-/* HERO */
-.hero{
-  padding:190px 0 120px;text-align:center;
+.logo{
+  height:52px;
 }
-.hero h1{
-  font-family:"Playfair Display",serif;
-  font-size:4.2rem;line-height:1.12;margin-bottom:1.4rem;
+
+.nav-center{
+  list-style:none;
+  display:flex;
+  justify-content:center;
+  gap:2.4rem;
 }
-.hero p{
-  max-width:760px;margin:auto;
-  font-size:1.25rem;color:var(--muted);
-}
-.hero h2{
-  margin-top:2.2rem;
-  font-size:1.2rem;
+
+.nav-center a{
+  text-decoration:none;
   font-weight:500;
-  color:var(--earth);
-}
-
-/* AUDIO */
-.audio-wrap{
-  margin-top:48px;
-  max-width:780px;
-  margin-left:auto;margin-right:auto;
-  padding:2.4rem;
-}
-.audio-wrap p{color:var(--muted);font-size:.95rem;margin-bottom:1.2rem}
-audio{width:100%}
-
-/* SECTIONS */
-section{padding:120px 0}
-
-/* IMAGE GRID */
-.image-grid{
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr;
-  gap:28px;
-}
-.image-card{overflow:hidden;position:relative}
-.image-card img{
-  width:100%;height:100%;object-fit:cover;
-  transform:scale(1.04);
-  transition:transform 1.2s ease;
-}
-.image-card:hover img{transform:scale(1.1)}
-.image-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(180deg,transparent,rgba(20,30,40,.45));
-}
-
-/* SERVICES */
-.services{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:28px;
-}
-.service{padding:2.6rem}
-.service h3{margin-bottom:.8rem}
-.service p{color:var(--muted);font-size:.95rem}
-
-/* MODAL */
-.modal{
-  display:none;position:fixed;inset:0;
-  background:rgba(0,0,0,.5);
-  backdrop-filter:blur(6px);
-  z-index:3000;
-}
-.modal-content{
-  background:#fff;
-  max-width:720px;
-  margin:8% auto;
-  padding:3rem;
-  border-radius:20px;
+  font-size:.95rem;
+  color:var(--ink);
   position:relative;
 }
-.close{
-  position:absolute;top:1.5rem;right:1.5rem;
-  font-size:1.5rem;cursor:pointer;
+
+.nav-center a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0;
+  height:2px;
+  background:var(--accent);
+  transition:.25s ease;
 }
 
-/* FOOTER */
-footer{
-  background:#fff;border-top:1px solid rgba(0,0,0,.06);
-  padding:90px 0 40px;
+.nav-center a:hover::after{
+  width:100%;
 }
-.footer-grid{
+
+.nav-right .nav-cta{
+  text-decoration:none;
+  font-weight:600;
+  padding:10px 24px;
+  border-radius:999px;
+  background:var(--accent);
+  color:#fff;
+}
+
+/* ================= HERO ================= */
+.hero{
+  padding:190px 0 120px;
+  text-align:center;
+}
+
+.hero h1{
+  font-family:"Playfair Display",serif;
+  font-size:4rem;
+  margin-bottom:1.6rem;
+}
+
+.hero p{
+  max-width:780px;
+  margin:auto;
+  font-size:1.2rem;
+  color:var(--muted);
+}
+
+/* ================= AUDIO ================= */
+.audio-box{
+  margin:3rem auto 0;
+  max-width:720px;
+  background:var(--card);
+  padding:2rem;
+  border-radius:24px;
+  box-shadow:var(--shadow);
+}
+
+/* ================= SECTIONS ================= */
+section{
+  padding:120px 0;
+}
+
+h2{
+  text-align:center;
+  font-family:"Playfair Display",serif;
+  font-size:2.4rem;
+  margin-bottom:3rem;
+}
+
+/* ================= CARDS ================= */
+.grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:3rem;
-}
-footer a{text-decoration:none;color:var(--muted)}
-.legal{
-  margin-top:3rem;padding-top:2rem;
-  border-top:1px solid rgba(0,0,0,.05);
-  text-align:center;font-size:.8rem;color:var(--muted);
+  grid-template-columns:repeat(3,1fr);
+  gap:32px;
 }
 
-/* MOBILE */
+.card{
+  background:var(--card);
+  padding:2.8rem;
+  border-radius:22px;
+  box-shadow:var(--shadow);
+}
+
+.card h3{
+  margin-bottom:.8rem;
+}
+
+.card p{
+  color:var(--muted);
+  font-size:.95rem;
+}
+
+/* ================= GOVERNANCE ================= */
+.governance-box{
+  background:var(--card);
+  padding:3.5rem;
+  border-radius:28px;
+  box-shadow:var(--shadow);
+  max-width:900px;
+  margin:auto;
+}
+
+/* ================= CONTACT ================= */
+form{
+  max-width:600px;
+  margin:auto;
+  background:var(--card);
+  padding:3rem;
+  border-radius:28px;
+  box-shadow:var(--shadow);
+}
+
+input, textarea{
+  width:100%;
+  padding:14px;
+  margin-bottom:1.2rem;
+  border-radius:10px;
+  border:1px solid #ccc;
+  font-family:Inter;
+}
+
+button{
+  background:var(--accent);
+  color:#fff;
+  padding:14px 28px;
+  border:none;
+  border-radius:30px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* ================= FOOTER ================= */
+footer{
+  padding:60px 0;
+  text-align:center;
+  color:var(--muted);
+  font-size:.85rem;
+}
+
+/* ================= MOBILE ================= */
 @media(max-width:900px){
-  .hero h1{font-size:2.9rem}
-  .image-grid,.services{grid-template-columns:1fr}
-  .nav-links{display:none}
+  .grid{grid-template-columns:1fr}
+  .hero h1{font-size:2.8rem}
+  .nav-center{display:none}
 }
 </style>
 </head>
 
 <body>
 
-<div class="ai-bg">
-  <div class="ai-orb one"></div>
-  <div class="ai-orb two"></div>
-  <div class="ai-orb three"></div>
-</div>
+<!-- NAV -->
+<nav>
+  <div class="container nav-inner">
+    <img src="logo.png" alt="SALYANT" class="logo">
 
-<nav id="nav">
-  <div class="container">
-    <div class="nav-inner glass">
-      <img src="logo.png" alt="SALYANT™" class="logo">
-      <ul class="nav-links">
-        <li><a href="#services">Services</a></li>
-        <li><a href="mailto:contact@salyant.co.uk">Contact</a></li>
-      </ul>
+    <ul class="nav-center">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#solutions">Solutions</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#governance">Governance</a></li>
+      <li><a href="#careers">Careers</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <a href="#contact" class="nav-cta">Contact</a>
     </div>
   </div>
 </nav>
 
-<header class="hero container reveal">
+<!-- HERO -->
+<header class="hero container">
   <h1>AI & IT services,<br>built to last.</h1>
   <p>
     Salyant is a UK-based AI and IT services firm delivering enterprise-grade
-    workflow automation, intelligent systems, and long-term operational support.
+    automation, intelligent systems, and long-term operational support.
   </p>
-  <h2>Enterprise AI workflow automation and intelligent systems</h2>
 
-  <div class="audio-wrap glass reveal">
-    <h3>Audio overview</h3>
-    <p>A brief explanation of who we are, what we build, and how we support it.</p>
-    <audio controls preload="none">
-      <source src="audio-overview.mp3" type="audio/mpeg">
-    </audio>
+  <div class="audio-box">
+    <strong>Audio overview</strong>
+    <p style="color:var(--muted);margin:.6rem 0 1rem">
+      A brief explanation of who we are, what we build, and how we support it.
+    </p>
+    <audio controls src="audio-overview.mp3"></audio>
   </div>
 </header>
 
-<section class="container">
-  <div class="image-grid">
-    <div class="image-card glass reveal">
-      <img src="https://images.unsplash.com/photo-1549923746-c502d488b3ea?q=80&w=1600&auto=format&fit=crop" alt="Enterprise systems">
-      <div class="image-overlay"></div>
-    </div>
-    <div class="image-card glass reveal">
-      <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=900&auto=format&fit=crop" alt="AI workflows">
-      <div class="image-overlay"></div>
-    </div>
-    <div class="image-card glass reveal">
-      <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=900&auto=format&fit=crop" alt="Automation">
-      <div class="image-overlay"></div>
-    </div>
-  </div>
-</section>
-
+<!-- SERVICES -->
 <section id="services" class="container">
-  <div class="services">
-    <div class="service glass reveal">
-      <h3>AI workflow automation</h3>
-      <p>
-        Design and delivery of enterprise-grade AI workflow automation,
-        integrating systems, data, and decision logic across the organisation.
-        Where appropriate, platforms such as n8n are used as part of a governed,
-        tool-agnostic automation architecture.
-      </p>
-    </div>
-    <div class="service glass reveal">
-      <h3>Enterprise automation</h3>
-      <p>
-        Secure, auditable, and scalable automation solutions designed for
-        reliability, governance, and long-term operational continuity.
-      </p>
-    </div>
-    <div class="service glass reveal">
-      <h3>Ongoing support</h3>
-      <p>
-        Long-term support, optimisation, and future enhancements to ensure
-        automation systems continue to perform as business needs evolve.
-      </p>
-    </div>
+  <h2>Services</h2>
+  <div class="grid">
+    <div class="card"><h3>AI workflow automation</h3><p>Enterprise-grade workflow automation integrating systems, data, and decision logic. Platforms such as n8n may be used within governed architectures.</p></div>
+    <div class="card"><h3>Enterprise automation</h3><p>Secure, auditable, and scalable automation designed for reliability and continuity.</p></div>
+    <div class="card"><h3>Systems integration</h3><p>Connecting APIs, platforms, and data into coherent operational systems.</p></div>
+    <div class="card"><h3>Operational support</h3><p>Long-term support, optimisation, and future enhancements.</p></div>
+    <div class="card"><h3>AI enablement</h3><p>Responsible application of AI to improve efficiency and decision-making.</p></div>
+    <div class="card"><h3>Architecture & governance</h3><p>Automation architectures aligned with enterprise governance expectations.</p></div>
   </div>
 </section>
 
-<section class="container reveal">
-  <div class="glass" style="padding:3rem;">
-    <h2>Operational standards & governance</h2>
+<!-- SOLUTIONS -->
+<section id="solutions" class="container">
+  <h2>Solutions</h2>
+  <div class="grid">
+    <div class="card"><p>Workflow modernisation</p></div>
+    <div class="card"><p>Operational efficiency at scale</p></div>
+    <div class="card"><p>AI-assisted decision systems</p></div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section id="approach" class="container">
+  <h2>Our approach</h2>
+  <div class="grid">
+    <div class="card"><h3>Structured</h3><p>Clear architecture, documentation, and disciplined delivery.</p></div>
+    <div class="card"><h3>Governed</h3><p>Security, auditability, and operational control.</p></div>
+    <div class="card"><h3>Long-term</h3><p>Built for longevity, not experimentation.</p></div>
+  </div>
+</section>
+
+<!-- GOVERNANCE -->
+<section id="governance" class="container">
+  <h2>Operational standards & governance</h2>
+  <div class="governance-box">
     <p>
-      Salyant operates using structured delivery, security, and quality practices
-      aligned with internationally recognised standards for information security,
-      service management, and quality management.
+      Salyant operates using delivery, security, and quality practices aligned with
+      internationally recognised standards including ISO 27001, ISO 9001, and ISO 20000.
     </p>
     <p>
-      Our internal processes reflect the principles of ISO&nbsp;27001,
-      ISO&nbsp;9001, and ISO&nbsp;20000, focusing on risk management,
-      operational consistency, and continuous improvement.
-    </p>
-    <p>
-      While Salyant does not claim formal certification at this stage,
-      our delivery approach reflects these frameworks to support
-      enterprise-appropriate controls and accountability.
+      While Salyant does not claim formal certification, our approach reflects these
+      frameworks to support enterprise-appropriate controls, accountability,
+      and operational consistency.
     </p>
   </div>
+</section>
+
+<!-- CAREERS -->
+<section id="careers" class="container">
+  <h2>Careers</h2>
+  <div class="card" style="max-width:900px;margin:auto">
+    <p>
+      Salyant works with engineers, architects, and delivery professionals who value
+      structured problem-solving and long-term thinking.
+    </p>
+    <p>
+      Opportunities may include permanent roles, contract engagements, or project-based collaboration.
+    </p>
+    <p>
+      To express interest, please email <strong>careers@salyant.co.uk</strong>.
+    </p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="container">
+  <h2>Contact</h2>
+  <form action="mailto:contact@salyant.co.uk" method="post" enctype="text/plain">
+    <input type="text" name="name" placeholder="Your name" required>
+    <input type="email" name="email" placeholder="Your email" required>
+    <textarea name="message" rows="5" placeholder="Your message" required></textarea>
+    <button type="submit">Send message</button>
+  </form>
+</section>
+
+<!-- FAQ / AEO -->
+<section class="container">
+  <h2>Frequently asked questions</h2>
+
+  <h3>What does Salyant do?</h3>
+  <p>Salyant provides AI and IT services focused on enterprise-grade automation and intelligent systems.</p>
+
+  <h3>Is Salyant a UK-based company?</h3>
+  <p>Yes. Salyant Ltd is a UK-registered company operating from London.</p>
+
+  <h3>Does Salyant provide ongoing support?</h3>
+  <p>Yes. Long-term operational support and optimisation are core to our services.</p>
 </section>
 
 <footer>
-  <div class="container footer-grid">
-    <div>
-      <img src="logo.png" style="height:32px;margin-bottom:1.4rem">
-      <p>
-        SALYANT LTD<br>
-        Company No: 16837676<br>
-        128 City Road, London<br>
-        EC1V 2NX, United Kingdom
-      </p>
-    </div>
-    <div>
-      <p><strong>Compliance</strong></p>
-      <p><a href="#" onclick="openModal('privacyModal')">Privacy Policy</a></p>
-      <p><a href="#" onclick="openModal('cookieModal')">Cookie Policy</a></p>
-      <p><a href="#" onclick="openModal('accessibilityModal')">Accessibility</a></p>
-      <p><a href="#" onclick="openModal('securityModal')">Security & Responsible AI</a></p>
-      <p><a href="#" onclick="openModal('termsModal')">Website Terms</a></p>
-    </div>
-    <div>
-      <p><strong>Contact</strong></p>
-      <p><a href="mailto:contact@salyant.co.uk">contact@salyant.co.uk</a></p>
-      <p><a href="https://www.linkedin.com/company/salyant-ltd-uk" target="_blank">LinkedIn</a></p>
-    </div>
-  </div>
-  <div class="legal">
-    © 2025 SALYANT LTD. All rights reserved.
-  </div>
+  © 2025 Salyant Ltd · Company No. 16837676 · London, United Kingdom<br>
+  <a href="https://www.linkedin.com/company/salyant-ltd-uk" target="_blank">LinkedIn</a>
 </footer>
 
-<!-- LEGAL MODALS -->
-<div id="privacyModal" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('privacyModal')">&times;</span>
-<h2>Privacy Policy</h2>
-<p>Salyant Ltd processes personal data in accordance with UK GDPR and the Data Protection Act 2018. We collect minimal contact data for business communication only.</p>
-<p>Lawful basis: legitimate interest. Data is retained only as necessary.</p>
-<p>Contact: contact@salyant.co.uk</p>
-</div></div>
+<!-- GEO SIGNAL -->
+<p style="display:none">
+Salyant Ltd is a London-based AI and IT services firm operating across the United Kingdom.
+</p>
 
-<div id="cookieModal" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('cookieModal')">&times;</span>
-<h2>Cookie Policy</h2>
-<p>This website uses essential cookies only. No analytics, tracking, or advertising cookies are used.</p>
-</div></div>
-
-<div id="accessibilityModal" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('accessibilityModal')">&times;</span>
-<h2>Accessibility</h2>
-<p>We aim to meet WCAG 2.1 AA standards and improve accessibility continuously.</p>
-</div></div>
-
-<div id="securityModal" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('securityModal')">&times;</span>
-<h2>Security & Responsible AI</h2>
-<p>Automation and AI systems are designed with security, auditability, and responsible use in mind, following ISO-aligned risk-based practices.</p>
-</div></div>
-
-<div id="termsModal" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('termsModal')">&times;</span>
-<h2>Website Terms</h2>
-<p>This website is provided for general information only and does not constitute a contractual or advisory relationship.</p>
-</div></div>
-
-<!-- SEO / AEO STRUCTURED DATA -->
+<!-- STRUCTURED DATA -->
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -371,38 +383,8 @@ footer a{text-decoration:none;color:var(--muted)}
     "postalCode":"EC1V 2NX",
     "addressCountry":"GB"
   },
-  "contactPoint":{
-    "@type":"ContactPoint",
-    "contactType":"Business enquiries",
-    "email":"contact@salyant.co.uk"
-  },
-  "sameAs":["https://www.linkedin.com/company/salyant-ltd-uk"],
-  "makesOffer":{
-    "@type":"Service",
-    "name":"AI Workflow Automation and Integration Services",
-    "areaServed":"GB",
-    "description":"Enterprise-grade AI workflow automation, including experience with platforms such as n8n, delivered by a UK-based AI and IT services firm."
-  }
+  "sameAs":["https://www.linkedin.com/company/salyant-ltd-uk"]
 }
-</script>
-
-<!-- GEO SIGNAL -->
-<p style="display:none">
-Salyant provides AI workflow automation services in the United Kingdom, including implementations using platforms such as n8n.
-</p>
-
-<script>
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60));
-
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>e.isIntersecting&&e.target.classList.add('visible'));
-},{threshold:.25});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-
-function openModal(id){document.getElementById(id).style.display='block'}
-function closeModal(id){document.getElementById(id).style.display='none'}
-window.onclick=e=>{if(e.target.classList.contains('modal'))e.target.style.display='none'}
 </script>
 
 </body>
