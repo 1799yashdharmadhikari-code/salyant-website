@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3ZF3X6JFWQ"></script>
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ZF3X6JFWQ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3ZF3X6JFWQ');
-</script>
+</script> -->
   
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,12 +17,12 @@
 <!-- Icons -->
 <link rel="icon" href="/favicon.ico">
 
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
 
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
 
-<link rel="manifest" href="/site.webmanifest">
+<link rel="manifest" href="favicon_io/site.webmanifest">
 
 <!-- Meta -->
 <meta name="description" content="Salyant delivers enterprise-grade AI workflow automation, intelligent systems integration, and long-term operational support across the UK. Trusted by organizations for scalable, governed automation solutions.">
@@ -39,6 +39,32 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.salyant.co.uk">
 <meta property="og:locale" content="en_GB">
+
+<!-- Cookie Consent -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+
+<!-- Structured Data -->
+  <!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Salyant Ltd",
+  "url": "https://www.salyant.co.uk",
+  "logo": "https://www.salyant.co.uk/logo.png",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "GB",
+    "addressLocality": "London"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "contact@salyant.co.uk",
+    "contactType": "Customer Service"
+  }
+}
+</script>
 
 
 <script type="application/ld+json">
@@ -1180,6 +1206,56 @@ document.addEventListener('DOMContentLoaded', function() {
     question.addEventListener('click', function() {
       this.parentElement.classList.toggle('active');
     });
+  });
+});
+</script>
+
+<!-- ===============================
+     GOOGLE ANALYTICS (CONSENTED)
+================================ -->
+<script>
+function loadGoogleAnalytics() {
+  if (window.gaLoaded) return;
+  window.gaLoaded = true;
+
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = "https://www.googletagmanager.com/gtag/js?id=G-3ZF3X6JFWQ";
+  document.head.appendChild(s);
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag = gtag;
+
+  gtag('js', new Date());
+  gtag('config', 'G-3ZF3X6JFWQ', { anonymize_ip: true });
+}
+</script>
+
+<!-- ===============================
+     COOKIE CONSENT INITIALISER
+================================ -->
+<script>
+window.addEventListener("load", function () {
+  window.cookieconsent.initialise({
+    palette: {
+      popup: { background: "#1a1a1a" },
+      button: { background: "#0B5ED7" }
+    },
+    theme: "classic",
+    position: "bottom",
+    content: {
+      message: "We use cookies to analyse traffic and improve our services.",
+      dismiss: "Accept",
+      link: "Cookie policy",
+      href: "cookie_policy.html"
+    },
+    onInitialise: function (status) {
+      if (status === "allow") loadGoogleAnalytics();
+    },
+    onStatusChange: function (status) {
+      if (status === "allow") loadGoogleAnalytics();
+    }
   });
 });
 </script>
