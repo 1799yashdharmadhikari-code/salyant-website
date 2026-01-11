@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessibility Statement | Salyant</title>
+
+    <!-- Icons -->
+    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <link rel="manifest" href="favicon_io/site.webmanifest">
+
+    <!-- Meta -->
+    <meta name="robots" content="noindex, follow">
+
+    <!-- Cookie Consent -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+
+    <style>
+        /* 
+   -----------------------------------
+   DESIGN SYSTEM & VARIABLES
+   -----------------------------------
+*/
+        :root {
+            /* 
+         Rebrand: Luxury Enterprise (Charcoal & Gold)
+      */
+            --primary-blue: #1c1c1c;
+            --primary-dark: #000000;
+            --accent-blue: #f5f5f0;
+            --brand-gold: #d4a574;
+            --text-dark: #171717;
+            --text-body: #4a4a4a;
+            --text-light: #767676;
+            --bg-white: #ffffff;
+            --bg-light: #faf9f8;
+            --bg-dark: #121212;
+
+            /* Layout */
+            --max-width: 1200px;
+            --radius: 4px;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+            /* Typography */
+            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background: var(--bg-white);
+            color: var(--text-body);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            width: 100%;
+            position: relative;
+        }
+
+        /* Core Components */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            margin-top: 2rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary-blue);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            z-index: 1000;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            transition: box-shadow 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--brand-gold);
+        }
+
+        /* Mobile Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 2px;
+            background: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        @media (max-width: 900px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                height: auto;
+                max-height: calc(100vh - 80px);
+                overflow-y: auto;
+                background: var(--bg-white);
+                flex-direction: column;
+                padding: 40px 24px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+                z-index: 999;
+                border-top: 1px solid rgba(0, 0, 0, 0.05);
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+        }
+
+        /* Hero Helper */
+        .hero-small {
+            padding: 100px 0 60px;
+            background: linear-gradient(180deg, var(--bg-white) 0%, var(--accent-blue) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.6;
+            overflow: hidden;
+        }
+
+        .hero-blob {
+            position: absolute;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .blob-1 {
+            top: -10%;
+            left: -10%;
+            width: 50%;
+            height: 50%;
+            aspect-ratio: 1;
+            background: radial-gradient(circle, var(--accent-blue) 0%, transparent 70%);
+        }
+
+        .blob-2 {
+            bottom: -10%;
+            right: -10%;
+            width: 60%;
+            height: 60%;
+            aspect-ratio: 1;
+            background: radial-gradient(circle, #f0e6d2 0%, transparent 70%);
+            animation-delay: -5s;
+        }
+
+        .blob-3 {
+            top: 20%;
+            left: 40%;
+            width: 40%;
+            height: 40%;
+            aspect-ratio: 1;
+            background: radial-gradient(circle, #e6ecf5 0%, transparent 70%);
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            33% {
+                transform: translate(30px, -50px);
+            }
+
+            66% {
+                transform: translate(-20px, 20px);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Legal Content */
+        .legal-content {
+            padding: 60px 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .legal-content ul {
+            list-style: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .legal-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-dark);
+            color: #b3bac5;
+            padding: 60px 24px 40px;
+            text-align: center;
+        }
+
+        .footer-links a {
+            margin: 0 16px;
+            color: #fff;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        /* Cookie Revoke Hide */
+        .cc-revoke {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html"><img src="logo.png" alt="Salyant"
+                        style="max-height: 125px; width: auto; display: block;"></a>
+            </div>
+            <button class="hamburger" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#process">Our Approach</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#careers">Careers</a></li>
+                <li><a href="index.html#contact" class="btn btn-primary" style="color: white;">Request Consultation</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero-small">
+        <div class="hero-bg">
+            <div class="hero-blob blob-1"></div>
+            <div class="hero-blob blob-2"></div>
+            <div class="hero-blob blob-3"></div>
+        </div>
+        <div class="hero-content">
+            <div class="container">
+                <h1>Accessibility Statement</h1>
+            </div>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container legal-content">
+            <p><strong>Last Updated: January 2026</strong></p>
+
+            <h2>Commitment to Accessibility</h2>
+            <p>Salyant is committed to ensuring digital accessibility for people with disabilities. We are continually
+                improving the user experience for everyone and applying the relevant accessibility standards.</p>
+
+            <h2>Measures to Support Accessibility</h2>
+            <p>Salyant takes the following measures to ensure accessibility of the Salyant website:</p>
+            <ul>
+                <li>Include accessibility as part of our mission statement.</li>
+                <li>Integrate accessibility into our procurement practices.</li>
+                <li>Provide continual accessibility training for our staff.</li>
+            </ul>
+
+            <h2>Conformance Status</h2>
+            <p>The Web Content Accessibility Guidelines (WCAG) defines requirements for designers and developers to
+                improve accessibility for people with disabilities. It defines three levels of conformance: Level A,
+                Level AA, and Level AAA. The Salyant website is partially conformant with WCAG 2.1 level AA. Partially
+                conformant means that some parts of the content do not fully conform to the accessibility standard.</p>
+
+            <h2>Feedback</h2>
+            <p>We welcome your feedback on the accessibility of the Salyant website. Please let us know if you encounter
+                accessibility barriers on the Salyant website:</p>
+            <ul>
+                <li>E-mail: contact@salyant.co.uk</li>
+                <li>Postal Address: London, UK</li>
+            </ul>
+            <p>We try to respond to feedback within 5 business days.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Salyant Ltd. All rights reserved.</p>
+                <div class="footer-links" style="margin-bottom: 20px;">
+                    <a href="privacy_policy.html">Privacy</a>
+                    <a href="terms_conditions.html">Terms</a>
+                    <a href="accessibility.html">Accessibility</a>
+                    <a href="cookie_policy.html">Cookies</a>
+                </div>
+                <p style="font-size: 0.8rem; opacity: 0.6;">Registered in England & Wales.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Logic
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+        }
+    </script>
+
+    <script>
+        window.addEventListener("load", function () {
+            window.cookieconsent.initialise({
+                palette: {
+                    popup: { background: "#1c1c1c" },
+                    button: { background: "#d4a574", text: "#000000" }
+                },
+                type: "opt-in",
+                theme: "classic",
+                position: "bottom",
+                content: {
+                    message: "We use cookies to analyse traffic and improve our services.",
+                    allow: "Accept",
+                    deny: "Decline",
+                    link: "Cookie policy",
+                    href: "cookie_policy.html"
+                },
+            });
+        });
+    </script>
+
+</body>
+
+</html>
