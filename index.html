@@ -18,12 +18,12 @@
     content="AI automation, enterprise automation, IT services UK, systems integration, AI workflow, operational support, enterprise AI, automation governance">
   <meta name="robots" content="index, follow">
   <meta name="author" content="Salyant Ltd">
-  
+
   <meta name="geo.region" content="GB-LND">
   <meta name="geo.placename" content="London">
   <meta name="geo.position" content="51.5074;-0.1278">
   <meta name="ICBM" content="51.5074, -0.1278">
-  
+
   <link rel="canonical" href="https://www.salyant.co.uk">
 
   <meta property="og:title" content="Salyant | AI Automation Consulting & Workflow Automation UK">
@@ -144,7 +144,7 @@
       /* Structural Constants */
       --max-width: 1200px;
       --radius: 4px; /* Enterprise Corporate Radius */
-      
+
       /* Refined Shadows */
       --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
       --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.06);
@@ -426,7 +426,7 @@
     }
 
     /* -----------------------------------
-   IMPACT BAR 
+   IMPACT BAR
    -----------------------------------
 */
     .impact-bar {
@@ -508,6 +508,27 @@
     .service-card p {
       font-size: 0.95rem;
       color: var(--text-body);
+    }
+
+    /* -----------------------------------
+   AI SDR DEMO (Brochure embed)
+   -----------------------------------
+*/
+    .demo-frame-wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      background: #060C16;
+      aspect-ratio: 960 / 540;
+    }
+
+    .demo-frame-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
     }
 
     /* -----------------------------------
@@ -812,7 +833,7 @@
       .hero h1 { font-size: 2.5rem; }
       .grid-3 { grid-template-columns: 1fr; }
       .about-split { grid-template-columns: 1fr; }
-      
+
       .nav-links {
         position: fixed;
         top: 80px;
@@ -838,7 +859,7 @@
       .impact-grid { flex-direction: column; gap: 40px; }
       .services-grid, .process-grid { grid-template-columns: 1fr; }
     }
-    
+
     @media(min-width: 901px) {
       .nav-links li:last-child { display: none; }
       .nav-links { transform: none !important; }
@@ -861,6 +882,7 @@
       </button>
       <ul class="nav-links">
         <li><a href="#services">Services</a></li>
+        <li><a href="#demo">See It In Action</a></li>
         <li><a href="#process">Our Approach</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#careers">Careers</a></li>
@@ -884,8 +906,8 @@
         <span class="title-span-right" aria-hidden="true">Grow Without Hiring More Staff.</span>
       </h1>
 
-      <p class="fade-in-up delay-200">Convert recurring payroll and operational 
-        costs into scalable AI automation 
+      <p class="fade-in-up delay-200">Convert recurring payroll and operational
+        costs into scalable AI automation
         — a one-time strategic investment.</p>
       <div class="hero-actions fade-in-up delay-300">
         <a href="#booking-calendar" class="btn btn-primary">Book Your Free Strategy Call</a>
@@ -985,7 +1007,19 @@
     </div>
   </section>
 
-  <section id="process" class="section scroll-reveal">
+  <section id="demo" class="section scroll-reveal">
+    <div class="container">
+      <div class="section-header">
+        <h2>See Our AI SDR In Action</h2>
+        <p>A look at the autonomous AI Sales Development Representative — discovery, drafting, approval, replies, and self-healing reliability, end to end.</p>
+      </div>
+      <div class="demo-frame-wrap">
+        <iframe src="brochure.html" title="Salyant AI SDR — Prospect Teaser" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section id="process" class="section section-alt scroll-reveal">
     <div class="container">
       <div class="section-header">
         <h2>Our Approach</h2>
@@ -1011,7 +1045,7 @@
     </div>
   </section>
 
-  <section id="about" class="section section-alt scroll-reveal">
+  <section id="about" class="section scroll-reveal">
     <div class="container about-split">
       <div class="about-content">
         <h2>Built for the Enterprise</h2>
@@ -1027,7 +1061,7 @@
     </div>
   </section>
 
-  <section class="section scroll-reveal">
+  <section class="section section-alt scroll-reveal">
     <div class="container faq-container">
       <div class="section-header">
         <h2>Common Questions</h2>
@@ -1072,21 +1106,25 @@
     </div>
   </section>
 
-<section id="bookings" class="section section-alt scroll-reveal">
-  <div class="container">
-    <div class="section-header">
-      <h2>Book Your Free Strategy Call</h2>
-      <p>Speak directly with our team to discuss your business processes and discover where AI can save time, reduce costs, and streamline operations.</p>
-    </div>
+  <section id="bookings" class="section section-alt scroll-reveal">
+    <div class="container">
+      <div class="section-header">
+        <h2>Book Your Free Strategy Call</h2>
+        <p>Speak directly with our team to discuss your business processes and discover where AI can save time, reduce costs, and streamline operations.</p>
+      </div>
 
-    <div id="booking-calendar" style="margin:0 auto; background:var(--bg-light); border-radius:var(--radius); box-shadow:var(--shadow-md); border:1px solid #ebecf0; padding:15px;">
-      <script type="text/javascript" async src="https://static.zcal.co/embed/v1/embed.js"></script>
-      <div class="zcal-inline-widget" data-zcal-options='{"showBackground":1}'><a href="https://zcal.co/i/f75NpTqf">30 Minute Meeting - Schedule a meeting</a></div>
-        <a href="https://zcal.co/i/nPfHgrTm">30 Minute Meeting - Schedule a meeting</a>
+      <div id="booking-calendar"
+        style="max-width:1096px; margin:0 auto; background:var(--bg-light); border-radius:var(--radius); box-shadow:var(--shadow-md); border:1px solid #ebecf0; padding:15px;">
+        <iframe
+          src="https://zcal.co/i/f75NpTqf?showBackground=1&embed=1&embedType=iframe"
+          title="Book a 30 Minute Meeting with Salyant"
+          loading="lazy"
+          scrolling="no"
+          style="border:none; display:block; width:100%; min-width:320px; height:779px; min-height:544px; max-width:100%; border-radius:var(--radius);">
+        </iframe>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <section id="contact" class="section scroll-reveal">
     <div class="container">
@@ -1149,7 +1187,7 @@
 
     // Animations & Scroll Logic
     document.addEventListener('DOMContentLoaded', () => {
-      // Trigger Hero Animation 
+      // Trigger Hero Animation
       setTimeout(() => {
         const heroTitle = document.querySelector('.hero-title-wrapper');
         if (heroTitle) heroTitle.classList.add('visible');
