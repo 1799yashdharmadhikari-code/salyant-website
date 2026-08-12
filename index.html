@@ -228,7 +228,7 @@
   </script>
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
     body {
       background-color: #07080C;
@@ -236,7 +236,7 @@
       overflow-x: hidden;
     }
 
-    h1, h2, h3, h4, h5 { color: #ffffff; }
+    h1, h2, h3, h4, h5 { color: #ffffff; font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif; letter-spacing: -0.02em; }
 
     .glass-panel {
       background: rgba(255, 255, 255, 0.02);
@@ -258,6 +258,113 @@
       border: 1px solid rgba(212, 165, 116, 0.4);
       transform: translateY(-4px);
       box-shadow: 0 10px 40px -10px rgba(212, 165, 116, 0.2);
+    }
+
+    #mobile-menu-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: transparent;
+      border: 0;
+    }
+
+    .mobile-menu-glass.is-open #mobile-menu-backdrop {
+      display: block;
+    }
+
+    .mobile-menu-glass {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      background:
+        radial-gradient(circle at 8% 0%, rgba(255,255,255,0.11), transparent 34%),
+        radial-gradient(circle at 92% 18%, rgba(212,165,116,0.10), transparent 32%),
+        linear-gradient(135deg, rgba(255,255,255,0.075), rgba(255,255,255,0.018)),
+        rgba(6, 8, 13, 0.94);
+      backdrop-filter: blur(32px) saturate(155%);
+      -webkit-backdrop-filter: blur(32px) saturate(155%);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-top-color: rgba(255,255,255,0.20);
+      box-shadow:
+        0 28px 70px rgba(0,0,0,0.62),
+        0 8px 24px rgba(0,0,0,0.34),
+        inset 0 1px 0 rgba(255,255,255,0.10),
+        inset 0 -1px 0 rgba(255,255,255,0.035);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(-10px) scale(0.985);
+      transform-origin: top center;
+      max-height: 0;
+      transition:
+        opacity 260ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 360ms cubic-bezier(0.22, 1, 0.36, 1),
+        max-height 360ms cubic-bezier(0.22, 1, 0.36, 1),
+        visibility 0s linear 360ms;
+    }
+
+    .mobile-menu-glass::before {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: inherit;
+      background:
+        linear-gradient(115deg, rgba(255,255,255,0.10), transparent 22%, transparent 70%, rgba(255,255,255,0.035));
+      opacity: 0.65;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .mobile-menu-glass.is-open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+      max-height: 520px;
+      transition:
+        opacity 260ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 360ms cubic-bezier(0.22, 1, 0.36, 1),
+        max-height 360ms cubic-bezier(0.22, 1, 0.36, 1),
+        visibility 0s linear 0s;
+    }
+
+    .mobile-menu-glass > div {
+      position: relative;
+      z-index: 1;
+    }
+
+    .mobile-menu-glass a {
+      position: relative;
+      border-radius: 1rem;
+      padding: 0.78rem 0.9rem;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.065), rgba(255,255,255,0.022)),
+        rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.085);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.055),
+        0 5px 16px rgba(0,0,0,0.18);
+      transition:
+        background 180ms ease,
+        color 180ms ease,
+        transform 220ms cubic-bezier(0.22,1,0.36,1),
+        border-color 180ms ease,
+        box-shadow 180ms ease;
+    }
+
+    .mobile-menu-glass a:hover,
+    .mobile-menu-glass a:focus-visible {
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.095), rgba(255,255,255,0.035)),
+        rgba(255,255,255,0.035);
+      border-color: rgba(255,255,255,0.15);
+      color: #fff;
+      transform: translateY(-1px);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.075),
+        0 8px 22px rgba(0,0,0,0.24);
+      outline: none;
     }
 
     .nav-glass-hover, .liquid-tab-hover {
@@ -434,7 +541,11 @@
       </button>
     </div>
 
-    <div id="mobile-menu" class="hidden lg:hidden absolute top-24 left-0 w-full bg-[#07080C]/98 backdrop-blur-3xl border-b border-white/10 shadow-2xl z-40 pb-6">
+    <div id="mobile-menu" class="mobile-menu-glass lg:hidden absolute top-24 left-0 w-full rounded-b-3xl z-40 pb-6">
+      <button id="mobile-menu-backdrop"
+        type="button"
+        aria-label="Close menu"
+        class="fixed inset-0 z-[-1] hidden bg-transparent"></button>
       <div class="flex flex-col px-6 py-4 gap-4">
         <a href="#ip-spotlight" class="text-base font-medium text-gray-300 hover:text-white">AI SDR</a>
         <a href="#industries" class="text-base font-medium text-gray-300 hover:text-white">Industries</a>
@@ -446,44 +557,81 @@
     </div>
   </nav>
 
-  <header class="relative pt-48 pb-24 lg:pt-56 lg:pb-32 px-6 flex flex-col items-center justify-center text-center min-h-[95vh] overflow-hidden">
+  <header class="relative pt-36 pb-16 lg:pt-44 lg:pb-20 px-6 flex flex-col items-center justify-center text-center min-h-[95vh] overflow-hidden">
     <div class="max-w-4xl mx-auto relative z-10 w-full flex flex-col items-center">
       
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel border-salyant-gold/30 text-salyant-gold text-xs font-semibold tracking-wide mb-8 animate-fade-in-up" style="animation-fill-mode: both;">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel border-salyant-gold/30 text-salyant-gold text-xs font-semibold tracking-wide mb-6 animate-fade-in-up" style="animation-fill-mode: both;">
         <span class="w-2 h-2 rounded-full bg-salyant-gold animate-pulse"></span>
         Enterprise-Grade AI & Automation
       </div>
       
-      <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6 text-white animate-fade-in-up leading-[1.15]" style="animation-delay: 0.1s; animation-fill-mode: both;">
+      <h1 class="text-4xl md:text-6xl font-semibold tracking-tight mb-5 text-white animate-fade-in-up leading-[1.15]" style="animation-delay: 0.1s; animation-fill-mode: both;">
         Automate Manual Work.<br>
         <span class="text-salyant-gold">Grow Without Hiring.</span>
       </h1>
       
-      <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto animate-fade-in-up font-light" style="animation-delay: 0.2s; animation-fill-mode: both;">
+      <p class="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto animate-fade-in-up font-light" style="animation-delay: 0.2s; animation-fill-mode: both;">
         From intelligent digital assistants to computer vision safety systems. Convert recurring operational costs into scalable, one-time strategic AI investments.
       </p>
       
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up mb-16" style="animation-delay: 0.3s; animation-fill-mode: both;">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up mb-12" style="animation-delay: 0.3s; animation-fill-mode: both;">
         <a href="#products" class="btn-liquid-gold px-8 py-4 w-full sm:w-auto font-medium text-lg">Explore Solutions</a>
         <a href="#contact" class="bg-transparent border border-white/20 text-white hover:bg-white/10 hover:border-white/40 transition-all duration-300 rounded-full px-8 py-4 w-full sm:w-auto font-medium text-lg backdrop-blur-md">Speak to an Architect</a>
       </div>
       
-      <div class="w-full max-w-5xl glass-panel rounded-2xl p-6 md:p-8 flex flex-wrap md:flex-nowrap items-center justify-between gap-6 md:gap-4 animate-fade-in-up border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]" style="animation-delay: 0.5s; animation-fill-mode: both;">
-        <div class="flex flex-col items-center justify-center text-center w-1/2 md:w-1/4 border-r border-white/10 last:border-0 md:last:border-r-0">
-          <span class="text-white font-bold text-2xl md:text-3xl mb-1">ISO</span>
-          <span class="text-salyant-gold text-[9px] md:text-[10px] uppercase tracking-[0.15em] font-bold opacity-90">Certified Delivery Network</span>
-        </div>
-        <div class="flex flex-col items-center justify-center text-center w-1/2 md:w-1/4 border-r-0 md:border-r border-white/10">
-          <span class="text-white font-bold text-2xl md:text-3xl mb-1">20+</span>
-          <span class="text-salyant-gold text-[9px] md:text-[10px] uppercase tracking-[0.15em] font-bold opacity-90">Years Delivery Expertise</span>
-        </div>
-        <div class="flex flex-col items-center justify-center text-center w-1/2 md:w-1/4 border-r border-white/10">
-          <span class="text-white font-bold text-2xl md:text-3xl mb-1">ICO</span>
-          <span class="text-salyant-gold text-[9px] md:text-[10px] uppercase tracking-[0.15em] font-bold opacity-90">Registered Data Protection</span>
-        </div>
-        <div class="flex flex-col items-center justify-center text-center w-1/2 md:w-1/4">
-          <span class="text-white font-bold text-2xl md:text-3xl mb-1">GDPR & PECR</span>
-          <span class="text-salyant-gold text-[9px] md:text-[10px] uppercase tracking-[0.15em] font-bold opacity-90">Strict Global Compliance</span>
+      <div class="w-full max-w-4xl mx-auto relative animate-fade-in-up" style="animation-delay: 0.5s; animation-fill-mode: both;">
+
+        <!-- signature element: the trust chain — a traced circuit line linking each verified credential -->
+        <div class="hidden md:block absolute left-[9%] right-[9%] top-[40px] h-px bg-gradient-to-r from-transparent via-salyant-gold/50 to-transparent"></div>
+
+        <div class="grid grid-cols-2 md:flex md:flex-nowrap md:justify-between gap-y-11 gap-x-6 relative z-10">
+
+          <div class="group flex flex-col items-center text-center w-full md:w-1/4">
+            <div class="relative w-16 h-16 md:w-20 md:h-20 rounded-full glass-panel border border-salyant-gold/25 text-salyant-gold flex items-center justify-center mb-4 transition-all duration-500 group-hover:border-salyant-gold/70 group-hover:shadow-[0_0_24px_rgba(212,165,116,0.35)]">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 md:w-7 md:h-7">
+                <path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z"/>
+                <path d="M9 12l2 2 4-4"/>
+              </svg>
+            </div>
+            <span class="text-white font-bold text-xl md:text-2xl leading-none mb-2" style="font-family:'Plus Jakarta Sans',sans-serif;">ISO</span>
+            <span class="text-salyant-gold/90 text-[9px] md:text-[10px] uppercase tracking-[0.15em] font-bold leading-relaxed max-w-[120px]">Certified Delivery Network</span>
+          </div>
+
+          <div class="group flex flex-col items-center text-center w-full md:w-1/4">
+            <div class="relative w-16 h-16 md:w-20 md:h-20 rounded-full glass-panel border border-salyant-gold/25 text-salyant-gold flex items-center justify-center mb-4 transition-all duration-500 group-hover:border-salyant-gold/70 group-hover:shadow-[0_0_24px_rgba(212,165,116,0.35)]">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 md:w-7 md:h-7">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M12 7v5l3.5 2"/>
+              </svg>
+            </div>
+            <span class="text-white font-bold text-lg md:text-2xl leading-none mb-2 whitespace-nowrap" style="font-family:'Plus Jakarta Sans',sans-serif;">20+ Years</span>
+            <span class="text-salyant-gold/90 text-[9px] md:text-[10px] uppercase tracking-[0.15em] font-bold leading-relaxed max-w-[120px]">Experienced Delivery Partners</span>
+          </div>
+
+          <div class="group flex flex-col items-center text-center w-full md:w-1/4">
+            <div class="relative w-16 h-16 md:w-20 md:h-20 rounded-full glass-panel border border-salyant-gold/25 text-salyant-gold flex items-center justify-center mb-4 transition-all duration-500 group-hover:border-salyant-gold/70 group-hover:shadow-[0_0_24px_rgba(212,165,116,0.35)]">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 md:w-7 md:h-7">
+                <path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z"/>
+                <rect x="9.5" y="11" width="5" height="4" rx="0.7"/>
+                <path d="M10.3 11V9.6a1.7 1.7 0 0 1 3.4 0V11"/>
+              </svg>
+            </div>
+            <span class="text-white font-bold text-xl md:text-2xl leading-none mb-2" style="font-family:'Plus Jakarta Sans',sans-serif;">ICO</span>
+            <span class="text-salyant-gold/90 text-[9px] md:text-[10px] uppercase tracking-[0.15em] font-bold leading-relaxed max-w-[120px]">Registered Data Protection</span>
+          </div>
+
+          <div class="group flex flex-col items-center text-center w-full md:w-1/4">
+            <div class="relative w-16 h-16 md:w-20 md:h-20 rounded-full glass-panel border border-salyant-gold/25 text-salyant-gold flex items-center justify-center mb-4 transition-all duration-500 group-hover:border-salyant-gold/70 group-hover:shadow-[0_0_24px_rgba(212,165,116,0.35)]">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 md:w-7 md:h-7">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M3 12h18"/>
+                <path d="M12 3c2.5 2.5 3.8 5.8 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.8-3.8-9s1.3-6.5 3.8-9z"/>
+              </svg>
+            </div>
+            <span class="text-white font-bold text-lg md:text-xl leading-none mb-2 whitespace-nowrap" style="font-family:'Plus Jakarta Sans',sans-serif;">GDPR & PECR</span>
+            <span class="text-salyant-gold/90 text-[9px] md:text-[10px] uppercase tracking-[0.15em] font-bold leading-relaxed max-w-[130px]">Strict Global Compliance</span>
+          </div>
+
         </div>
       </div>
 
@@ -529,15 +677,283 @@
             <a href="#contact" class="btn-liquid-gold px-8 py-3.5 text-base font-semibold shadow-lg">Deploy Autonomous Sales</a>
           </div>
           
-          <div class="relative w-full aspect-[4/3] rounded-3xl overflow-hidden glass-panel shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-salyant-gold/30 group">
-            <div class="absolute inset-0 bg-[#07080C]/50 flex items-center justify-center flex-col z-10 backdrop-blur-sm transition-all duration-500 group-hover:backdrop-blur-none group-hover:bg-transparent">
-              <div class="w-16 h-16 rounded-full bg-salyant-gold/20 border border-salyant-gold/40 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_20px_rgba(212,165,116,0.3)]">
-                <svg class="w-8 h-8 text-salyant-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-              </div>
-              <p class="text-sm font-medium text-white tracking-widest uppercase drop-shadow-md">Interactive AI SDR Demo</p>
-            </div>
-            <div class="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] to-[#111] z-0"></div>
-          </div>
+<div class="relative w-full aspect-[4/3] rounded-3xl overflow-hidden glass-panel shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-salyant-gold/30 sdr-demo" id="sdrDemo">
+  <div class="sdr-bg"></div>
+  <div class="sdr-grid-overlay"></div>
+
+  <div class="sdr-replay" id="sdrReplay" title="Replay">&#8635;</div>
+
+  <!-- SCENE 0: intro -->
+  <div class="sdr-scene active" data-dur="3600">
+    <div class="sdr-eyebrow">Salyant Exclusive IP</div>
+    <div class="sdr-headline">Your Pipeline,<br/>Running 24/7</div>
+    <div class="sdr-sub">The autonomous AI Sales Development Representative.</div>
+  </div>
+
+  <!-- SCENE 1: Discovery -->
+  <div class="sdr-scene" data-dur="4600">
+    <div class="sdr-stage">Stage 1 — Discovery</div>
+    <div class="sdr-grid-demo" id="sdrGrid"></div>
+    <div class="sdr-headline sdr-headline-sm">Finds companies that match your ideal customer profile</div>
+    <div class="sdr-sub">Fresh, qualified prospects — automatically, every 35 minutes.</div>
+  </div>
+
+  <!-- SCENE 2: Drafting -->
+  <div class="sdr-scene" data-dur="4800">
+    <div class="sdr-stage">Stage 2 — Personalised Drafting</div>
+    <div class="sdr-card">
+      <div class="sdr-badge">Guardrail Passed &#10003;</div>
+      <div class="sdr-to">To: Operations Director, target account</div>
+      <div class="sdr-typewrite">Hi Sam — noticed your team expanded into rail logistics this year...</div>
+    </div>
+    <div class="sdr-sub sdr-sub-tight">Every draft is checked automatically before a human ever sees it.</div>
+  </div>
+
+  <!-- SCENE 3: Approval -->
+  <div class="sdr-scene" data-dur="4000">
+    <div class="sdr-stage">Stage 3 — Human Approval</div>
+    <div class="sdr-approve-row">
+      <div class="sdr-chip">Edit</div>
+      <div class="sdr-chip sdr-chip-approve">Approve<div class="sdr-tap-ring"></div></div>
+      <div class="sdr-plane">&#9993;</div>
+    </div>
+    <div class="sdr-headline sdr-headline-sm">One tap to send.<br/>Nothing goes out without you.</div>
+  </div>
+
+  <!-- SCENE 4: Reply -->
+  <div class="sdr-scene" data-dur="5000">
+    <div class="sdr-stage">Stage 4 — Reply Intelligence</div>
+    <div class="sdr-reply-stack">
+      <div class="sdr-bubble">"Keen to hear more — do you have time Thursday?"<br/><span class="sdr-tag">MEETING REQUEST</span></div>
+      <div class="sdr-cal">&#128197; Thursday 10:00 — booked automatically</div>
+    </div>
+  </div>
+
+  <!-- SCENE 5: Reliability -->
+  <div class="sdr-scene" data-dur="3800">
+    <div class="sdr-stage">Stage 5 — Reliability</div>
+    <div class="sdr-spin"></div>
+    <div class="sdr-headline sdr-headline-sm">Self-healing.<br/>Zero leads lost.</div>
+    <div class="sdr-sub">Any stuck lead is recovered in under 3 minutes.</div>
+  </div>
+
+  <div class="sdr-track" id="sdrTrack"></div>
+  <div class="sdr-track-labels" id="sdrTrackLabels">
+    <span>Discover</span><span>Draft</span><span>Approve</span><span>Reply</span><span>Recover</span>
+  </div>
+</div>
+
+<style>
+.sdr-demo{ font-family:'Inter',system-ui,sans-serif; }
+.sdr-bg{ position:absolute; inset:0; background: linear-gradient(160deg,#0a0a0a,#111 60%,#0a0a0a); z-index:0; }
+.sdr-grid-overlay{
+  position:absolute; inset:0; z-index:0;
+  background-image: linear-gradient(rgba(212,165,116,.05) 1px, transparent 1px),
+                     linear-gradient(90deg, rgba(212,165,116,.05) 1px, transparent 1px);
+  background-size: 34px 34px;
+  mask-image: radial-gradient(65% 55% at 50% 40%, black, transparent);
+}
+.sdr-scene{
+  position:absolute; inset:0; z-index:1;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding: 8% 9% 16%;
+  opacity:0; visibility:hidden; transition: opacity .5s ease;
+}
+.sdr-scene.active{ opacity:1; visibility:visible; }
+.sdr-eyebrow{
+  font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:.7rem;
+  letter-spacing:.18em; text-transform:uppercase; color:#d4a574; margin-bottom:.9rem;
+  opacity:0; transform:translateY(8px);
+}
+.sdr-stage{
+  font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:.65rem;
+  letter-spacing:.16em; text-transform:uppercase; color:#d4a574; margin-bottom:1rem;
+  opacity:0; transform:translateY(8px);
+}
+.sdr-scene.active .sdr-eyebrow, .sdr-scene.active .sdr-stage{ animation: sdrRise .6s ease .05s forwards; }
+.sdr-headline{
+  font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; letter-spacing:-.02em;
+  color:#fff; font-size: clamp(1.15rem, 3vw, 1.9rem); line-height:1.2; max-width:26rem;
+  opacity:0; transform:translateY(12px);
+}
+.sdr-headline-sm{ font-size: clamp(1rem, 2.4vw, 1.35rem); }
+.sdr-scene.active .sdr-headline{ animation: sdrRise .65s ease .15s forwards; }
+.sdr-sub{
+  font-size: clamp(.75rem, 1.5vw, .95rem); color:#9ca3af; margin-top:.7rem; max-width:22rem;
+  line-height:1.5; opacity:0; transform:translateY(10px);
+}
+.sdr-sub-tight{ margin-top: 1.1rem; }
+.sdr-scene.active .sdr-sub{ animation: sdrRise .65s ease .3s forwards; }
+@keyframes sdrRise{ to{ opacity:1; transform:translateY(0);} }
+
+/* Discovery grid */
+.sdr-grid-demo{ display:grid; grid-template-columns:repeat(6,1fr); gap:6px; width:min(300px,60%); margin-bottom:1.1rem; }
+.sdr-grid-demo .sdr-node{ width:100%; padding-top:100%; border-radius:4px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); }
+.sdr-scene.active .sdr-node{ animation: sdrNodeMatch 3.2s ease-in-out forwards; animation-delay: calc(var(--i) * .08s); }
+@keyframes sdrNodeMatch{
+  0%{ background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.1); }
+  40%{ background:rgba(212,165,116,.35); border-color:#d4a574; box-shadow:0 0 0 3px rgba(212,165,116,.15); }
+  100%{ background:rgba(212,165,116,.35); border-color:#d4a574; }
+}
+
+/* Draft card */
+.sdr-card{
+  width:min(300px,80%); background:#fff; border-radius:10px; padding:14px 16px;
+  box-shadow:0 16px 34px -12px rgba(0,0,0,.55); text-align:left; position:relative;
+  opacity:0; transform:translateY(10px) scale(.97); margin-bottom: .6rem;
+}
+.sdr-scene.active .sdr-card{ animation: sdrCardIn .5s ease .1s forwards; }
+@keyframes sdrCardIn{ to{ opacity:1; transform:translateY(0) scale(1);} }
+.sdr-to{ font-size:.65rem; color:#6b7280; margin-bottom:6px; }
+.sdr-typewrite{
+  font-size:.75rem; color:#111827; line-height:1.55; white-space:pre-wrap; overflow:hidden;
+  border-right:2px solid #d4a574; width:0ch;
+  animation: sdrType 1.9s steps(46,end) .45s forwards, sdrBlink .8s step-end infinite;
+}
+@keyframes sdrType{ to{ width:46ch; } }
+@keyframes sdrBlink{ 50%{ border-color:transparent; } }
+.sdr-badge{
+  position:absolute; top:-10px; right:-8px; background:#d4a574; color:#1a1206;
+  font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:.6rem;
+  padding:5px 9px; border-radius:20px; box-shadow:0 6px 14px -4px rgba(0,0,0,.4);
+  opacity:0; transform:scale(.5);
+}
+.sdr-scene.active .sdr-badge{ animation: sdrBadgeIn .4s cubic-bezier(.3,1.6,.5,1) 2.4s forwards; }
+@keyframes sdrBadgeIn{ to{ opacity:1; transform:scale(1);} }
+
+/* Approval */
+.sdr-approve-row{ display:flex; align-items:center; gap:14px; margin-bottom:1.2rem; }
+.sdr-chip{
+  padding:8px 16px; border-radius:8px; font-family:'Plus Jakarta Sans',sans-serif; font-weight:600;
+  font-size:.7rem; border:1.5px solid rgba(255,255,255,.16); color:#9ca3af;
+}
+.sdr-chip-approve{ border-color:#d4a574; color:#d4a574; position:relative; overflow:hidden; }
+.sdr-tap-ring{ position:absolute; inset:0; border-radius:8px; background:rgba(212,165,116,.3); opacity:0; }
+.sdr-scene.active .sdr-tap-ring{ animation: sdrTap 1s ease 1.2s; }
+@keyframes sdrTap{ 0%{opacity:0;} 15%{opacity:1;} 45%{opacity:0;} 100%{opacity:0;} }
+.sdr-plane{ position:relative; font-size:1.1rem; opacity:0; }
+.sdr-scene.active .sdr-plane{ animation: sdrFly 1.4s ease 1.6s forwards; }
+@keyframes sdrFly{ 0%{opacity:1; transform:translate(0,0) rotate(0);} 100%{opacity:0; transform:translate(60px,-30px) rotate(18deg);} }
+
+/* Reply */
+.sdr-reply-stack{ display:flex; flex-direction:column; gap:10px; align-items:flex-start; width:min(280px,85%); }
+.sdr-bubble{
+  background:#fff; color:#111827; border-radius:10px; padding:10px 14px; font-size:.7rem;
+  text-align:left; box-shadow:0 12px 24px -12px rgba(0,0,0,.5); opacity:0; transform:translateX(-12px);
+}
+.sdr-scene.active .sdr-bubble{ animation: sdrSlideIn .5s ease .25s forwards; }
+@keyframes sdrSlideIn{ to{ opacity:1; transform:translateX(0);} }
+.sdr-tag{
+  display:inline-block; margin-top:6px; background:#e9f7ef; color:#1e8e4f;
+  font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:.55rem; letter-spacing:.04em;
+  padding:2px 8px; border-radius:20px; opacity:0;
+}
+.sdr-scene.active .sdr-tag{ animation: sdrRise .4s ease .9s forwards; }
+.sdr-cal{
+  align-self:flex-end; background:#d4a574; color:#1a1206; border-radius:10px; padding:9px 14px;
+  font-size:.65rem; font-family:'Plus Jakarta Sans',sans-serif; font-weight:600; display:flex;
+  align-items:center; gap:6px; opacity:0; transform:translateY(10px);
+}
+.sdr-scene.active .sdr-cal{ animation: sdrRise .5s ease 1.4s forwards; }
+
+/* Reliability */
+.sdr-spin{
+  width:52px; height:52px; border-radius:50%; border:3px solid rgba(255,255,255,.12);
+  border-top-color:#d4a574; margin-bottom:1.1rem;
+}
+.sdr-scene.active .sdr-spin{ animation: sdrSpin 1s linear 2, sdrSnap .3s ease 1.9s forwards; }
+@keyframes sdrSpin{ to{ transform:rotate(360deg);} }
+@keyframes sdrSnap{ to{ border-top-color:#3bd671; border-color:rgba(59,214,113,.25);} }
+
+/* Progress track */
+.sdr-track{ position:absolute; left:9%; right:9%; bottom:12%; display:flex; z-index:2; }
+.sdr-track .sdr-seg{ flex:1; height:2.5px; background:rgba(255,255,255,.12); position:relative; margin-right:5px; border-radius:2px; overflow:hidden; }
+.sdr-track .sdr-seg:last-child{ margin-right:0; }
+.sdr-track .sdr-seg-fill{ position:absolute; inset:0; width:0%; background:#d4a574; }
+.sdr-track-labels{
+  position:absolute; left:9%; right:9%; bottom:6%; z-index:2; display:flex; justify-content:space-between;
+  font-family:'Plus Jakarta Sans',sans-serif; font-size:.55rem; letter-spacing:.05em; text-transform:uppercase;
+  color:rgba(255,255,255,.32);
+}
+.sdr-track-labels span.on{ color:#d4a574; }
+
+.sdr-replay{
+  position:absolute; top:14px; right:14px; z-index:3; width:30px; height:30px; border-radius:50%;
+  background:rgba(255,255,255,.06); border:1px solid rgba(212,165,116,.3); display:flex; align-items:center;
+  justify-content:center; cursor:pointer; color:#d4a574; font-size:13px; transition: background .2s ease;
+}
+.sdr-replay:hover{ background:rgba(212,165,116,.15); }
+</style>
+
+<script>
+(function(){
+  const root = document.getElementById('sdrDemo');
+  if(!root) return;
+  const scenes = root.querySelectorAll('.sdr-scene');
+  const grid = document.getElementById('sdrGrid');
+  for(let i=0;i<24;i++){
+    const n = document.createElement('div');
+    n.className='sdr-node'; n.style.setProperty('--i', i);
+    grid.appendChild(n);
+  }
+  const track = document.getElementById('sdrTrack');
+  const stageScenes = [1,2,3,4,5];
+  stageScenes.forEach((idx,i)=>{
+    const seg = document.createElement('div');
+    seg.className='sdr-seg';
+    seg.innerHTML = '<div class="sdr-seg-fill" id="sdrSeg-'+i+'"></div>';
+    track.appendChild(seg);
+  });
+
+  let current = 0, timer = null;
+
+  function play(i){
+    scenes.forEach(s=>s.classList.remove('active'));
+    const sc = scenes[i];
+    sc.classList.add('active');
+    void sc.offsetWidth;
+
+    const stageIndex = stageScenes.indexOf(i);
+    root.querySelectorAll('.sdr-seg-fill').forEach((el,idx)=>{
+      el.style.transition='none';
+      el.style.width = idx < stageIndex ? '100%' : '0%';
+    });
+    root.querySelectorAll('#sdrTrackLabels span').forEach((el,idx)=>{
+      el.classList.toggle('on', idx === stageIndex);
+    });
+    if(stageIndex >= 0){
+      requestAnimationFrame(()=>{
+        const fill = document.getElementById('sdrSeg-'+stageIndex);
+        const dur = parseInt(sc.dataset.dur,10);
+        fill.style.transition = 'width '+dur+'ms linear';
+        requestAnimationFrame(()=>{ fill.style.width='100%'; });
+      });
+    }
+
+    const dur = parseInt(sc.dataset.dur,10);
+    clearTimeout(timer);
+    timer = setTimeout(()=>{
+      current = (i+1) % scenes.length;
+      if(current === 0){
+        root.querySelectorAll('.sdr-seg-fill').forEach(el=>{ el.style.transition='none'; el.style.width='0%'; });
+        root.querySelectorAll('#sdrTrackLabels span').forEach(el=>el.classList.remove('on'));
+      }
+      play(current);
+    }, dur);
+  }
+
+  document.getElementById('sdrReplay').addEventListener('click', ()=>{
+    clearTimeout(timer);
+    root.querySelectorAll('.sdr-seg-fill').forEach(el=>{ el.style.transition='none'; el.style.width='0%'; });
+    root.querySelectorAll('#sdrTrackLabels span').forEach(el=>el.classList.remove('on'));
+    current = 0;
+    play(0);
+  });
+
+  play(0);
+})();
+</script>
+
         </div>
       </div>
     </div>
@@ -655,7 +1071,7 @@
         <p class="text-gray-400 max-w-2xl mx-auto font-light text-lg">Engineered through Salyant's ISO-certified delivery network, bringing enterprise-grade AI capability across heavy industries, finance, and enterprise operations.</p>
       </div>
 
-      <div class="flex flex-wrap justify-center gap-2 mb-16 reveal p-2 bg-white/[0.03] border border-white/10 rounded-full inline-flex mx-auto backdrop-blur-2xl shadow-lg">
+      <div class="flex flex-wrap justify-center gap-2 mb-16 reveal p-2 bg-white/[0.03] border border-white/10 rounded-full w-fit mx-auto backdrop-blur-2xl shadow-lg">
         <div class="liquid-tab-hover active text-sm" data-target="tab-digital">Digital Humans & Finance</div>
         <div class="liquid-tab-hover text-sm" data-target="tab-vision">CV & Safety</div>
         <div class="liquid-tab-hover text-sm" data-target="tab-industrial">Logistics & Industrial</div>
@@ -787,11 +1203,11 @@
         </p>
       </div>
       
-      <div class="relative reveal hidden lg:block">
+      <div class="relative reveal w-full flex justify-center">
         <div class="absolute inset-0 bg-salyant-gold/10 rounded-[2.5rem] filter blur-3xl mix-blend-screen"></div>
-        <div class="relative z-10 w-full aspect-[4/5] rounded-[2.5rem] border border-white/10 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] overflow-hidden group">
-          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" 
-               alt="Salyant Enterprise Architects" 
+        <div class="relative z-10 w-full max-w-sm mx-auto aspect-[16/7] sm:aspect-[16/8] lg:aspect-[4/5] rounded-[2.5rem] border border-white/10 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] overflow-hidden group">
+          <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=85" 
+               alt="Modern enterprise office interior" 
                class="w-full h-full object-cover grayscale opacity-80 transition-all duration-700 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105">
         </div>
       </div>
@@ -806,8 +1222,8 @@
     </div>
 
     <div class="max-w-6xl mx-auto reveal">
-      <div class="glass-card rounded-[2.5rem] overflow-hidden border border-white/10 shadow-[0_30px_100px_-20px_rgba(0,0,0,0.8)] grid lg:grid-cols-2 min-h-[950px] backdrop-blur-3xl">
-        <div class="p-2 lg:p-6 w-full h-full min-h-[900px] relative">
+      <div class="glass-card rounded-[2.5rem] overflow-hidden border border-white/10 shadow-[0_30px_100px_-20px_rgba(0,0,0,0.8)] grid lg:grid-cols-2 min-h-[870px] backdrop-blur-3xl">
+        <div class="p-2 lg:p-4 w-full h-full min-h-[850px] relative">
           <iframe src="https://zcal.co/i/f75NpTqf?showBackground=0&embed=1&embedType=iframe" title="Book a Meeting" class="w-full h-full border-0 rounded-2xl bg-transparent relative z-10" style="min-height: 850px;" loading="lazy"></iframe>
         </div>
 
@@ -904,14 +1320,46 @@
     const mobileMenu = document.getElementById('mobile-menu');
     
     if (mobileBtn && mobileMenu) {
-      mobileBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
+      mobileBtn.setAttribute('aria-expanded', 'false');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+
+      const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
+
+      const setMobileMenuState = (open) => {
+        mobileMenu.classList.toggle('is-open', open);
+        mobileBtn.setAttribute('aria-expanded', String(open));
+        mobileMenu.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        mobileMenu.setAttribute('aria-hidden', String(!open));
+      };
+
+      // 1. Hamburger icon: toggle open/closed.
+      mobileBtn.addEventListener('click', (event) => {
+        event.stopPropagation();
+        setMobileMenuState(!mobileMenu.classList.contains('is-open'));
       });
 
+      // 2. Selecting any menu option: close.
       mobileMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
-          mobileMenu.classList.add('hidden');
+          setMobileMenuState(false);
         });
+      });
+
+      // 3. Tapping/clicking anywhere below or outside the menu: close.
+      if (mobileMenuBackdrop) {
+        mobileMenuBackdrop.addEventListener('click', () => {
+          setMobileMenuState(false);
+        });
+      }
+
+      document.addEventListener('click', (event) => {
+        if (
+          mobileMenu.classList.contains('is-open') &&
+          !mobileMenu.contains(event.target) &&
+          !mobileBtn.contains(event.target)
+        ) {
+          setMobileMenuState(false);
+        }
       });
     }
 
