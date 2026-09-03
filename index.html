@@ -310,8 +310,8 @@
       overflow: hidden;
       isolation: isolate;
       background:
-        radial-gradient(circle at 8% 0%, rgba(255,255,255,0.11), transparent 34%),
-        radial-gradient(circle at 92% 18%, rgba(212,165,116,0.10), transparent 32%),
+        radial-gradient(circle at 8% 0%, rgba(255,255,255,0.045), transparent 55%),
+        radial-gradient(circle at 92% 18%, rgba(212,165,116,0.05), transparent 55%),
         linear-gradient(135deg, rgba(255,255,255,0.075), rgba(255,255,255,0.018)),
         rgba(6, 8, 13, 0.94);
       backdrop-filter: blur(32px) saturate(155%);
@@ -353,7 +353,7 @@
       visibility: visible;
       pointer-events: auto;
       transform: translateY(0) scale(1);
-      max-height: min(80vh, 640px);
+      max-height: min(88vh, 760px);
       transition:
         opacity 260ms cubic-bezier(0.22, 1, 0.36, 1),
         transform 360ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -368,7 +368,7 @@
     .mobile-menu-glass > div {
       position: relative;
       z-index: 1;
-      max-height: min(80vh, 640px);
+      max-height: min(88vh, 760px);
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: thin;
@@ -385,6 +385,10 @@
       position: relative;
       border-radius: 1rem;
       padding: 0.78rem 0.9rem;
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       background:
         linear-gradient(135deg, rgba(255,255,255,0.065), rgba(255,255,255,0.022)),
         rgba(255,255,255,0.025);
@@ -453,6 +457,10 @@
         rgba(255,255,255,0.025);
       border: 1px solid rgba(255,255,255,0.085);
       margin-bottom: 2px;
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .guides-dropdown-glass a:hover,
@@ -635,8 +643,8 @@
           </button>
           <div class="absolute top-full right-0 mt-2 w-80 rounded-2xl guides-dropdown-glass p-2 opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300">
             <!-- GROWTH_NAV_LINKS_START -->
-            <a href="service-ai-sdr-agency.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">AI SDR Agency Services – Elite Automated Rese</a>
-            <a href="blog-ai-automation-cost-guide-uk-businesses.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">AI Automation Cost Guide for UK Businesses: 2</a>
+            <a href="service-ai-sdr-agency.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">AI SDR Agency Services</a>
+            <a href="blog-ai-automation-cost-guide-uk-businesses.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">AI Automation Cost Guide</a>
             <a href="service-ai-consulting-pricing-uk.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">AI Consulting Pricing &amp; Models</a>
             <a href="service-ai-compliance-automation-financial-services-uk.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">AI Compliance Automation (Finance)</a>
             <!-- GROWTH_NAV_LINKS_END -->
@@ -665,11 +673,11 @@
         <a href="#services" class="text-base font-medium text-gray-300 hover:text-white">Services</a>
         <a href="#about" class="text-base font-medium text-gray-300 hover:text-white">Company</a>
 
-        <div class="pt-2 mt-2 border-t border-white/10">
-          <p class="text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2 px-1">Guides</p>
+        <div class="pt-2 mt-2 border-t border-white/10 flex flex-col gap-4">
+          <p class="text-xs uppercase tracking-wider text-gray-500 font-semibold px-1">Guides</p>
           <!-- GROWTH_MOBILE_NAV_LINKS_START -->
-          <a href="service-ai-sdr-agency.html" class="block text-base font-medium text-gray-300 hover:text-white py-1">AI SDR Agency Services – Elite Automated Rese</a>
-          <a href="blog-ai-automation-cost-guide-uk-businesses.html" class="block text-base font-medium text-gray-300 hover:text-white py-1">AI Automation Cost Guide for UK Businesses: 2</a>
+          <a href="service-ai-sdr-agency.html" class="block text-base font-medium text-gray-300 hover:text-white py-1">AI SDR Agency Services</a>
+          <a href="blog-ai-automation-cost-guide-uk-businesses.html" class="block text-base font-medium text-gray-300 hover:text-white py-1">AI Automation Cost Guide</a>
           <a href="service-ai-consulting-pricing-uk.html" class="block text-base font-medium text-gray-300 hover:text-white py-1">AI Consulting Pricing &amp; Models</a>
           <a href="service-ai-compliance-automation-financial-services-uk.html" class="block text-base font-medium text-gray-300 hover:text-white py-1">AI Compliance Automation (Finance)</a>
           <!-- GROWTH_MOBILE_NAV_LINKS_END -->
