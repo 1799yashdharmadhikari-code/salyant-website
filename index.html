@@ -353,7 +353,7 @@
       visibility: visible;
       pointer-events: auto;
       transform: translateY(0) scale(1);
-      max-height: 520px;
+      max-height: min(80vh, 640px);
       transition:
         opacity 260ms cubic-bezier(0.22, 1, 0.36, 1),
         transform 360ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -361,9 +361,24 @@
         visibility 0s linear 0s;
     }
 
+    /* Content can grow past the panel's max-height as the SEO growth engine
+       adds more guide links over time — scroll internally instead of getting
+       silently clipped (the panel itself keeps overflow:hidden for its
+       rounded-corner glass edge). */
     .mobile-menu-glass > div {
       position: relative;
       z-index: 1;
+      max-height: min(80vh, 640px);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.25) transparent;
+    }
+
+    .mobile-menu-glass > div::-webkit-scrollbar { width: 5px; }
+    .mobile-menu-glass > div::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.25);
+      border-radius: 999px;
     }
 
     .mobile-menu-glass a {
@@ -397,6 +412,55 @@
         inset 0 1px 0 rgba(255,255,255,0.075),
         0 8px 22px rgba(0,0,0,0.24);
       outline: none;
+    }
+
+    /* Desktop "Guides" dropdown — matches the mobile-menu liquid glass treatment
+       instead of the near-invisible .glass-panel (which was built for small
+       badges, not a readable text panel). Also caps height + scrolls so the
+       auto-generated guide links (added daily by the SEO growth engine) never
+       overflow the panel again. */
+    .guides-dropdown-glass {
+      isolation: isolate;
+      background:
+        radial-gradient(circle at 8% 0%, rgba(255,255,255,0.11), transparent 34%),
+        radial-gradient(circle at 92% 18%, rgba(212,165,116,0.10), transparent 32%),
+        linear-gradient(135deg, rgba(255,255,255,0.075), rgba(255,255,255,0.018)),
+        rgba(6, 8, 13, 0.94);
+      backdrop-filter: blur(32px) saturate(155%);
+      -webkit-backdrop-filter: blur(32px) saturate(155%);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-top-color: rgba(255,255,255,0.20);
+      box-shadow:
+        0 28px 70px rgba(0,0,0,0.62),
+        0 8px 24px rgba(0,0,0,0.34),
+        inset 0 1px 0 rgba(255,255,255,0.10),
+        inset 0 -1px 0 rgba(255,255,255,0.035);
+      max-height: min(70vh, 420px);
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.25) transparent;
+    }
+
+    .guides-dropdown-glass::-webkit-scrollbar { width: 6px; }
+    .guides-dropdown-glass::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.25);
+      border-radius: 999px;
+    }
+
+    .guides-dropdown-glass a {
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.065), rgba(255,255,255,0.022)),
+        rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.085);
+      margin-bottom: 2px;
+    }
+
+    .guides-dropdown-glass a:hover,
+    .guides-dropdown-glass a:focus-visible {
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.095), rgba(255,255,255,0.035)),
+        rgba(255,255,255,0.035);
+      border-color: rgba(255,255,255,0.15);
     }
 
     .nav-glass-hover, .liquid-tab-hover {
@@ -569,7 +633,7 @@
             Guides
             <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
           </button>
-          <div class="absolute top-full right-0 mt-2 w-80 rounded-2xl glass-panel border border-white/10 backdrop-blur-2xl p-2 opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 shadow-2xl">
+          <div class="absolute top-full right-0 mt-2 w-80 rounded-2xl guides-dropdown-glass p-2 opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300">
             <!-- GROWTH_NAV_LINKS_START -->
             <a href="service-ai-sdr-agency.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">AI SDR Agency Services – Elite Automated Rese</a>
             <a href="blog-ai-automation-cost-guide-uk-businesses.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">AI Automation Cost Guide for UK Businesses: 2</a>
