@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automating SEO, AEO & GEO: How We Built Our Own Growth Engine | Salyant</title>
+
+<!-- Favicons & Manifest -->
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+<link rel="manifest" href="favicon_io/site.webmanifest">
+
+<!-- SEO Meta Tags -->
+<meta name="description" content="How Salyant built an hourly n8n workflow that scans, rewrites, and auto-publishes fixes for SEO, AEO and GEO on its own website — architecture, guardrails, and lessons learned.">
+<meta name="keywords" content="SEO AEO GEO automation, automated SEO workflow, n8n SEO automation, answer engine optimization, generative engine optimization">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Salyant Ltd">
+<meta name="theme-color" content="#07080C">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://www.salyant.co.uk/blog-automated-seo-aeo-geo-growth-engine.html">
+<link rel="alternate" hreflang="en-GB" href="https://www.salyant.co.uk/blog-automated-seo-aeo-geo-growth-engine.html">
+
+<!-- Open Graph / Social Tags -->
+<meta property="og:title" content="Automating SEO, AEO & GEO: How We Built Our Own Growth Engine">
+<meta property="og:description" content="How Salyant built an hourly n8n workflow that scans, rewrites, and auto-publishes fixes for SEO, AEO and GEO on its own website.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.salyant.co.uk/blog-automated-seo-aeo-geo-growth-engine.html">
+<meta property="og:site_name" content="Salyant Ltd">
+<meta property="og:locale" content="en_GB">
+<meta property="og:image" content="https://www.salyant.co.uk/og-image.jpg">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automating SEO, AEO & GEO: How We Built Our Own Growth Engine">
+<meta name="twitter:description" content="How Salyant built an hourly n8n workflow that scans, rewrites, and auto-publishes fixes for SEO, AEO and GEO on its own website.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+<!-- Cookie Consent -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.salyant.co.uk/" },
+        { "@type": "ListItem", "position": 2, "name": "Insights", "item": "https://www.salyant.co.uk/blog-automated-seo-aeo-geo-growth-engine.html" }
+      ]
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Automating SEO, AEO & GEO: How We Built Our Own Growth Engine",
+      "description": "How Salyant built an hourly n8n workflow that scans, rewrites, and auto-publishes fixes for SEO, AEO and GEO on its own website — architecture, guardrails, and lessons learned.",
+      "mainEntityOfPage": "https://www.salyant.co.uk/blog-automated-seo-aeo-geo-growth-engine.html",
+      "inLanguage": "en-GB",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Salyant Ltd",
+        "url": "https://www.salyant.co.uk",
+        "logo": { "@type": "ImageObject", "url": "https://www.salyant.co.uk/IMG_20251230_004752.png" }
+      },
+      "author": { "@type": "Organization", "name": "Salyant Ltd" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the difference between SEO, AEO and GEO?",
+          "acceptedAnswer": { "@type": "Answer", "text": "SEO (Search Engine Optimisation) targets ranking in traditional search results. AEO (Answer Engine Optimisation) structures content so it can be lifted directly into featured snippets, voice answers, and other direct-answer formats. GEO (Generative Engine Optimisation) focuses on how content is cited or referenced by generative AI systems such as ChatGPT, Perplexity and Google AI Overviews. The three overlap heavily but reward slightly different signals — crawlability and backlinks for SEO, structured FAQ and schema for AEO, and topical authority and citability for GEO." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can SEO, AEO and GEO actually be automated?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The audit and fix-drafting stages can be automated well: scanning pages against a checklist, drafting missing schema, and rewriting weak intros are repeatable, rules-based tasks. What still needs a guardrail is publishing — automated content should pass through a design/template check before it goes live, so fixes don't ship broken or off-brand." }
+        },
+        {
+          "@type": "Question",
+          "name": "How often should an automated SEO/AEO/GEO scan run?",
+          "acceptedAnswer": { "@type": "Answer", "text": "It depends on how often a site changes and how competitive the space is. An hourly cycle works well for a site that's actively being iterated on, since new pages and edits get audited almost as soon as they're published rather than waiting for a weekly crawl." }
+        },
+        {
+          "@type": "Question",
+          "name": "What can go wrong with automated SEO fixes?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The most common failure mode is a fix that is technically correct but visually or structurally broken — an unstyled page, a navigation link inserted in the wrong place, or markup that doesn't match the site's template. That's why a validation step against a canonical template matters as much as the fix itself." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        },
+        colors: {
+          salyant: { blue: '#1761B0', gold: '#d4a574', dark: '#07080C' }
+        },
+        animation: { 'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards' },
+        keyframes: {
+          fadeInUp: { '0%': { opacity: '0', transform: 'translateY(30px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } }
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+  body { background-color: #07080C; color: #e5e7eb; overflow-x: hidden; }
+  h1, h2, h3, h4, h5 { color: #ffffff; font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif; letter-spacing: -0.02em; }
+
+  .glass-panel { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.05); }
+  .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+  .glass-card:hover { background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(212, 165, 116, 0.4); box-shadow: 0 10px 40px -10px rgba(212, 165, 116, 0.2); }
+
+  #mobile-menu-backdrop { display: none; position: fixed; inset: 0; z-index: -1; background: transparent; border: 0; }
+  .mobile-menu-glass.is-open #mobile-menu-backdrop { display: block; }
+  .mobile-menu-glass {
+    position: relative; overflow: hidden; isolation: isolate;
+    background: radial-gradient(circle at 8% 0%, rgba(255,255,255,0.11), transparent 34%), radial-gradient(circle at 92% 18%, rgba(212,165,116,0.10), transparent 32%), linear-gradient(135deg, rgba(255,255,255,0.075), rgba(255,255,255,0.018)), rgba(6, 8, 13, 0.94);
+    backdrop-filter: blur(32px) saturate(155%); -webkit-backdrop-filter: blur(32px) saturate(155%);
+    border: 1px solid rgba(255,255,255,0.14); border-top-color: rgba(255,255,255,0.20);
+    box-shadow: 0 28px 70px rgba(0,0,0,0.62), 0 8px 24px rgba(0,0,0,0.34), inset 0 1px 0 rgba(255,255,255,0.10), inset 0 -1px 0 rgba(255,255,255,0.035);
+    opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(-10px) scale(0.985); transform-origin: top center; max-height: 0;
+    transition: opacity 260ms cubic-bezier(0.22, 1, 0.36, 1), transform 360ms cubic-bezier(0.22, 1, 0.36, 1), max-height 360ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 360ms;
+  }
+  .mobile-menu-glass::before { content: ""; position: absolute; inset: 1px; border-radius: inherit; background: linear-gradient(115deg, rgba(255,255,255,0.10), transparent 22%, transparent 70%, rgba(255,255,255,0.035)); opacity: 0.65; pointer-events: none; z-index: -1; }
+  .mobile-menu-glass.is-open { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0) scale(1); max-height: 520px; transition: opacity 260ms cubic-bezier(0.22, 1, 0.36, 1), transform 360ms cubic-bezier(0.22, 1, 0.36, 1), max-height 360ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s; }
+  .mobile-menu-glass > div { position: relative; z-index: 1; }
+  .mobile-menu-glass a { position: relative; border-radius: 1rem; padding: 0.78rem 0.9rem; background: linear-gradient(135deg, rgba(255,255,255,0.065), rgba(255,255,255,0.022)), rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.085); box-shadow: inset 0 1px 0 rgba(255,255,255,0.055), 0 5px 16px rgba(0,0,0,0.18); transition: background 180ms ease, color 180ms ease, transform 220ms cubic-bezier(0.22,1,0.36,1), border-color 180ms ease, box-shadow 180ms ease; }
+  .mobile-menu-glass a:hover, .mobile-menu-glass a:focus-visible { background: linear-gradient(135deg, rgba(255,255,255,0.095), rgba(255,255,255,0.035)), rgba(255,255,255,0.035); border-color: rgba(255,255,255,0.15); color: #fff; transform: translateY(-1px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.075), 0 8px 22px rgba(0,0,0,0.24); outline: none; }
+
+  .nav-glass-hover { position: relative; padding: 0.5rem 1.25rem; border-radius: 9999px; transition: color 0.3s ease; z-index: 1; color: #9ca3af; cursor: pointer; font-weight: 500; }
+  .nav-glass-hover::before { content: ''; position: absolute; inset: 0; border-radius: 9999px; background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); opacity: 0; transform: scale(0.8); transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); z-index: -1; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); }
+  .nav-glass-hover:hover::before { opacity: 1; transform: scale(1); }
+  .nav-glass-hover:hover { color: #ffffff; }
+
+  .btn-liquid-gold { position: relative; background: rgba(212, 165, 116, 0.15); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(212, 165, 116, 0.4); color: #ffffff; transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); overflow: hidden; border-radius: 9999px; z-index: 1; display: inline-flex; align-items: center; justify-content: center; }
+  .btn-liquid-gold::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(212, 165, 116, 0.35) 0%, transparent 100%); opacity: 0; transition: opacity 0.4s ease; z-index: -1; }
+  .btn-liquid-gold:hover { border-color: rgba(212, 165, 116, 0.8); box-shadow: 0 0 30px rgba(212, 165, 116, 0.3); transform: scale(1.02); }
+  .btn-liquid-gold:hover::before { opacity: 1; }
+
+  .article-prose p { margin-bottom: 1.5rem; line-height: 1.8; color: #cbd5e1; font-weight: 300; }
+  .article-prose a { color: #d4a574; text-decoration: underline; text-underline-offset: 3px; }
+  .article-prose a:hover { color: #e8c9a3; }
+  .article-prose code { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; font-size: 0.85em; color: #e8c9a3; }
+  .article-prose ul { list-style: disc; padding-left: 1.4rem; margin-bottom: 1.5rem; color: #cbd5e1; font-weight: 300; }
+  .article-prose li { margin-bottom: 0.5rem; line-height: 1.7; }
+
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #07080C; }
+  ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #d4a574; }
+</style>
+</head>
+
+<body class="relative antialiased selection:bg-salyant-gold selection:text-black">
+
+  <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+    <div class="absolute inset-0 bg-[#07080C]"></div>
+    <div class="absolute top-[-10%] left-[-10%] w-[55vw] h-[55vw] rounded-full mix-blend-screen filter blur-[150px] opacity-[0.12] bg-salyant-blue"></div>
+    <div class="absolute bottom-[-10%] right-[-10%] w-[65vw] h-[65vw] rounded-full mix-blend-screen filter blur-[170px] opacity-[0.07] bg-[#d4a574]"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent">
+    <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+      <a href="index.html" class="flex items-center">
+        <img src="IMG_20251230_004752.png"
+             onerror="this.onerror=null;this.src='https://placehold.co/200x60/050505/1761B0?text=SALYANT'"
+             alt="Salyant Logo"
+             class="h-9 md:h-11 w-auto">
+      </a>
+
+      <div class="hidden lg:flex items-center gap-1 bg-white/[0.03] border border-white/10 rounded-full p-1.5 backdrop-blur-2xl">
+        <a href="index.html#ip-spotlight" class="text-sm nav-glass-hover">AI SDR</a>
+        <a href="index.html#seo-spotlight" class="text-sm nav-glass-hover">SEO/AEO/GEO</a>
+        <a href="index.html#industries" class="text-sm nav-glass-hover">Industries</a>
+        <a href="index.html#products" class="text-sm nav-glass-hover">Products</a>
+        <a href="index.html#services" class="text-sm nav-glass-hover">Services</a>
+        <a href="index.html#about" class="text-sm nav-glass-hover">Company</a>
+      </div>
+
+      <div class="hidden lg:block">
+        <a href="index.html#contact" class="btn-liquid-gold px-6 py-2.5 text-sm font-bold shadow-[0_0_15px_rgba(212,165,116,0.15)]">Book Strategy Call</a>
+      </div>
+
+      <button id="mobile-menu-btn" class="lg:hidden text-gray-300 hover:text-white p-2 focus:outline-none z-50">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="mobile-menu-glass lg:hidden absolute top-24 left-0 w-full rounded-b-3xl z-40 pb-6">
+      <button id="mobile-menu-backdrop" type="button" aria-label="Close menu" class="fixed inset-0 z-[-1] hidden bg-transparent"></button>
+      <div class="flex flex-col px-6 py-4 gap-4">
+        <a href="index.html#ip-spotlight" class="text-base font-medium text-gray-300 hover:text-white">AI SDR</a>
+        <a href="index.html#seo-spotlight" class="text-base font-medium text-gray-300 hover:text-white">SEO/AEO/GEO</a>
+        <a href="index.html#industries" class="text-base font-medium text-gray-300 hover:text-white">Industries</a>
+        <a href="index.html#products" class="text-base font-medium text-gray-300 hover:text-white">Products</a>
+        <a href="index.html#services" class="text-base font-medium text-gray-300 hover:text-white">Services</a>
+        <a href="index.html#about" class="text-base font-medium text-gray-300 hover:text-white">Company</a>
+        <a href="index.html#contact" class="btn-liquid-gold px-5 py-3 text-sm font-bold text-center mt-2 w-full">Book Strategy Call</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Article Header -->
+  <header class="relative pt-40 pb-12 px-6">
+    <div class="max-w-3xl mx-auto">
+      <nav aria-label="Breadcrumb" class="text-sm text-gray-500 mb-6 flex items-center gap-2 flex-wrap">
+        <a href="index.html" class="hover:text-white transition-colors">Home</a>
+        <span>/</span>
+        <span class="text-gray-400">Insights</span>
+      </nav>
+
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel border-salyant-gold/30 text-salyant-gold text-xs font-semibold tracking-wide mb-6">
+        <span class="w-2 h-2 rounded-full bg-salyant-gold"></span>
+        Build Log
+      </div>
+
+      <h1 class="text-3xl md:text-5xl font-semibold tracking-tight mb-6 text-white leading-[1.2]">
+        Automating SEO, AEO &amp; GEO: How We Built Our Own Growth Engine
+      </h1>
+
+      <p class="text-lg text-gray-400 font-light max-w-2xl">
+        We didn't write a listicle about SEO/AEO/GEO tools. We built an hourly automation that scans, rewrites, and ships its own fixes to this website — this is the architecture, the guardrails, and what broke along the way.
+      </p>
+    </div>
+  </header>
+
+  <!-- Article Body -->
+  <main class="px-6 pb-8">
+    <article class="article-prose max-w-3xl mx-auto">
+
+      <section class="mb-10">
+        <h2 class="text-2xl md:text-3xl font-semibold mb-4">Why we built this instead of buying it</h2>
+        <p>Most content on "SEO, AEO, GEO automation" comes from platforms selling a dashboard: a tool that scores your site and tells you what to fix. We're an automation engineering firm, so we asked a narrower question — could the fixing itself be automated, end-to-end, without a human opening a CMS?</p>
+        <p>We pointed the answer at our own site first. Not a client's, and not a demo environment — the live salyant.co.uk you're reading this on right now.</p>
+      </section>
+
+      <section class="mb-10">
+        <h2 class="text-2xl md:text-3xl font-semibold mb-4">SEO, AEO and GEO, briefly</h2>
+        <p>The three overlap but reward slightly different signals. <strong>SEO</strong> is about traditional crawlability, indexing and keyword-driven ranking. <strong>AEO</strong> is about structuring content — FAQ blocks, schema markup, concise direct answers — so it can be lifted whole into a featured snippet or voice answer. <strong>GEO</strong> is about topical authority and citability: whether a generative model like ChatGPT or Perplexity is likely to reference your content when it synthesises an answer. An automation that only handles one of the three misses most of the actual work.</p>
+      </section>
+
+      <section class="mb-10">
+        <h2 class="text-2xl md:text-3xl font-semibold mb-4">The architecture: scan, rewrite, gate, publish</h2>
+        <p>The engine runs as an n8n workflow on an hourly trigger, structured in four stages:</p>
+        <ul>
+          <li><strong>Scan</strong> — crawls the live site and checks each page against a running checklist: missing schema, thin meta descriptions, weak snippet structure, internal linking gaps.</li>
+          <li><strong>Diagnose &amp; rewrite</strong> — for anything that fails the checklist, drafts the fix directly: a schema block, a rewritten intro, a new FAQ entry.</li>
+          <li><strong>Design gate</strong> — every proposed change is checked against a canonical template before anything ships, so a fix can't land as unstyled HTML or break the layout.</li>
+          <li><strong>Publish</strong> — passed changes are auto-committed straight to the site's repository. No manual deploy step.</li>
+        </ul>
+        <p>That design-gate stage exists because we hit exactly the failure it's meant to prevent.</p>
+      </section>
+
+      <section class="mb-10">
+        <h2 class="text-2xl md:text-3xl font-semibold mb-4">What broke, and what we learned from it</h2>
+        <p>Early runs shipped a technically correct fix in the wrong place: a new navigation link was string-inserted right before the closing <code>&lt;/nav&gt;</code> tag, which landed it outside the site's actual nav containers instead of inside them. The content was fine. The placement wasn't.</p>
+        <p>The fix wasn't to slow the automation down — it was to give it a stricter contract. We now mark the exact insertion points in the template with explicit markers the workflow has to target, and nothing publishes until it's validated against that template. The lesson generalises: an automated content fix is only as safe as the guardrail checking where it lands, not just what it says.</p>
+      </section>
+
+      <section class="mb-14">
+        <h2 class="text-2xl md:text-3xl font-semibold mb-4">Where this is headed</h2>
+        <p>The same engine is what now keeps this page — and the rest of salyant.co.uk — up to date without anyone manually editing HTML. We're rolling the same architecture out as a service for clients who want their own site scanned and maintained on the same cycle, with the same design-gate discipline before anything goes live.</p>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="mb-14">
+        <h2 class="text-2xl md:text-3xl font-semibold mb-6">Frequently Asked Questions</h2>
+        <div class="space-y-4">
+          <div class="glass-card rounded-2xl p-6">
+            <h3 class="text-base font-semibold text-white mb-2">What is the difference between SEO, AEO and GEO?</h3>
+            <p class="mb-0">SEO targets ranking in traditional search results. AEO structures content so it can be lifted directly into featured snippets and voice answers. GEO focuses on how content is cited by generative AI systems like ChatGPT and Perplexity. They overlap, but reward different signals.</p>
+          </div>
+          <div class="glass-card rounded-2xl p-6">
+            <h3 class="text-base font-semibold text-white mb-2">Can SEO, AEO and GEO actually be automated?</h3>
+            <p class="mb-0">The audit and fix-drafting stages automate well — they're repeatable and rules-based. Publishing needs a guardrail: automated fixes should pass a design/template check before going live, so nothing ships broken or off-brand.</p>
+          </div>
+          <div class="glass-card rounded-2xl p-6">
+            <h3 class="text-base font-semibold text-white mb-2">How often should an automated SEO/AEO/GEO scan run?</h3>
+            <p class="mb-0">It depends on how often the site changes. An hourly cycle suits a site under active iteration, since new pages and edits get audited almost as soon as they're published.</p>
+          </div>
+          <div class="glass-card rounded-2xl p-6">
+            <h3 class="text-base font-semibold text-white mb-2">What can go wrong with automated SEO fixes?</h3>
+            <p class="mb-0">The most common failure is a fix that's technically correct but lands in the wrong place — an unstyled page or a navigation link outside its container. A validation step against a canonical template matters as much as the fix itself.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="glass-panel rounded-3xl p-8 md:p-10 text-center mb-14">
+        <h2 class="text-2xl font-semibold mb-3">Want this running on your own site?</h2>
+        <p class="text-gray-400 font-light mb-6 max-w-xl mx-auto">Speak to a Salyant automation architect about deploying the same scan-rewrite-gate-publish cycle for your SEO, AEO and GEO visibility.</p>
+        <a href="index.html#contact" class="btn-liquid-gold px-8 py-3.5 font-bold inline-block">Book a Strategy Call</a>
+      </section>
+
+      <a href="index.html" class="text-salyant-gold hover:text-[#e8c9a3] text-sm font-medium inline-flex items-center gap-2">&larr; Back to home</a>
+
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/5 py-12 px-6 relative z-10 mt-8">
+    <div class="max-w-7xl mx-auto flex flex-col items-center gap-6">
+      <div class="text-center text-sm text-gray-500 font-light leading-relaxed">
+        <p>&copy; 2026 Salyant Ltd &middot; Registered in England &amp; Wales &middot; Company No. 16837676</p>
+        <p>Registered Office: 128 City Road, London EC1V 2NX</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-8 text-sm text-gray-400 font-light">
+        <a href="index.html" class="hover:text-white transition-colors">Home</a>
+        <a href="privacy_policy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+        <a href="terms_conditions.html" class="hover:text-white transition-colors">Terms &amp; Conditions</a>
+        <a href="accessibility.html" class="hover:text-white transition-colors">Accessibility</a>
+        <a href="cookie_policy.html" class="hover:text-white transition-colors">Cookie Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      const backdrop = document.getElementById('mobile-menu-backdrop');
+      if(!btn || !menu) return;
+      function closeMenu(){
+        menu.classList.remove('is-open');
+        if(backdrop) backdrop.classList.add('hidden');
+      }
+      function openMenu(){
+        menu.classList.add('is-open');
+        if(backdrop) backdrop.classList.remove('hidden');
+      }
+      btn.addEventListener('click', function(){
+        menu.classList.contains('is-open') ? closeMenu() : openMenu();
+      });
+      if(backdrop) backdrop.addEventListener('click', closeMenu);
+      menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+    })();
+  </script>
+
+</body>
+</html>
