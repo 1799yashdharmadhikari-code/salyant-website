@@ -524,6 +524,13 @@
       color: #ffffff;
     }
 
+    /* Keep the desktop header compact and predictable at all desktop widths. */
+    .nav-glass-hover {
+      padding: 0.45rem 0.8rem;
+      white-space: nowrap;
+      font-size: 0.82rem;
+    }
+
     .btn-liquid-gold {
       position: relative;
       background: rgba(212, 165, 116, 0.15);
@@ -710,37 +717,27 @@
   </div>
 
   <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent">
-    <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
-      <a href="/" class="flex items-center">
+    <div class="max-w-7xl mx-auto w-full px-5 sm:px-6 h-20 flex items-center justify-between">
+      <a href="/" class="flex items-center shrink-0">
         <img src="IMG_20251230_004752.png"
              onerror="this.onerror=null;this.src='https://placehold.co/200x60/050505/1761B0?text=SALYANT'"
              alt="Salyant Logo"
-             class="h-9 md:h-11 w-auto">
+             class="h-9 md:h-10 w-auto">
       </a>
 
       <!-- Desktop Navigation with Liquid Glass Hover -->
-      <div class="hidden xl:flex items-center gap-1 bg-white/[0.03] border border-white/10 rounded-full p-1.5 backdrop-blur-2xl">
+      <div class="hidden xl:flex shrink-0 items-center justify-center gap-0.5 bg-white/[0.03] border border-white/10 rounded-full p-1.5 backdrop-blur-2xl">
         <a href="#ip-spotlight" class="text-sm nav-glass-hover">AI SDR</a>
         <a href="#seo-spotlight" class="text-sm nav-glass-hover">SEO/AEO/GEO</a>
         <a href="#industries" class="text-sm nav-glass-hover">Industries</a>
         <a href="#products" class="text-sm nav-glass-hover">Products</a>
-        <a href="#services" class="text-sm nav-glass-hover">Services</a>
         <a href="#about" class="text-sm nav-glass-hover">Company</a>
         <!-- RECONCILER_TOP_NAV_LINK --><a href="resources.html" class="text-sm nav-glass-hover">Guides &amp; Resources</a><!-- /RECONCILER_TOP_NAV_LINK -->
 
-
-
-
-
-
-
-
-
-
         <!-- Services Dropdown: every service-*.html and ai-feasibility-audit.html page belongs here ONLY -->
-        <div class="relative group">
+        <div class="relative group shrink-0">
           <button type="button" class="text-sm nav-glass-hover flex items-center gap-1" aria-haspopup="true">
-            All Services
+            Services
             <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
           </button>
           <div class="absolute top-full right-0 mt-2 w-80 max-h-[70vh] overflow-y-auto rounded-2xl guides-dropdown-glass p-2 opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 transition-all duration-300">
@@ -769,7 +766,7 @@
         </div>
 
         <!-- Guides Dropdown: blog-*.html posts ONLY, never service pages -->
-        <div class="relative group">
+        <div class="relative group shrink-0">
           <button type="button" class="text-sm nav-glass-hover flex items-center gap-1" aria-haspopup="true">
             Guides
             <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -789,8 +786,8 @@
         </div>
       </div>
 
-      <div class="hidden xl:block">
-        <a href="#contact" class="btn-liquid-gold px-6 py-2.5 text-sm font-bold shadow-[0_0_15px_rgba(212,165,116,0.15)]">Book Strategy Call</a>
+      <div class="hidden xl:flex items-center shrink-0 ml-1 pl-5 border-l border-white/10">
+        <a href="#contact" class="btn-liquid-gold whitespace-nowrap px-5 py-2.5 text-sm font-bold shadow-[0_0_15px_rgba(212,165,116,0.15)]">Book a Call</a>
       </div>
 
       <button id="mobile-menu-btn" class="xl:hidden text-gray-300 hover:text-white p-2 focus:outline-none z-50">
@@ -798,7 +795,7 @@
       </button>
     </div>
 
-    <div id="mobile-menu" class="mobile-menu-glass xl:hidden absolute top-24 left-0 w-full rounded-b-3xl z-40 pb-6">
+    <div id="mobile-menu" class="mobile-menu-glass xl:hidden absolute top-20 left-0 w-full rounded-b-3xl z-40 pb-6">
       <button id="mobile-menu-backdrop"
         type="button"
         aria-label="Close menu"
