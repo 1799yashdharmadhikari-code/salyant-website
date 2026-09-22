@@ -486,6 +486,56 @@
       border-color: rgba(255,255,255,0.15);
     }
 
+    /* Desktop dropdowns: show a short primary set, then reveal the rest on demand. */
+    .desktop-dropdown-panel {
+      width: min(24rem, calc(100vw - 2rem));
+    }
+    .desktop-dropdown-links.compact a:nth-of-type(n + 6) {
+      display: none;
+    }
+    .desktop-dropdown-links.compact.is-expanded a:nth-of-type(n + 6) {
+      display: block;
+    }
+    .desktop-guides-links.compact a:nth-of-type(n + 6) {
+      display: none;
+    }
+    .desktop-guides-links.compact.is-expanded a:nth-of-type(n + 6) {
+      display: block;
+    }
+    .dropdown-more-toggle {
+      width: 100%;
+      margin-top: 0.35rem;
+      padding: 0.65rem 0.9rem;
+      border-radius: 0.8rem;
+      color: #d1d5db;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-align: center;
+      transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
+    }
+    .dropdown-more-toggle:hover,
+    .dropdown-more-toggle:focus-visible {
+      color: #fff;
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(255,255,255,0.15);
+      outline: none;
+    }
+
+    .desktop-dropdown-panel {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(4px);
+      pointer-events: none;
+    }
+    .desktop-dropdown-panel.is-open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
     .nav-glass-hover, .liquid-tab-hover {
       position: relative;
       padding: 0.5rem 1.25rem;
@@ -736,12 +786,13 @@
         
 
         <!-- Services Dropdown: every service-*.html and ai-feasibility-audit.html page belongs here ONLY -->
-        <div class="relative group shrink-0">
-          <button type="button" class="text-sm nav-glass-hover flex items-center gap-1" aria-haspopup="true">
+        <div id="desktop-services-menu" class="relative group shrink-0">
+          <button id="desktop-services-toggle" type="button" class="text-sm nav-glass-hover flex items-center gap-1" aria-haspopup="true" aria-expanded="false" aria-controls="desktop-services-panel">
             Services
-            <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            <svg class="w-3.5 h-3.5 transition-transform duration-300" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
           </button>
-          <div class="absolute top-full right-0 mt-2 w-80 max-h-[70vh] overflow-y-auto rounded-2xl guides-dropdown-glass p-2 opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 transition-all duration-300">
+          <div id="desktop-services-panel" class="desktop-dropdown-panel absolute top-full right-0 mt-2 max-h-[70vh] overflow-y-auto rounded-2xl guides-dropdown-glass p-2 transition-all duration-200" role="menu">
+            <div class="desktop-dropdown-links compact">
             <!-- GROWTH_SERVICE_NAV_LINKS_START -->
             <a href="ai-feasibility-audit.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">AI Feasibility & Workflow Audit</a>
             <a href="service-seo-aeo-geo-automation.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">Automated SEO/AEO/GEO Growth Engine</a>
@@ -763,16 +814,19 @@
             <a href="service-enterprise-ai-business-training-uk.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">Enterprise AI Business Training</a>
             <a href="service-manufacturing-ai-automation-services.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">Manufacturing AI Automation Services</a>
             <!-- GROWTH_SERVICE_NAV_LINKS_END -->
+            </div>
+            <button type="button" class="dropdown-more-toggle" data-more-target="services" aria-expanded="false">More Services</button>
           </div>
         </div>
 
         <!-- Guides Dropdown: blog-*.html posts ONLY, never service pages -->
-        <div class="relative group shrink-0">
-          <button type="button" class="text-sm nav-glass-hover flex items-center gap-1" aria-haspopup="true">
+        <div id="desktop-guides-menu" class="relative group shrink-0">
+          <button id="desktop-guides-toggle" type="button" class="text-sm nav-glass-hover flex items-center gap-1" aria-haspopup="true" aria-expanded="false" aria-controls="desktop-guides-panel">
             Guides
-            <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            <svg class="w-3.5 h-3.5 transition-transform duration-300" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
           </button>
-          <div class="absolute top-full right-0 mt-2 w-80 rounded-2xl guides-dropdown-glass p-2 opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 transition-all duration-300">
+          <div id="desktop-guides-panel" class="desktop-dropdown-panel absolute top-full right-0 mt-2 max-h-[70vh] overflow-y-auto rounded-2xl guides-dropdown-glass p-2 transition-all duration-200" role="menu">
+            <div class="desktop-dropdown-links desktop-guides-links compact">
             <!-- GROWTH_NAV_LINKS_START -->
 
             <a href="blog-secure-ai-workflow-automation-uk-guide.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">Secure AI Workflow Automation: UK Guide</a>
@@ -783,6 +837,8 @@
             <a href="blog-ai-automation-case-study-uk-enterprise.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">AI Automation Case Study: UK Enterprise</a>
 
           <!-- GROWTH_NAV_LINKS_END -->
+            </div>
+            <button type="button" class="dropdown-more-toggle" data-more-target="guides" aria-expanded="false">More Guides</button>
           </div>
         </div>
       </div>
@@ -2022,6 +2078,82 @@ Cal.config.forwardQueryParams = true;
       }
     });
 
+    // Desktop dropdowns: click-to-open, mutual exclusivity, outside-click + Escape close.
+    const desktopServicesMenu = document.getElementById('desktop-services-menu');
+    const desktopServicesToggle = document.getElementById('desktop-services-toggle');
+    const desktopServicesPanel = document.getElementById('desktop-services-panel');
+    const desktopGuidesMenu = document.getElementById('desktop-guides-menu');
+    const desktopGuidesToggle = document.getElementById('desktop-guides-toggle');
+    const desktopGuidesPanel = document.getElementById('desktop-guides-panel');
+
+    const closeDesktopDropdown = (menu, toggle, panel) => {
+      if (!menu || !toggle || !panel) return;
+      menu.classList.remove('is-open');
+      panel.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      const links = panel.querySelector('.desktop-dropdown-links');
+      const moreButton = panel.querySelector('.dropdown-more-toggle');
+      if (links) links.classList.remove('is-expanded');
+      if (moreButton) {
+        moreButton.setAttribute('aria-expanded', 'false');
+        moreButton.textContent = moreButton.dataset.moreTarget === 'guides' ? 'More Guides' : 'More Services';
+      }
+    };
+
+    const openDesktopDropdown = (menu, toggle, panel, other) => {
+      if (!menu || !toggle || !panel) return;
+      if (other) closeDesktopDropdown(other.menu, other.toggle, other.panel);
+      const isOpen = panel.classList.toggle('is-open');
+      menu.classList.toggle('is-open', isOpen);
+      toggle.setAttribute('aria-expanded', String(isOpen));
+    };
+
+    const desktopDropdowns = [
+      { menu: desktopServicesMenu, toggle: desktopServicesToggle, panel: desktopServicesPanel },
+      { menu: desktopGuidesMenu, toggle: desktopGuidesToggle, panel: desktopGuidesPanel }
+    ];
+
+    if (desktopServicesToggle) {
+      desktopServicesToggle.addEventListener('click', (event) => {
+        event.stopPropagation();
+        openDesktopDropdown(desktopServicesMenu, desktopServicesToggle, desktopServicesPanel, desktopDropdowns[1]);
+      });
+    }
+    if (desktopGuidesToggle) {
+      desktopGuidesToggle.addEventListener('click', (event) => {
+        event.stopPropagation();
+        openDesktopDropdown(desktopGuidesMenu, desktopGuidesToggle, desktopGuidesPanel, desktopDropdowns[0]);
+      });
+    }
+
+    document.querySelectorAll('.dropdown-more-toggle').forEach((button) => {
+      button.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const panel = button.closest('.desktop-dropdown-panel');
+        const links = panel?.querySelector('.desktop-dropdown-links');
+        if (!links) return;
+        const expanded = links.classList.toggle('is-expanded');
+        button.setAttribute('aria-expanded', String(expanded));
+        button.textContent = expanded
+          ? (button.dataset.moreTarget === 'guides' ? 'Show Fewer Guides' : 'Show Fewer Services')
+          : (button.dataset.moreTarget === 'guides' ? 'More Guides' : 'More Services');
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      desktopDropdowns.forEach(({ menu, toggle, panel }) => {
+        if (menu && panel && panel.classList.contains('is-open') && !menu.contains(event.target)) {
+          closeDesktopDropdown(menu, toggle, panel);
+        }
+      });
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        desktopDropdowns.forEach(({ menu, toggle, panel }) => closeDesktopDropdown(menu, toggle, panel));
+      }
+    });
+
     // Mobile Menu Toggle
     const mobileBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -2036,10 +2168,16 @@ Cal.config.forwardQueryParams = true;
       const servicesToggle = document.getElementById('mobile-services-toggle');
       const servicesPanel = document.getElementById('mobile-services-panel');
 
+      const setPanelOpen = (toggle, panel, open) => {
+        if (!toggle || !panel) return;
+        toggle.setAttribute('aria-expanded', String(open));
+        panel.classList.toggle('is-open', open);
+      };
+
       const setGuidesOpen = (open) => {
         if (!guidesToggle || !guidesPanel) return;
-        guidesToggle.setAttribute('aria-expanded', String(open));
-        guidesPanel.classList.toggle('is-open', open);
+        if (open) setPanelOpen(servicesToggle, servicesPanel, false);
+        setPanelOpen(guidesToggle, guidesPanel, open);
       };
 
       if (guidesToggle && guidesPanel) {
@@ -2051,8 +2189,8 @@ Cal.config.forwardQueryParams = true;
 
       const setServicesOpen = (open) => {
         if (!servicesToggle || !servicesPanel) return;
-        servicesToggle.setAttribute('aria-expanded', String(open));
-        servicesPanel.classList.toggle('is-open', open);
+        if (open) setPanelOpen(guidesToggle, guidesPanel, false);
+        setPanelOpen(servicesToggle, servicesPanel, open);
       };
 
       if (servicesToggle && servicesPanel) {
@@ -2067,7 +2205,10 @@ Cal.config.forwardQueryParams = true;
         mobileBtn.setAttribute('aria-expanded', String(open));
         mobileMenu.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
         mobileMenu.setAttribute('aria-hidden', String(!open));
-        if (!open) setGuidesOpen(false);
+        if (!open) {
+          setGuidesOpen(false);
+          setServicesOpen(false);
+        }
       };
 
       // 1. Hamburger icon: toggle open/closed.
