@@ -222,7 +222,7 @@
             salyant: {
               blue: '#1761B0',
               gold: '#d4a574',
-              dark: '#07080C', 
+              dark: '#07080C',
             }
           },
           animation: {
@@ -284,7 +284,7 @@
       border: 1px solid rgba(255, 255, 255, 0.08);
       transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
-    
+
     .glass-card:hover {
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid rgba(212, 165, 116, 0.4);
@@ -496,13 +496,13 @@
       cursor: pointer;
       font-weight: 500;
     }
-    
+
     .nav-glass-hover::before, .liquid-tab-hover::before {
       content: '';
       position: absolute;
       inset: 0;
       border-radius: 9999px;
-      background: rgba(255, 255, 255, 0.08); 
+      background: rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -539,7 +539,7 @@
       align-items: center;
       justify-content: center;
     }
-    
+
     .btn-liquid-gold::before {
       content: '';
       position: absolute;
@@ -555,7 +555,7 @@
       box-shadow: 0 0 30px rgba(212, 165, 116, 0.3);
       transform: scale(1.02);
     }
-    
+
     .btn-liquid-gold:hover::before {
       opacity: 1;
     }
@@ -570,7 +570,7 @@
       overflow: hidden;
       border-radius: 1.5rem;
     }
-    
+
     .service-glass-block::before {
       content: '';
       position: absolute;
@@ -591,13 +591,13 @@
       opacity: 1;
       transform: scale(1);
     }
-    
+
     .service-glass-block:hover {
       transform: translateY(-5px);
       border-color: rgba(212, 165, 116, 0.6);
       box-shadow: 0 15px 40px -10px rgba(212, 165, 116, 0.25);
     }
-    
+
     .service-glass-block > * {
       position: relative;
       z-index: 1;
@@ -712,30 +712,30 @@
   <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent">
     <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
       <a href="/" class="flex items-center">
-        <img src="https://raw.githubusercontent.com/1799yashdharmadhikari-code/salyant-website/207052d7d3473d7bbf2c9bbbea8e449598fd4fba/IMG_20251230_004752.png" 
-             onerror="this.onerror=null;this.src='https://placehold.co/200x60/050505/1761B0?text=SALYANT'" 
-             alt="Salyant Logo" 
+        <img src="IMG_20251230_004752.png"
+             onerror="this.onerror=null;this.src='https://placehold.co/200x60/050505/1761B0?text=SALYANT'"
+             alt="Salyant Logo"
              class="h-9 md:h-11 w-auto">
       </a>
 
       <!-- Desktop Navigation with Liquid Glass Hover -->
-      <div class="hidden lg:flex items-center gap-1 bg-white/[0.03] border border-white/10 rounded-full p-1.5 backdrop-blur-2xl">
+      <div class="hidden xl:flex items-center gap-1 bg-white/[0.03] border border-white/10 rounded-full p-1.5 backdrop-blur-2xl">
         <a href="#ip-spotlight" class="text-sm nav-glass-hover">AI SDR</a>
         <a href="#seo-spotlight" class="text-sm nav-glass-hover">SEO/AEO/GEO</a>
         <a href="#industries" class="text-sm nav-glass-hover">Industries</a>
         <a href="#products" class="text-sm nav-glass-hover">Products</a>
         <a href="#services" class="text-sm nav-glass-hover">Services</a>
         <a href="#about" class="text-sm nav-glass-hover">Company</a>
-        <!-- RECONCILER_TOP_NAV_LINK --><a href="resources.html" class="text-sm nav-glass-hover">All Guides</a><!-- /RECONCILER_TOP_NAV_LINK -->
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        <!-- RECONCILER_TOP_NAV_LINK --><a href="resources.html" class="text-sm nav-glass-hover">Guides &amp; Resources</a><!-- /RECONCILER_TOP_NAV_LINK -->
+
+
+
+
+
+
+
+
+
 
         <!-- Services Dropdown: every service-*.html and ai-feasibility-audit.html page belongs here ONLY -->
         <div class="relative group">
@@ -743,7 +743,7 @@
             All Services
             <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
           </button>
-          <div class="absolute top-full right-0 mt-2 w-80 max-h-[70vh] overflow-y-auto rounded-2xl guides-dropdown-glass p-2 opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300">
+          <div class="absolute top-full right-0 mt-2 w-80 max-h-[70vh] overflow-y-auto rounded-2xl guides-dropdown-glass p-2 opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 transition-all duration-300">
             <!-- GROWTH_SERVICE_NAV_LINKS_START -->
             <a href="ai-feasibility-audit.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">AI Feasibility & Workflow Audit</a>
             <a href="service-seo-aeo-geo-automation.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">Automated SEO/AEO/GEO Growth Engine</a>
@@ -761,6 +761,9 @@
             <a href="service-private-equity-ai-value-creation.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">PE AI Value Creation: AI Factory Methodology</a>
             <a href="service-private-equity-ai-value-creation-uk.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">PE AI Value Creation: UK Market Playbook</a>
             <a href="service-private-equity-ai-data-security-mnpi-gdpr-compliance.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">PE AI Data Security & GDPR Compliance</a>
+            <a href="service-ai-automation-pricing-roi-calculator-uk.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">AI Automation Pricing &amp; ROI Calculator</a>
+            <a href="service-enterprise-ai-business-training-uk.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">Enterprise AI Business Training</a>
+            <a href="service-manufacturing-ai-automation-services.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">Manufacturing AI Automation Services</a>
             <!-- GROWTH_SERVICE_NAV_LINKS_END -->
           </div>
         </div>
@@ -771,29 +774,31 @@
             Guides
             <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
           </button>
-          <div class="absolute top-full right-0 mt-2 w-80 rounded-2xl guides-dropdown-glass p-2 opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300">
+          <div class="absolute top-full right-0 mt-2 w-80 rounded-2xl guides-dropdown-glass p-2 opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 transition-all duration-300">
             <!-- GROWTH_NAV_LINKS_START -->
-            <a href="service-manufacturing-ai-automation-services.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">Manufacturing AI Automation Services</a>
+
             <a href="blog-secure-ai-workflow-automation-uk-guide.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">Secure AI Workflow Automation: UK Guide</a>
             <a href="blog-automated-seo-aeo-geo-growth-engine.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">How We Automated Our Own SEO/AEO/GEO</a>
             <a href="blog-ai-development-cost-uk-2026-price-bands-roi.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">AI Development Cost UK 2026: Price Bands & ROI</a>
             <a href="blog-ai-automation-cost-guide-uk-businesses.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">AI Automation Cost Guide for UK Businesses</a>
+            <a href="blog-how-much-does-ai-automation-cost-uk.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">How Much Does AI Automation Cost in the UK?</a>
             <a href="blog-ai-automation-case-study-uk-enterprise.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">AI Automation Case Study: UK Enterprise</a>
+
           <!-- GROWTH_NAV_LINKS_END -->
           </div>
         </div>
       </div>
-      
-      <div class="hidden lg:block">
+
+      <div class="hidden xl:block">
         <a href="#contact" class="btn-liquid-gold px-6 py-2.5 text-sm font-bold shadow-[0_0_15px_rgba(212,165,116,0.15)]">Book Strategy Call</a>
       </div>
 
-      <button id="mobile-menu-btn" class="lg:hidden text-gray-300 hover:text-white p-2 focus:outline-none z-50">
+      <button id="mobile-menu-btn" class="xl:hidden text-gray-300 hover:text-white p-2 focus:outline-none z-50">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
       </button>
     </div>
 
-    <div id="mobile-menu" class="mobile-menu-glass lg:hidden absolute top-24 left-0 w-full rounded-b-3xl z-40 pb-6">
+    <div id="mobile-menu" class="mobile-menu-glass xl:hidden absolute top-24 left-0 w-full rounded-b-3xl z-40 pb-6">
       <button id="mobile-menu-backdrop"
         type="button"
         aria-label="Close menu"
@@ -805,16 +810,16 @@
         <a href="#products" class="text-base font-medium text-gray-300 hover:text-white">Products</a>
         <a href="#services" class="text-base font-medium text-gray-300 hover:text-white">Services</a>
         <a href="#about" class="text-base font-medium text-gray-300 hover:text-white">Company</a>
-        <!-- RECONCILER_TOP_MOBILE_LINK --><a href="resources.html" class="text-base font-medium text-gray-300 hover:text-white">All Guides</a><!-- /RECONCILER_TOP_MOBILE_LINK -->
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        <!-- RECONCILER_TOP_MOBILE_LINK --><a href="resources.html" class="text-base font-medium text-gray-300 hover:text-white">Guides &amp; Resources</a><!-- /RECONCILER_TOP_MOBILE_LINK -->
+
+
+
+
+
+
+
+
+
 
         <div class="pt-2 mt-2 border-t border-white/10">
           <button type="button" id="mobile-services-toggle" class="w-full flex items-center justify-between px-1 py-2 text-xs uppercase tracking-wider text-gray-500 font-semibold hover:text-gray-300 transition-colors" aria-expanded="false" aria-controls="mobile-services-panel">
@@ -840,6 +845,9 @@
           <a href="service-private-equity-ai-value-creation.html" class="block text-base font-medium text-gray-300 hover:text-white py-1">PE AI Value Creation: AI Factory Methodology</a>
           <a href="service-private-equity-ai-value-creation-uk.html" class="block text-base font-medium text-gray-300 hover:text-white py-1">PE AI Value Creation: UK Market Playbook</a>
           <a href="service-private-equity-ai-data-security-mnpi-gdpr-compliance.html" class="block text-base font-medium text-gray-300 hover:text-white py-1">PE AI Data Security & GDPR Compliance</a>
+          <a href="service-ai-automation-pricing-roi-calculator-uk.html" class="block text-base font-medium text-gray-300 hover:text-white py-1">AI Automation Pricing &amp; ROI Calculator</a>
+          <a href="service-enterprise-ai-business-training-uk.html" class="block text-base font-medium text-gray-300 hover:text-white py-1">Enterprise AI Business Training</a>
+          <a href="service-manufacturing-ai-automation-services.html" class="block text-base font-medium text-gray-300 hover:text-white py-1">Manufacturing AI Automation Services</a>
           <!-- GROWTH_SERVICE_MOBILE_NAV_LINKS_END -->
           </div>
           </div>
@@ -853,12 +861,14 @@
           <div id="mobile-guides-panel" class="mobile-guides-panel">
           <div class="flex flex-col gap-4 pt-2">
           <!-- GROWTH_MOBILE_NAV_LINKS_START -->
-          <a href="service-manufacturing-ai-automation-services.html" class="block text-base font-medium text-gray-300 hover:text-white py-1">Manufacturing AI Automation Services</a>
+
           <a href="blog-secure-ai-workflow-automation-uk-guide.html" class="block text-base font-medium text-gray-300 hover:text-white py-1">Secure AI Workflow Automation: UK Guide</a>
           <a href="blog-automated-seo-aeo-geo-growth-engine.html" class="block text-base font-medium text-gray-300 hover:text-white py-1">How We Automated Our Own SEO/AEO/GEO</a>
           <a href="blog-ai-development-cost-uk-2026-price-bands-roi.html" class="block text-base font-medium text-gray-300 hover:text-white py-1">AI Development Cost UK 2026: Price Bands & ROI</a>
           <a href="blog-ai-automation-cost-guide-uk-businesses.html" class="block text-base font-medium text-gray-300 hover:text-white py-1">AI Automation Cost Guide for UK Businesses</a>
+          <a href="blog-how-much-does-ai-automation-cost-uk.html" class="block text-base font-medium text-gray-300 hover:text-white py-1">How Much Does AI Automation Cost in the UK?</a>
           <a href="blog-ai-automation-case-study-uk-enterprise.html" class="block text-base font-medium text-gray-300 hover:text-white py-1">AI Automation Case Study: UK Enterprise</a>
+
         <!-- GROWTH_MOBILE_NAV_LINKS_END -->
           </div>
           </div>
@@ -871,26 +881,26 @@
 
   <header class="relative pt-36 pb-16 lg:pt-44 lg:pb-20 px-6 flex flex-col items-center justify-center text-center min-h-[95vh] overflow-hidden">
     <div class="max-w-4xl mx-auto relative z-10 w-full flex flex-col items-center">
-      
+
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel border-salyant-gold/30 text-salyant-gold text-xs font-semibold tracking-wide mb-6 animate-fade-in-up" style="animation-fill-mode: both;">
         <span class="w-2 h-2 rounded-full bg-salyant-gold animate-pulse"></span>
         Enterprise-Grade AI & Automation
       </div>
-      
+
       <h1 class="text-4xl md:text-6xl font-semibold tracking-tight mb-5 text-white animate-fade-in-up leading-[1.15]" style="animation-delay: 0.1s; animation-fill-mode: both;">
         Automate Manual Work.<br>
         <span class="text-salyant-gold">Grow Without Hiring.</span>
       </h1>
-      
+
       <p class="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto animate-fade-in-up font-light" style="animation-delay: 0.2s; animation-fill-mode: both;">
         From intelligent digital assistants to computer vision safety systems. Convert recurring operational costs into scalable, one-time strategic AI investments.
       </p>
-      
+
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up mb-12" style="animation-delay: 0.3s; animation-fill-mode: both;">
         <a href="#products" class="btn-liquid-gold px-8 py-4 w-full sm:w-auto font-medium text-lg">Explore Solutions</a>
         <a href="#contact" class="bg-transparent border border-white/20 text-white hover:bg-white/10 hover:border-white/40 transition-all duration-300 rounded-full px-8 py-4 w-full sm:w-auto font-medium text-lg backdrop-blur-md">Speak to an Architect</a>
       </div>
-      
+
       <div class="w-full max-w-4xl mx-auto relative animate-fade-in-up" style="animation-delay: 0.5s; animation-fill-mode: both;">
 
         <!-- signature element: the trust chain — a traced circuit line linking each verified credential -->
@@ -955,13 +965,13 @@
     <div class="max-w-7xl mx-auto">
       <div class="glass-card rounded-[2.5rem] p-8 md:p-14 overflow-hidden relative reveal shadow-[0_30px_70px_-15px_rgba(212,165,116,0.25)] border border-salyant-gold/40 bg-gradient-to-br from-white/[0.05] via-[#0b0e17]/90 to-salyant-gold/[0.07] transform hover:scale-[1.01] transition-transform duration-500">
         <div class="absolute top-0 right-0 w-[550px] h-[550px] bg-salyant-gold/20 rounded-full blur-[130px] -z-10 pointer-events-none"></div>
-        
+
         <div class="grid lg:grid-cols-2 gap-16 items-center">
           <div>
             <div class="inline-block px-5 py-2 bg-salyant-gold/15 text-salyant-gold text-xs font-bold rounded-full mb-8 border border-salyant-gold/50 tracking-widest uppercase animate-glow-pulse">
               Salyant Exclusive IP
             </div>
-            
+
             <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white leading-tight">Autonomous AI SDR</h2>
             <p class="text-gray-300 mb-8 font-light text-lg leading-relaxed">
               Experience the future of outbound growth. Our proprietary AI Sales Development Representative manages discovery, drafting, approval, replies, and self-healing reliability—end to end, completely autonomously, worldwide.
@@ -988,7 +998,7 @@
             </ul>
             <a href="#contact" class="btn-liquid-gold px-8 py-3.5 text-base font-semibold shadow-lg">Deploy Autonomous Sales</a>
           </div>
-          
+
 <div class="relative w-full aspect-[4/3] rounded-3xl overflow-hidden glass-panel shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-salyant-gold/30 sdr-demo" id="sdrDemo">
   <div class="sdr-bg"></div>
   <div class="sdr-grid-overlay"></div>
@@ -1604,7 +1614,7 @@
       </div>
 
       <div id="industry-slider" class="relative w-full h-[450px] md:h-[550px] rounded-3xl overflow-hidden glass-panel border-white/10 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] reveal">
-        
+
         <!-- Slide 1: Law Firms -->
         <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-100 z-10 industry-slide">
           <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1200&q=80" alt="UK Law Firms" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay">
@@ -1805,7 +1815,7 @@
         <h2 class="text-3xl md:text-5xl font-bold mb-6 text-white">Core Consulting Services</h2>
         <p class="text-gray-400 max-w-2xl mx-auto font-light text-lg">Custom architecture, integration, and operational governance for enterprise environments.</p>
       </div>
-      
+
       <div class="grid md:grid-cols-3 gap-6">
         <div class="service-glass-block p-8 rounded-3xl reveal group">
           <h3 class="text-xl font-bold text-white mb-2 group-hover:text-salyant-gold transition-colors">Systems Integration</h3>
@@ -1844,12 +1854,12 @@
           Our team treats AI and automation as critical infrastructure. Through our ISO-certified delivery network spanning multiple countries, we ensure every workflow and computer vision model we deploy is auditable, secure, and built to last.
         </p>
       </div>
-      
+
       <div class="relative reveal w-full flex justify-center">
         <div class="absolute inset-0 bg-salyant-gold/10 rounded-[2.5rem] filter blur-3xl mix-blend-screen"></div>
         <div class="relative z-10 w-full max-w-sm mx-auto aspect-[16/7] sm:aspect-[16/8] lg:aspect-[4/5] rounded-[2.5rem] border border-white/10 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] overflow-hidden group">
-          <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=85" 
-               alt="Modern enterprise office interior" 
+          <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=85"
+               alt="Modern enterprise office interior"
                class="w-full h-full object-cover grayscale opacity-80 transition-all duration-700 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105">
         </div>
       </div>
@@ -1887,7 +1897,7 @@ Cal.config.forwardQueryParams = true;
         <div class="p-10 md:p-14 bg-white/[0.01] border-t lg:border-t-0 lg:border-l border-white/5 flex flex-col justify-center">
           <h3 class="text-3xl font-bold mb-2 text-white">Send an Inquiry</h3>
           <p class="text-sm text-gray-500 mb-10 font-light">Prefer to write? Drop us a message below.</p>
-          
+
           <form id="contact-form" action="https://formspree.io/f/mlgrlvwb" method="POST" class="space-y-6">
             <div>
               <label class="block text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Name</label>
@@ -2016,7 +2026,7 @@ Cal.config.forwardQueryParams = true;
     // Mobile Menu Toggle
     const mobileBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
-    
+
     if (mobileBtn && mobileMenu) {
       mobileBtn.setAttribute('aria-expanded', 'false');
       mobileMenu.setAttribute('aria-hidden', 'true');
@@ -2145,7 +2155,7 @@ Cal.config.forwardQueryParams = true;
     if(slides.length > 0) {
         showSlide(0);
         startSlider();
-        
+
         const nextIndustrySlideBtn = document.getElementById('next-industry-slide');
         if (nextIndustrySlideBtn) {
             nextIndustrySlideBtn.addEventListener('click', () => {
@@ -2160,7 +2170,7 @@ Cal.config.forwardQueryParams = true;
             sliderContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
             sliderContainer.addEventListener('mouseleave', startSlider);
         }
-        
+
         dots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
                 showSlide(index);
@@ -2176,7 +2186,7 @@ Cal.config.forwardQueryParams = true;
       window.gaLoaded = true;
       var s = document.createElement('script');
       s.async = true;
-      s.src = "https://www.googletagmanager.com/gtag/js?id=G-3ZF3X6JFWQ"; 
+      s.src = "https://www.googletagmanager.com/gtag/js?id=G-3ZF3X6JFWQ";
       document.head.appendChild(s);
       window.dataLayer = window.dataLayer || [];
       function gtag() { dataLayer.push(arguments); }
