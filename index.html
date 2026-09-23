@@ -426,6 +426,8 @@
     .mobile-guides-panel.is-open {
       max-height: 640px;
     }
+    #mobile-industries-panel.is-open { max-height: 1200px; }
+    #mobile-industries-toggle[aria-expanded="true"] #mobile-industries-chevron { transform: rotate(180deg); }
     #mobile-services-toggle[aria-expanded="true"] #mobile-services-chevron {
       transform: rotate(180deg);
     }
@@ -779,7 +781,33 @@
       <div class="hidden xl:flex shrink-0 items-center justify-center gap-0.5 bg-white/[0.03] border border-white/10 rounded-full p-1.5 backdrop-blur-2xl">
         <a href="#ip-spotlight" class="text-sm nav-glass-hover">AI SDR</a>
         <a href="#seo-spotlight" class="text-sm nav-glass-hover">SEO/AEO/GEO</a>
-        <a href="#industries" class="text-sm nav-glass-hover">Industries</a>
+        <div id="desktop-industries-menu" class="relative group shrink-0">
+          <button id="desktop-industries-toggle" type="button" class="text-sm nav-glass-hover flex items-center gap-1" aria-haspopup="true" aria-expanded="false" aria-controls="desktop-industries-panel">
+            Industries
+            <svg class="w-3.5 h-3.5 transition-transform duration-300" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="desktop-industries-panel" class="desktop-dropdown-panel absolute top-full right-0 mt-2 max-h-[70vh] overflow-y-auto rounded-2xl guides-dropdown-glass p-2 transition-all duration-200" role="menu">
+            <div class="desktop-dropdown-links desktop-industries-links">
+            <a href="#industries" data-industry-target="legal" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">UK Law Firms &amp; Chambers</a>
+            <a href="#industries" data-industry-target="marketing" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">Marketing, Advertising &amp; Creative Agencies</a>
+            <a href="#industries" data-industry-target="recruitment" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">Recruitment, Staffing & HR</a>
+            <a href="#industries" data-industry-target="finance" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">Finance, Accounting & FinTech</a>
+            <a href="#industries" data-industry-target="logistics" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">Logistics, Transport & Fleet</a>
+            <a href="#industries" data-industry-target="industrial" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">Manufacturing, Engineering & Industrial</a>
+            <a href="#industries" data-industry-target="hospitality" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">Hotels, Hospitality & Serviced Accommodation</a>
+            <a href="#industries" data-industry-target="food" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">Food &amp; Beverage, Restaurants &amp; Catering</a>
+            <a href="#industries" data-industry-target="property" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">Property, Real Estate &amp; Facilities</a>
+            <a href="#industries" data-industry-target="construction" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">Construction, Architecture & Engineering</a>
+            <a href="#industries" data-industry-target="retail" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">Retail &amp; E-commerce</a>
+            <a href="#industries" data-industry-target="healthcare" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">Healthcare, Clinics & Life Sciences</a>
+            <a href="#industries" data-industry-target="education" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">Education, Training & EdTech</a>
+            <a href="#industries" data-industry-target="automotive" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">Automotive, Dealerships &amp; Mobility</a>
+            <a href="#industries" data-industry-target="energy" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">Energy, Utilities & Renewables</a>
+            <a href="#industries" data-industry-target="creative" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">Photography Studios, Media & Creative Production</a>
+            <a href="#industries" data-industry-target="insurance" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">Insurance, Risk & Professional Compliance</a>
+            </div>
+          </div>
+        </div>
         <a href="#products" class="text-sm nav-glass-hover">Products</a>
         <a href="#about" class="text-sm nav-glass-hover">Company</a>
         <!-- RECONCILER_TOP_NAV_LINK --><a href="resources.html" class="text-sm nav-glass-hover">All Guides</a><!-- /RECONCILER_TOP_NAV_LINK -->
@@ -858,7 +886,30 @@
       <div class="flex flex-col px-6 py-4 gap-4">
         <a href="#ip-spotlight" class="text-base font-medium text-gray-300 hover:text-white">AI SDR</a>
         <a href="#seo-spotlight" class="text-base font-medium text-gray-300 hover:text-white">SEO/AEO/GEO</a>
-        <a href="#industries" class="text-base font-medium text-gray-300 hover:text-white">Industries</a>
+        <div class="pt-2 mt-2 border-t border-white/10">
+          <button type="button" id="mobile-industries-toggle" class="w-full flex items-center justify-between px-1 py-2 text-xs uppercase tracking-wider text-gray-500 font-semibold hover:text-gray-300 transition-colors" aria-expanded="false" aria-controls="mobile-industries-panel">
+            <span>Industries We Serve</span>
+            <svg id="mobile-industries-chevron" class="w-3.5 h-3.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="mobile-industries-panel" class="mobile-guides-panel"><div class="flex flex-col gap-4 pt-2"><a href="#industries" data-industry-target="legal" class="block text-base font-medium text-gray-300 hover:text-white py-1">UK Law Firms &amp; Chambers</a>
+            <a href="#industries" data-industry-target="marketing" class="block text-base font-medium text-gray-300 hover:text-white py-1">Marketing, Advertising &amp; Creative Agencies</a>
+            <a href="#industries" data-industry-target="recruitment" class="block text-base font-medium text-gray-300 hover:text-white py-1">Recruitment, Staffing & HR</a>
+            <a href="#industries" data-industry-target="finance" class="block text-base font-medium text-gray-300 hover:text-white py-1">Finance, Accounting & FinTech</a>
+            <a href="#industries" data-industry-target="logistics" class="block text-base font-medium text-gray-300 hover:text-white py-1">Logistics, Transport & Fleet</a>
+            <a href="#industries" data-industry-target="industrial" class="block text-base font-medium text-gray-300 hover:text-white py-1">Manufacturing, Engineering & Industrial</a>
+            <a href="#industries" data-industry-target="hospitality" class="block text-base font-medium text-gray-300 hover:text-white py-1">Hotels, Hospitality & Serviced Accommodation</a>
+            <a href="#industries" data-industry-target="food" class="block text-base font-medium text-gray-300 hover:text-white py-1">Food &amp; Beverage, Restaurants &amp; Catering</a>
+            <a href="#industries" data-industry-target="property" class="block text-base font-medium text-gray-300 hover:text-white py-1">Property, Real Estate &amp; Facilities</a>
+            <a href="#industries" data-industry-target="construction" class="block text-base font-medium text-gray-300 hover:text-white py-1">Construction, Architecture & Engineering</a>
+            <a href="#industries" data-industry-target="retail" class="block text-base font-medium text-gray-300 hover:text-white py-1">Retail &amp; E-commerce</a>
+            <a href="#industries" data-industry-target="healthcare" class="block text-base font-medium text-gray-300 hover:text-white py-1">Healthcare, Clinics & Life Sciences</a>
+            <a href="#industries" data-industry-target="education" class="block text-base font-medium text-gray-300 hover:text-white py-1">Education, Training & EdTech</a>
+            <a href="#industries" data-industry-target="automotive" class="block text-base font-medium text-gray-300 hover:text-white py-1">Automotive, Dealerships &amp; Mobility</a>
+            <a href="#industries" data-industry-target="energy" class="block text-base font-medium text-gray-300 hover:text-white py-1">Energy, Utilities & Renewables</a>
+            <a href="#industries" data-industry-target="creative" class="block text-base font-medium text-gray-300 hover:text-white py-1">Photography Studios, Media & Creative Production</a>
+            <a href="#industries" data-industry-target="insurance" class="block text-base font-medium text-gray-300 hover:text-white py-1">Insurance, Risk & Professional Compliance</a>
+            </div></div>
+        </div>
         <a href="#products" class="text-base font-medium text-gray-300 hover:text-white">Products</a>
         <a href="#services" class="text-base font-medium text-gray-300 hover:text-white">Services</a>
         <a href="#about" class="text-base font-medium text-gray-300 hover:text-white">Company</a>
@@ -1656,109 +1707,780 @@
 })();
 </script>
 
-  <!-- Industries We Serve (PPT-Style Auto-Flipping Slider with 3s Speed) -->
+
+
+  <!-- Industries We Serve: workflow-led sector explorer -->
   <section id="industries" class="py-24 px-6 relative z-10">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-12 reveal">
         <h2 class="text-3xl md:text-5xl font-bold mb-6 text-white">Industries We Transform</h2>
-        <p class="text-gray-400 max-w-2xl mx-auto font-light text-lg">Tailored AI architectures and compliance-driven automation delivered across UK legal, professional services, and heavy industrial sectors.</p>
+        <p class="text-gray-400 max-w-3xl mx-auto font-light text-lg">Salyant is workflow-led rather than locked to one vertical: the same AI building blocks can be adapted to different operating environments, data boundaries and approval models. Select an industry to explore the relevant automation patterns.</p>
       </div>
-
       <div id="industry-slider" class="relative w-full h-[450px] md:h-[550px] rounded-3xl overflow-hidden glass-panel border-white/10 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] reveal">
 
-        <!-- Slide 1: Law Firms -->
-        <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-100 z-10 industry-slide">
-          <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1200&q=80" alt="UK Law Firms" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay">
+        <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-100 z-10 industry-slide cursor-pointer select-none"
+             data-industry="legal" role="button" tabindex="0" aria-label="Explore UK Law Firms &amp; Chambers">
+          <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" alt="Law books and legal workspace" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay" loading="eager">
           <div class="absolute inset-0 bg-gradient-to-t from-[#07080C] via-[#07080C]/60 to-transparent"></div>
           <div class="absolute inset-0 bg-gradient-to-r from-[#07080C]/90 via-[#07080C]/40 to-transparent"></div>
           <div class="absolute bottom-0 left-0 p-8 md:p-14 w-full md:w-2/3">
-            <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Document AI & Legal RAG</p>
-            <h3 class="text-4xl md:text-5xl font-bold text-white mb-4">UK Law Firms & Chambers</h3>
-            <p class="text-gray-300 text-lg font-light leading-relaxed">Automating exhaustive legal research, intelligent contract auditing, and secure, cited knowledge retrieval across massive UK legal datasets.</p>
+            <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Document AI &amp; Legal RAG</p>
+            <h3 class="text-4xl md:text-5xl font-bold text-white mb-4">UK Law Firms &amp; Chambers</h3>
+            <p class="text-gray-300 text-lg font-light leading-relaxed">Accelerate legal research, contract intelligence, matter knowledge and document-heavy workflows while keeping professional judgement with legal teams.</p>
+            <span class="inline-flex items-center gap-2 mt-5 px-4 py-2 rounded-full bg-white/[0.06] border border-white/15 backdrop-blur-xl text-xs font-semibold text-white/90">
+              Explore industry workflow <span aria-hidden="true">→</span>
+            </span>
           </div>
         </div>
 
-        <!-- Slide 2: Marketing Agencies -->
-        <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 z-0 industry-slide">
-          <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80" alt="Marketing Agencies" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay">
+        <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 z-0 industry-slide cursor-pointer select-none"
+             data-industry="marketing" role="button" tabindex="0" aria-label="Explore Marketing, Advertising &amp; Creative Agencies">
+          <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" alt="Creative and marketing team collaborating" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay" loading="eager">
           <div class="absolute inset-0 bg-gradient-to-t from-[#07080C] via-[#07080C]/60 to-transparent"></div>
           <div class="absolute inset-0 bg-gradient-to-r from-[#07080C]/90 via-[#07080C]/40 to-transparent"></div>
           <div class="absolute bottom-0 left-0 p-8 md:p-14 w-full md:w-2/3">
-            <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Autonomous SDR & Content</p>
-            <h3 class="text-4xl md:text-5xl font-bold text-white mb-4">Marketing Agencies</h3>
-            <p class="text-gray-300 text-lg font-light leading-relaxed">Scaling outbound lead generation campaigns and automating repetitive creative approval workflows without increasing headcount.</p>
+            <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">AI Sales, Content &amp; Delivery</p>
+            <h3 class="text-4xl md:text-5xl font-bold text-white mb-4">Marketing, Advertising &amp; Creative Agencies</h3>
+            <p class="text-gray-300 text-lg font-light leading-relaxed">Automate lead research, campaign operations, content workflows, reporting and client communications without turning the agency into disconnected AI tools.</p>
+            <span class="inline-flex items-center gap-2 mt-5 px-4 py-2 rounded-full bg-white/[0.06] border border-white/15 backdrop-blur-xl text-xs font-semibold text-white/90">
+              Explore industry workflow <span aria-hidden="true">→</span>
+            </span>
           </div>
         </div>
 
-        <!-- Slide 3: Recruitment Agencies -->
-        <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 z-0 industry-slide">
-          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80" alt="Recruitment Agencies" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay">
+        <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 z-0 industry-slide cursor-pointer select-none"
+             data-industry="recruitment" role="button" tabindex="0" aria-label="Explore Recruitment, Staffing &amp; HR">
+          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" alt="Recruitment team collaborating in an office" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay" loading="eager">
           <div class="absolute inset-0 bg-gradient-to-t from-[#07080C] via-[#07080C]/60 to-transparent"></div>
           <div class="absolute inset-0 bg-gradient-to-r from-[#07080C]/90 via-[#07080C]/40 to-transparent"></div>
           <div class="absolute bottom-0 left-0 p-8 md:p-14 w-full md:w-2/3">
-            <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Candidate Intelligence</p>
-            <h3 class="text-4xl md:text-5xl font-bold text-white mb-4">Recruitment Agencies</h3>
-            <p class="text-gray-300 text-lg font-light leading-relaxed">Deploying AI for rapid candidate screening, automated passive talent outreach, and intelligent, conflict-free scheduling systems.</p>
+            <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Candidate Intelligence &amp; Workflow Automation</p>
+            <h3 class="text-4xl md:text-5xl font-bold text-white mb-4">Recruitment, Staffing &amp; HR</h3>
+            <p class="text-gray-300 text-lg font-light leading-relaxed">Reduce repetitive candidate and vacancy administration while improving search, outreach, response speed and scheduling.</p>
+            <span class="inline-flex items-center gap-2 mt-5 px-4 py-2 rounded-full bg-white/[0.06] border border-white/15 backdrop-blur-xl text-xs font-semibold text-white/90">
+              Explore industry workflow <span aria-hidden="true">→</span>
+            </span>
           </div>
         </div>
 
-        <!-- Slide 4: Finance & Accounting (GBP) -->
-        <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 z-0 industry-slide">
-          <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80" alt="Finance and GBP Accounting" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay">
+        <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 z-0 industry-slide cursor-pointer select-none"
+             data-industry="finance" role="button" tabindex="0" aria-label="Explore Finance, Accounting &amp; FinTech">
+          <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" alt="Finance and accounting documents and calculator" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay" loading="lazy">
           <div class="absolute inset-0 bg-gradient-to-t from-[#07080C] via-[#07080C]/60 to-transparent"></div>
           <div class="absolute inset-0 bg-gradient-to-r from-[#07080C]/90 via-[#07080C]/40 to-transparent"></div>
           <div class="absolute bottom-0 left-0 p-8 md:p-14 w-full md:w-2/3">
-            <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">OptimAR™ Liquidity (GBP)</p>
-            <h3 class="text-4xl md:text-5xl font-bold text-white mb-4">Finance & Accounting</h3>
-            <p class="text-gray-300 text-lg font-light leading-relaxed">Transforming traditional receivables management into an intelligent, proactive process with autonomous invoice auditing and predictive cashflow.</p>
+            <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Document AI, Revenue Operations &amp; Controls</p>
+            <h3 class="text-4xl md:text-5xl font-bold text-white mb-4">Finance, Accounting &amp; FinTech</h3>
+            <p class="text-gray-300 text-lg font-light leading-relaxed">Automate invoice, receivables, reporting, reconciliation and compliance preparation across finance operations.</p>
+            <span class="inline-flex items-center gap-2 mt-5 px-4 py-2 rounded-full bg-white/[0.06] border border-white/15 backdrop-blur-xl text-xs font-semibold text-white/90">
+              Explore industry workflow <span aria-hidden="true">→</span>
+            </span>
           </div>
         </div>
 
-        <!-- Slide 5: Logistics & Fleet -->
-        <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 z-0 industry-slide">
-          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80" alt="Logistics & Fleet" class="absolute inset-0 w-full h-full object-cover opacity-75 mix-blend-normal">
-          <div class="absolute inset-0 bg-gradient-to-t from-[#07080C] via-[#07080C]/30 to-transparent"></div>
-          <div class="absolute inset-0 bg-gradient-to-r from-[#07080C]/90 via-transparent to-transparent"></div>
-          <div class="absolute bottom-0 left-0 p-8 md:p-14 w-full md:w-2/3">
-            <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Tensor Fleet & Routing</p>
-            <h3 class="text-4xl md:text-5xl font-bold text-white mb-4">Logistics & Fleet Firms</h3>
-            <p class="text-gray-300 text-lg font-light leading-relaxed">AI route optimisation reducing fuel expenses across UK transport networks, vehicle tracking telemetry, and automated load verification.</p>
-          </div>
-        </div>
-
-        <!-- Slide 6: Manufacturing & Mining -->
-        <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 z-0 industry-slide">
-          <img src="https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&fit=crop&w=1200&q=80" alt="Manufacturing & Mining" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay">
+        <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 z-0 industry-slide cursor-pointer select-none"
+             data-industry="logistics" role="button" tabindex="0" aria-label="Explore Logistics, Transport &amp; Fleet">
+          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" alt="Logistics warehouse and freight operations" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay" loading="lazy">
           <div class="absolute inset-0 bg-gradient-to-t from-[#07080C] via-[#07080C]/60 to-transparent"></div>
           <div class="absolute inset-0 bg-gradient-to-r from-[#07080C]/90 via-[#07080C]/40 to-transparent"></div>
           <div class="absolute bottom-0 left-0 p-8 md:p-14 w-full md:w-2/3">
-            <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Smart EPC & Takt AI</p>
-            <h3 class="text-4xl md:text-5xl font-bold text-white mb-4">Manufacturing & Mining</h3>
-            <p class="text-gray-300 text-lg font-light leading-relaxed">Visual production monitoring, heavy equipment surveillance, automated quarry booking, and uninterrupted remote fuel dispensing.</p>
+            <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Planning, Documents &amp; Operations</p>
+            <h3 class="text-4xl md:text-5xl font-bold text-white mb-4">Logistics, Transport &amp; Fleet</h3>
+            <p class="text-gray-300 text-lg font-light leading-relaxed">Connect shipment documents, customer communication, planning data and operational exceptions into a single AI-assisted workflow.</p>
+            <span class="inline-flex items-center gap-2 mt-5 px-4 py-2 rounded-full bg-white/[0.06] border border-white/15 backdrop-blur-xl text-xs font-semibold text-white/90">
+              Explore industry workflow <span aria-hidden="true">→</span>
+            </span>
           </div>
         </div>
 
-        <button id="next-industry-slide"
-          type="button"
-          aria-label="Next slide"
-          title="Next slide"
+        <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 z-0 industry-slide cursor-pointer select-none"
+             data-industry="industrial" role="button" tabindex="0" aria-label="Explore Manufacturing, Engineering &amp; Industrial">
+          <img src="https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" alt="Industrial manufacturing production floor" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay" loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#07080C] via-[#07080C]/60 to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-[#07080C]/90 via-[#07080C]/40 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-8 md:p-14 w-full md:w-2/3">
+            <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Operations Intelligence &amp; Industrial Automation</p>
+            <h3 class="text-4xl md:text-5xl font-bold text-white mb-4">Manufacturing, Engineering &amp; Industrial</h3>
+            <p class="text-gray-300 text-lg font-light leading-relaxed">Bring AI into quality, maintenance, procurement, production reporting, safety workflows and legacy industrial systems.</p>
+            <span class="inline-flex items-center gap-2 mt-5 px-4 py-2 rounded-full bg-white/[0.06] border border-white/15 backdrop-blur-xl text-xs font-semibold text-white/90">
+              Explore industry workflow <span aria-hidden="true">→</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 z-0 industry-slide cursor-pointer select-none"
+             data-industry="hospitality" role="button" tabindex="0" aria-label="Explore Hotels, Hospitality &amp; Serviced Accommodation">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" alt="Modern hotel lobby and hospitality interior" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay" loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#07080C] via-[#07080C]/60 to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-[#07080C]/90 via-[#07080C]/40 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-8 md:p-14 w-full md:w-2/3">
+            <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Guest Experience, Revenue &amp; Operations</p>
+            <h3 class="text-4xl md:text-5xl font-bold text-white mb-4">Hotels, Hospitality &amp; Serviced Accommodation</h3>
+            <p class="text-gray-300 text-lg font-light leading-relaxed">Automate guest enquiries, booking support, upsell preparation, review workflows, staff coordination and back-office administration.</p>
+            <span class="inline-flex items-center gap-2 mt-5 px-4 py-2 rounded-full bg-white/[0.06] border border-white/15 backdrop-blur-xl text-xs font-semibold text-white/90">
+              Explore industry workflow <span aria-hidden="true">→</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 z-0 industry-slide cursor-pointer select-none"
+             data-industry="food" role="button" tabindex="0" aria-label="Explore Food &amp; Beverage, Restaurants &amp; Catering">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" alt="Restaurant interior and dining operations" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay" loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#07080C] via-[#07080C]/60 to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-[#07080C]/90 via-[#07080C]/40 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-8 md:p-14 w-full md:w-2/3">
+            <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Demand, Customer Operations &amp; Back Office</p>
+            <h3 class="text-4xl md:text-5xl font-bold text-white mb-4">Food &amp; Beverage, Restaurants &amp; Catering</h3>
+            <p class="text-gray-300 text-lg font-light leading-relaxed">Use AI across reservations, customer communication, reputation, procurement administration, catering enquiries and local marketing.</p>
+            <span class="inline-flex items-center gap-2 mt-5 px-4 py-2 rounded-full bg-white/[0.06] border border-white/15 backdrop-blur-xl text-xs font-semibold text-white/90">
+              Explore industry workflow <span aria-hidden="true">→</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 z-0 industry-slide cursor-pointer select-none"
+             data-industry="property" role="button" tabindex="0" aria-label="Explore Property, Real Estate &amp; Facilities">
+          <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" alt="Real estate property and house keys" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay" loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#07080C] via-[#07080C]/60 to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-[#07080C]/90 via-[#07080C]/40 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-8 md:p-14 w-full md:w-2/3">
+            <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Leasing, Property Data &amp; Operations</p>
+            <h3 class="text-4xl md:text-5xl font-bold text-white mb-4">Property, Real Estate &amp; Facilities</h3>
+            <p class="text-gray-300 text-lg font-light leading-relaxed">Automate property enquiries, listing operations, document handling, tenant communications and facilities workflows.</p>
+            <span class="inline-flex items-center gap-2 mt-5 px-4 py-2 rounded-full bg-white/[0.06] border border-white/15 backdrop-blur-xl text-xs font-semibold text-white/90">
+              Explore industry workflow <span aria-hidden="true">→</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 z-0 industry-slide cursor-pointer select-none"
+             data-industry="construction" role="button" tabindex="0" aria-label="Explore Construction, Architecture &amp; Engineering">
+          <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" alt="Construction site and architecture project" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay" loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#07080C] via-[#07080C]/60 to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-[#07080C]/90 via-[#07080C]/40 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-8 md:p-14 w-full md:w-2/3">
+            <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Project Controls &amp; Document Intelligence</p>
+            <h3 class="text-4xl md:text-5xl font-bold text-white mb-4">Construction, Architecture &amp; Engineering</h3>
+            <p class="text-gray-300 text-lg font-light leading-relaxed">Reduce project administration across tender documents, RFIs, drawings, site reports, procurement and stakeholder communication.</p>
+            <span class="inline-flex items-center gap-2 mt-5 px-4 py-2 rounded-full bg-white/[0.06] border border-white/15 backdrop-blur-xl text-xs font-semibold text-white/90">
+              Explore industry workflow <span aria-hidden="true">→</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 z-0 industry-slide cursor-pointer select-none"
+             data-industry="retail" role="button" tabindex="0" aria-label="Explore Retail &amp; E-commerce">
+          <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" alt="Retail store interior" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay" loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#07080C] via-[#07080C]/60 to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-[#07080C]/90 via-[#07080C]/40 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-8 md:p-14 w-full md:w-2/3">
+            <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Customer Journey, Content &amp; Commerce Operations</p>
+            <h3 class="text-4xl md:text-5xl font-bold text-white mb-4">Retail &amp; E-commerce</h3>
+            <p class="text-gray-300 text-lg font-light leading-relaxed">Connect product information, customer service, marketing, sales follow-up, catalogue operations and store-level workflows with AI.</p>
+            <span class="inline-flex items-center gap-2 mt-5 px-4 py-2 rounded-full bg-white/[0.06] border border-white/15 backdrop-blur-xl text-xs font-semibold text-white/90">
+              Explore industry workflow <span aria-hidden="true">→</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 z-0 industry-slide cursor-pointer select-none"
+             data-industry="healthcare" role="button" tabindex="0" aria-label="Explore Healthcare, Clinics &amp; Life Sciences">
+          <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" alt="Healthcare clinic interior" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay" loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#07080C] via-[#07080C]/60 to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-[#07080C]/90 via-[#07080C]/40 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-8 md:p-14 w-full md:w-2/3">
+            <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Administrative AI &amp; Knowledge Work</p>
+            <h3 class="text-4xl md:text-5xl font-bold text-white mb-4">Healthcare, Clinics &amp; Life Sciences</h3>
+            <p class="text-gray-300 text-lg font-light leading-relaxed">Support patient administration, referral handling, document workflows, knowledge retrieval and operational reporting with appropriate governance.</p>
+            <span class="inline-flex items-center gap-2 mt-5 px-4 py-2 rounded-full bg-white/[0.06] border border-white/15 backdrop-blur-xl text-xs font-semibold text-white/90">
+              Explore industry workflow <span aria-hidden="true">→</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 z-0 industry-slide cursor-pointer select-none"
+             data-industry="education" role="button" tabindex="0" aria-label="Explore Education, Training &amp; EdTech">
+          <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" alt="Teacher and students in a classroom" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay" loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#07080C] via-[#07080C]/60 to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-[#07080C]/90 via-[#07080C]/40 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-8 md:p-14 w-full md:w-2/3">
+            <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Learner Operations &amp; Knowledge Delivery</p>
+            <h3 class="text-4xl md:text-5xl font-bold text-white mb-4">Education, Training &amp; EdTech</h3>
+            <p class="text-gray-300 text-lg font-light leading-relaxed">Automate admissions, learner communications, knowledge access, course operations, content workflows and administrative reporting.</p>
+            <span class="inline-flex items-center gap-2 mt-5 px-4 py-2 rounded-full bg-white/[0.06] border border-white/15 backdrop-blur-xl text-xs font-semibold text-white/90">
+              Explore industry workflow <span aria-hidden="true">→</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 z-0 industry-slide cursor-pointer select-none"
+             data-industry="automotive" role="button" tabindex="0" aria-label="Explore Automotive, Dealerships &amp; Mobility">
+          <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" alt="Automotive showroom and vehicle" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay" loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#07080C] via-[#07080C]/60 to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-[#07080C]/90 via-[#07080C]/40 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-8 md:p-14 w-full md:w-2/3">
+            <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Lead Conversion, Service &amp; Operations</p>
+            <h3 class="text-4xl md:text-5xl font-bold text-white mb-4">Automotive, Dealerships &amp; Mobility</h3>
+            <p class="text-gray-300 text-lg font-light leading-relaxed">Support vehicle sales, service enquiries, lead nurturing, customer communications, stock content and dealer operations with AI.</p>
+            <span class="inline-flex items-center gap-2 mt-5 px-4 py-2 rounded-full bg-white/[0.06] border border-white/15 backdrop-blur-xl text-xs font-semibold text-white/90">
+              Explore industry workflow <span aria-hidden="true">→</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 z-0 industry-slide cursor-pointer select-none"
+             data-industry="energy" role="button" tabindex="0" aria-label="Explore Energy, Utilities &amp; Renewables">
+          <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" alt="Solar and renewable energy infrastructure" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay" loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#07080C] via-[#07080C]/60 to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-[#07080C]/90 via-[#07080C]/40 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-8 md:p-14 w-full md:w-2/3">
+            <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Field Operations, Documents &amp; Asset Intelligence</p>
+            <h3 class="text-4xl md:text-5xl font-bold text-white mb-4">Energy, Utilities &amp; Renewables</h3>
+            <p class="text-gray-300 text-lg font-light leading-relaxed">Connect field data, maintenance information, customer documents, compliance workflows and operational reporting with AI.</p>
+            <span class="inline-flex items-center gap-2 mt-5 px-4 py-2 rounded-full bg-white/[0.06] border border-white/15 backdrop-blur-xl text-xs font-semibold text-white/90">
+              Explore industry workflow <span aria-hidden="true">→</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 z-0 industry-slide cursor-pointer select-none"
+             data-industry="creative" role="button" tabindex="0" aria-label="Explore Photography Studios, Media &amp; Creative Production">
+          <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" alt="Professional camera and photography equipment" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay" loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#07080C] via-[#07080C]/60 to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-[#07080C]/90 via-[#07080C]/40 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-8 md:p-14 w-full md:w-2/3">
+            <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Lead Flow, Content Operations &amp; Client Service</p>
+            <h3 class="text-4xl md:text-5xl font-bold text-white mb-4">Photography Studios, Media &amp; Creative Production</h3>
+            <p class="text-gray-300 text-lg font-light leading-relaxed">Turn enquiries, shoots, content production, file handling, client communication and discovery into one connected AI-assisted workflow.</p>
+            <span class="inline-flex items-center gap-2 mt-5 px-4 py-2 rounded-full bg-white/[0.06] border border-white/15 backdrop-blur-xl text-xs font-semibold text-white/90">
+              Explore industry workflow <span aria-hidden="true">→</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 z-0 industry-slide cursor-pointer select-none"
+             data-industry="insurance" role="button" tabindex="0" aria-label="Explore Insurance, Risk &amp; Professional Compliance">
+          <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" alt="Business documents and risk planning workspace" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay" loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#07080C] via-[#07080C]/60 to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-[#07080C]/90 via-[#07080C]/40 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-8 md:p-14 w-full md:w-2/3">
+            <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Document Intelligence &amp; Controlled Operations</p>
+            <h3 class="text-4xl md:text-5xl font-bold text-white mb-4">Insurance, Risk &amp; Professional Compliance</h3>
+            <p class="text-gray-300 text-lg font-light leading-relaxed">Automate policy-document handling, customer operations, risk data preparation, compliance evidence and repetitive administrative workflows.</p>
+            <span class="inline-flex items-center gap-2 mt-5 px-4 py-2 rounded-full bg-white/[0.06] border border-white/15 backdrop-blur-xl text-xs font-semibold text-white/90">
+              Explore industry workflow <span aria-hidden="true">→</span>
+            </span>
+          </div>
+        </div>
+        <button id="next-industry-slide" type="button" aria-label="Next industry" title="Next industry"
           class="absolute right-5 top-1/2 -translate-y-1/2 z-30 w-10 h-10 md:w-11 md:h-11 rounded-full bg-black/45 border border-white/30 text-white/90 backdrop-blur-sm flex items-center justify-center hover:bg-black/65 hover:border-white/50 transition-all duration-200 shadow-lg">
           <span aria-hidden="true" class="text-2xl md:text-3xl leading-none font-light ml-0.5">›</span>
         </button>
-
-        <!-- Slider Controls -->
-        <div class="absolute bottom-8 md:bottom-14 right-8 md:right-14 flex gap-2 z-20">
-          <button class="industry-dot h-2 w-8 rounded-full bg-salyant-gold transition-all duration-300" aria-label="Slide 1"></button>
-          <button class="industry-dot h-2 w-3 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300" aria-label="Slide 2"></button>
-          <button class="industry-dot h-2 w-3 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300" aria-label="Slide 3"></button>
-          <button class="industry-dot h-2 w-3 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300" aria-label="Slide 4"></button>
-          <button class="industry-dot h-2 w-3 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300" aria-label="Slide 5"></button>
-          <button class="industry-dot h-2 w-3 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300" aria-label="Slide 6"></button>
+        <div class="absolute bottom-8 md:bottom-10 right-8 md:right-14 z-20 max-w-[52%]">
+          <div id="industry-dots" class="flex gap-1.5 overflow-x-auto pb-1 justify-end" aria-label="Industry slides"></div>
         </div>
+        <div class="absolute top-7 right-7 z-20 px-3 py-1.5 rounded-full bg-black/35 border border-white/15 backdrop-blur-xl text-[11px] text-gray-200 font-semibold tracking-wider">
+          <span id="industry-current">01</span><span class="text-gray-500"> / </span><span id="industry-total">17</span>
+        </div>
+      </div>
+      <div id="industry-details" aria-live="polite">
 
+        <article class="industry-detail hidden mt-8" data-industry-detail="legal" aria-hidden="true">
+          <div class="glass-card rounded-3xl p-7 md:p-10 border-white/10">
+            <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Industry workflow architecture</p>
+                <h3 class="text-2xl md:text-3xl font-bold text-white mb-3">UK Law Firms &amp; Chambers</h3>
+                <p class="text-gray-300 font-light leading-relaxed max-w-4xl">Legal work combines high-value judgement with large volumes of documents, email, research, drafting and matter administration. AI is most useful when it removes repetitive retrieval and preparation work without replacing professional judgement.</p>
+              </div>
+              <button type="button" class="industry-detail-close shrink-0 self-start px-4 py-2 rounded-full bg-white/[0.04] border border-white/10 text-sm text-gray-300 hover:text-white hover:bg-white/[0.08] transition">Close</button>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-8 mt-8 pt-8 border-t border-white/10">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Relevant Salyant services</p>
+                <div class="flex flex-wrap gap-2"><a href="ai-feasibility-audit.html" class="rr-link">AI Feasibility &amp; Workflow Audit <span aria-hidden="true">→</span></a><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="service-seo-aeo-geo-automation.html" class="rr-link">Automated SEO/AEO/GEO Growth Engine <span aria-hidden="true">→</span></a><a href="service-ai-sdr-agency.html" class="rr-link">AI Sales &amp; SDR Automation <span aria-hidden="true">→</span></a></div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mt-8 mb-4">Automation opportunities</p>
+                <ul class="list-disc list-inside space-y-2 text-gray-300 font-light leading-relaxed"><li>Matter and precedent knowledge search with cited retrieval</li><li>Contract intake, clause extraction and review queues</li><li>Client onboarding, conflict-check preparation and document routing</li><li>Marketing, referral and BD research with controlled approval</li></ul>
+              </div>
+              <div class="p-6 rounded-2xl bg-white/[0.025] border border-white/10">
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Example transformation</p>
+                <p class="text-gray-300 font-light leading-relaxed">A practice can connect intake forms, email, document storage and its knowledge base so new matters are classified, documents are extracted, internal research packs are assembled and follow-up tasks are routed to the right team. Lawyers remain the approval layer for advice and final outputs.</p>
+                <div class="mt-6 pt-5 border-t border-white/10">
+                  <p class="text-sm text-gray-400 font-light">A practical starting point is to map the process, identify the data boundaries and approval points, then automate the repeatable work around the human decision layer.</p>
+                  <a href="#contact" class="btn-liquid-gold px-5 py-2.5 text-sm font-semibold mt-5">Discuss this industry</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="industry-detail hidden mt-8" data-industry-detail="marketing" aria-hidden="true">
+          <div class="glass-card rounded-3xl p-7 md:p-10 border-white/10">
+            <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Industry workflow architecture</p>
+                <h3 class="text-2xl md:text-3xl font-bold text-white mb-3">Marketing, Advertising &amp; Creative Agencies</h3>
+                <p class="text-gray-300 font-light leading-relaxed max-w-4xl">Agencies operate across sales, account management, creative production, approvals and reporting. AI can orchestrate those handoffs, reduce repetitive coordination and help teams spend more time on strategy and creative judgement.</p>
+              </div>
+              <button type="button" class="industry-detail-close shrink-0 self-start px-4 py-2 rounded-full bg-white/[0.04] border border-white/10 text-sm text-gray-300 hover:text-white hover:bg-white/[0.08] transition">Close</button>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-8 mt-8 pt-8 border-t border-white/10">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Relevant Salyant services</p>
+                <div class="flex flex-wrap gap-2"><a href="service-ai-sdr-agency.html" class="rr-link">AI Sales &amp; SDR Automation <span aria-hidden="true">→</span></a><a href="service-seo-aeo-geo-automation.html" class="rr-link">Automated SEO/AEO/GEO Growth Engine <span aria-hidden="true">→</span></a><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="ai-feasibility-audit.html" class="rr-link">AI Feasibility &amp; Workflow Audit <span aria-hidden="true">→</span></a></div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mt-8 mb-4">Automation opportunities</p>
+                <ul class="list-disc list-inside space-y-2 text-gray-300 font-light leading-relaxed"><li>Prospect research, account enrichment and personalised outbound preparation</li><li>Brief-to-content workflows with approval gates and brand controls</li><li>Campaign reporting, anomaly detection and client-ready summaries</li><li>Lead routing, meeting preparation and CRM updates</li></ul>
+              </div>
+              <div class="p-6 rounded-2xl bg-white/[0.025] border border-white/10">
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Example transformation</p>
+                <p class="text-gray-300 font-light leading-relaxed">An agency can connect CRM, inbox, project management and analytics so a new opportunity is researched automatically, a first-pass account brief is prepared, campaign data is summarised and next actions are created for the account team. Human reviewers still control client-facing material.</p>
+                <div class="mt-6 pt-5 border-t border-white/10">
+                  <p class="text-sm text-gray-400 font-light">A practical starting point is to map the process, identify the data boundaries and approval points, then automate the repeatable work around the human decision layer.</p>
+                  <a href="#contact" class="btn-liquid-gold px-5 py-2.5 text-sm font-semibold mt-5">Discuss this industry</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="industry-detail hidden mt-8" data-industry-detail="recruitment" aria-hidden="true">
+          <div class="glass-card rounded-3xl p-7 md:p-10 border-white/10">
+            <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Industry workflow architecture</p>
+                <h3 class="text-2xl md:text-3xl font-bold text-white mb-3">Recruitment, Staffing &amp; HR</h3>
+                <p class="text-gray-300 font-light leading-relaxed max-w-4xl">Recruiters and HR teams spend time moving information between CVs, job descriptions, email, ATS records, calendars and hiring managers. AI can support those workflows while leaving final hiring decisions with people.</p>
+              </div>
+              <button type="button" class="industry-detail-close shrink-0 self-start px-4 py-2 rounded-full bg-white/[0.04] border border-white/10 text-sm text-gray-300 hover:text-white hover:bg-white/[0.08] transition">Close</button>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-8 mt-8 pt-8 border-t border-white/10">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Relevant Salyant services</p>
+                <div class="flex flex-wrap gap-2"><a href="service-ai-sdr-agency.html" class="rr-link">AI Sales &amp; SDR Automation <span aria-hidden="true">→</span></a><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="service-erp-crm-integration-services.html" class="rr-link">ERP-CRM Integration Services <span aria-hidden="true">→</span></a><a href="ai-feasibility-audit.html" class="rr-link">AI Feasibility &amp; Workflow Audit <span aria-hidden="true">→</span></a></div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mt-8 mb-4">Automation opportunities</p>
+                <ul class="list-disc list-inside space-y-2 text-gray-300 font-light leading-relaxed"><li>CV and job-description extraction, matching and shortlist preparation</li><li>Candidate outreach drafts, response triage and follow-up queues</li><li>Interview scheduling and interview-pack preparation</li><li>ATS/CRM hygiene, reporting and client-update automation</li></ul>
+              </div>
+              <div class="p-6 rounded-2xl bg-white/[0.025] border border-white/10">
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Example transformation</p>
+                <p class="text-gray-300 font-light leading-relaxed">A staffing firm can route a new vacancy through an AI workflow that extracts role requirements, searches permitted candidate sources, prepares a shortlist for consultant review, drafts outreach and updates the ATS after approved actions. The recruiter remains responsible for selection and communication.</p>
+                <div class="mt-6 pt-5 border-t border-white/10">
+                  <p class="text-sm text-gray-400 font-light">A practical starting point is to map the process, identify the data boundaries and approval points, then automate the repeatable work around the human decision layer.</p>
+                  <a href="#contact" class="btn-liquid-gold px-5 py-2.5 text-sm font-semibold mt-5">Discuss this industry</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="industry-detail hidden mt-8" data-industry-detail="finance" aria-hidden="true">
+          <div class="glass-card rounded-3xl p-7 md:p-10 border-white/10">
+            <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Industry workflow architecture</p>
+                <h3 class="text-2xl md:text-3xl font-bold text-white mb-3">Finance, Accounting &amp; FinTech</h3>
+                <p class="text-gray-300 font-light leading-relaxed max-w-4xl">Finance teams combine structured systems with invoices, statements, emails, reconciliations and management reporting. AI is valuable where it can interpret documents, surface exceptions and prepare work for controlled approval.</p>
+              </div>
+              <button type="button" class="industry-detail-close shrink-0 self-start px-4 py-2 rounded-full bg-white/[0.04] border border-white/10 text-sm text-gray-300 hover:text-white hover:bg-white/[0.08] transition">Close</button>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-8 mt-8 pt-8 border-t border-white/10">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Relevant Salyant services</p>
+                <div class="flex flex-wrap gap-2"><a href="service-ai-compliance-automation-financial-services-uk.html" class="rr-link">AI Compliance Automation <span aria-hidden="true">→</span></a><a href="service-fca-compliance-automation-financial-services-uk.html" class="rr-link">FCA Compliance Automation <span aria-hidden="true">→</span></a><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="service-legacy-system-ai-integration-uk.html" class="rr-link">Legacy System AI Integration <span aria-hidden="true">→</span></a></div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mt-8 mb-4">Automation opportunities</p>
+                <ul class="list-disc list-inside space-y-2 text-gray-300 font-light leading-relaxed"><li>Invoice capture, coding suggestions and exception routing</li><li>Receivables follow-up preparation and customer-context summaries</li><li>Management-report commentary and variance explanations</li><li>Regulatory change monitoring, evidence preparation and audit trails</li></ul>
+              </div>
+              <div class="p-6 rounded-2xl bg-white/[0.025] border border-white/10">
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Example transformation</p>
+                <p class="text-gray-300 font-light leading-relaxed">A finance function can link its ERP, shared inbox and document store so invoices are classified, key fields are extracted, exceptions are routed and approved transactions are written back to the system. Month-end packs can then be assembled from controlled source data rather than manual collation.</p>
+                <div class="mt-6 pt-5 border-t border-white/10">
+                  <p class="text-sm text-gray-400 font-light">A practical starting point is to map the process, identify the data boundaries and approval points, then automate the repeatable work around the human decision layer.</p>
+                  <a href="#contact" class="btn-liquid-gold px-5 py-2.5 text-sm font-semibold mt-5">Discuss this industry</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="industry-detail hidden mt-8" data-industry-detail="logistics" aria-hidden="true">
+          <div class="glass-card rounded-3xl p-7 md:p-10 border-white/10">
+            <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Industry workflow architecture</p>
+                <h3 class="text-2xl md:text-3xl font-bold text-white mb-3">Logistics, Transport &amp; Fleet</h3>
+                <p class="text-gray-300 font-light leading-relaxed max-w-4xl">Transport operations generate repetitive emails, PODs, customs documents, manifests, booking requests, invoices and exception events. AI can interpret those inputs and route actions while operations teams retain control of commitments and dispatch decisions.</p>
+              </div>
+              <button type="button" class="industry-detail-close shrink-0 self-start px-4 py-2 rounded-full bg-white/[0.04] border border-white/10 text-sm text-gray-300 hover:text-white hover:bg-white/[0.08] transition">Close</button>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-8 mt-8 pt-8 border-t border-white/10">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Relevant Salyant services</p>
+                <div class="flex flex-wrap gap-2"><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="service-legacy-system-ai-integration-uk.html" class="rr-link">Legacy System AI Integration <span aria-hidden="true">→</span></a><a href="service-erp-crm-integration-services.html" class="rr-link">ERP-CRM Integration Services <span aria-hidden="true">→</span></a><a href="service-ai-sdr-agency.html" class="rr-link">AI Sales &amp; SDR Automation <span aria-hidden="true">→</span></a></div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mt-8 mb-4">Automation opportunities</p>
+                <ul class="list-disc list-inside space-y-2 text-gray-300 font-light leading-relaxed"><li>Shipment and proof-of-delivery document processing</li><li>Exception detection, escalation and customer-update drafts</li><li>Load, route and booking-information reconciliation</li><li>Fleet sales, account research and customer-follow-up workflows</li></ul>
+              </div>
+              <div class="p-6 rounded-2xl bg-white/[0.025] border border-white/10">
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Example transformation</p>
+                <p class="text-gray-300 font-light leading-relaxed">A logistics operator can ingest booking emails, manifests and delivery documents into an AI workflow that extracts shipment information, detects missing or conflicting data, prepares customer updates and creates tasks for operations. Approved changes can flow back into the TMS or CRM.</p>
+                <div class="mt-6 pt-5 border-t border-white/10">
+                  <p class="text-sm text-gray-400 font-light">A practical starting point is to map the process, identify the data boundaries and approval points, then automate the repeatable work around the human decision layer.</p>
+                  <a href="#contact" class="btn-liquid-gold px-5 py-2.5 text-sm font-semibold mt-5">Discuss this industry</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="industry-detail hidden mt-8" data-industry-detail="industrial" aria-hidden="true">
+          <div class="glass-card rounded-3xl p-7 md:p-10 border-white/10">
+            <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Industry workflow architecture</p>
+                <h3 class="text-2xl md:text-3xl font-bold text-white mb-3">Manufacturing, Engineering &amp; Industrial</h3>
+                <p class="text-gray-300 font-light leading-relaxed max-w-4xl">Manufacturing combines physical operations with a digital layer of ERP, MES, historian, quality, maintenance and procurement data. AI can interpret information crossing those systems and surface the next action for people and machines.</p>
+              </div>
+              <button type="button" class="industry-detail-close shrink-0 self-start px-4 py-2 rounded-full bg-white/[0.04] border border-white/10 text-sm text-gray-300 hover:text-white hover:bg-white/[0.08] transition">Close</button>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-8 mt-8 pt-8 border-t border-white/10">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Relevant Salyant services</p>
+                <div class="flex flex-wrap gap-2"><a href="service-manufacturing-ai-automation-services.html" class="rr-link">Manufacturing AI Automation Services <span aria-hidden="true">→</span></a><a href="service-legacy-system-ai-integration-uk.html" class="rr-link">Legacy System AI Integration <span aria-hidden="true">→</span></a><a href="service-ai-integration-sap-dynamics-365-uk.html" class="rr-link">AI Integration for SAP &amp; Dynamics 365 <span aria-hidden="true">→</span></a><a href="ai-feasibility-audit.html" class="rr-link">AI Feasibility &amp; Workflow Audit <span aria-hidden="true">→</span></a></div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mt-8 mb-4">Automation opportunities</p>
+                <ul class="list-disc list-inside space-y-2 text-gray-300 font-light leading-relaxed"><li>Quality inspection and non-conformance triage</li><li>Maintenance work-order prioritisation and technician knowledge retrieval</li><li>Procurement, supplier-document and production-report workflows</li><li>Safety observations, incident preparation and operational reporting</li></ul>
+              </div>
+              <div class="p-6 rounded-2xl bg-white/[0.025] border border-white/10">
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Example transformation</p>
+                <p class="text-gray-300 font-light leading-relaxed">An industrial site can connect production events, maintenance records and equipment documentation so an exception creates a structured work package, pulls the relevant history and manuals and prepares the next recommended action for an engineer. Existing controls remain authoritative.</p>
+                <div class="mt-6 pt-5 border-t border-white/10">
+                  <p class="text-sm text-gray-400 font-light">A practical starting point is to map the process, identify the data boundaries and approval points, then automate the repeatable work around the human decision layer.</p>
+                  <a href="#contact" class="btn-liquid-gold px-5 py-2.5 text-sm font-semibold mt-5">Discuss this industry</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="industry-detail hidden mt-8" data-industry-detail="hospitality" aria-hidden="true">
+          <div class="glass-card rounded-3xl p-7 md:p-10 border-white/10">
+            <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Industry workflow architecture</p>
+                <h3 class="text-2xl md:text-3xl font-bold text-white mb-3">Hotels, Hospitality &amp; Serviced Accommodation</h3>
+                <p class="text-gray-300 font-light leading-relaxed max-w-4xl">Hotels and accommodation businesses handle repetitive guest questions, booking changes, amenity requests, reviews, supplier communications and internal handovers. AI can provide a faster front door while connecting the work behind it.</p>
+              </div>
+              <button type="button" class="industry-detail-close shrink-0 self-start px-4 py-2 rounded-full bg-white/[0.04] border border-white/10 text-sm text-gray-300 hover:text-white hover:bg-white/[0.08] transition">Close</button>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-8 mt-8 pt-8 border-t border-white/10">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Relevant Salyant services</p>
+                <div class="flex flex-wrap gap-2"><a href="service-seo-aeo-geo-automation.html" class="rr-link">Automated SEO/AEO/GEO Growth Engine <span aria-hidden="true">→</span></a><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="service-ai-sdr-agency.html" class="rr-link">AI Sales &amp; SDR Automation <span aria-hidden="true">→</span></a><a href="service-erp-crm-integration-services.html" class="rr-link">ERP-CRM Integration Services <span aria-hidden="true">→</span></a></div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mt-8 mb-4">Automation opportunities</p>
+                <ul class="list-disc list-inside space-y-2 text-gray-300 font-light leading-relaxed"><li>AI concierge and guest enquiry triage across web and messaging</li><li>Booking-change, cancellation and request routing</li><li>Review analysis, response preparation and service-recovery workflows</li><li>Corporate account outreach, event lead research and follow-up</li></ul>
+              </div>
+              <div class="p-6 rounded-2xl bg-white/[0.025] border border-white/10">
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Example transformation</p>
+                <p class="text-gray-300 font-light leading-relaxed">A hotel can connect web enquiries, booking data, inbox and CRM so routine guest questions receive knowledge-based assistance, complex requests create staff tasks and corporate/event leads are researched and followed up in a controlled sequence.</p>
+                <div class="mt-6 pt-5 border-t border-white/10">
+                  <p class="text-sm text-gray-400 font-light">A practical starting point is to map the process, identify the data boundaries and approval points, then automate the repeatable work around the human decision layer.</p>
+                  <a href="#contact" class="btn-liquid-gold px-5 py-2.5 text-sm font-semibold mt-5">Discuss this industry</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="industry-detail hidden mt-8" data-industry-detail="food" aria-hidden="true">
+          <div class="glass-card rounded-3xl p-7 md:p-10 border-white/10">
+            <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Industry workflow architecture</p>
+                <h3 class="text-2xl md:text-3xl font-bold text-white mb-3">Food &amp; Beverage, Restaurants &amp; Catering</h3>
+                <p class="text-gray-300 font-light leading-relaxed max-w-4xl">Restaurants and food businesses have a continuous stream of customer questions, bookings, reviews, supplier documents, menu information and event or catering enquiries. AI can handle repetitive coordination around those interactions.</p>
+              </div>
+              <button type="button" class="industry-detail-close shrink-0 self-start px-4 py-2 rounded-full bg-white/[0.04] border border-white/10 text-sm text-gray-300 hover:text-white hover:bg-white/[0.08] transition">Close</button>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-8 mt-8 pt-8 border-t border-white/10">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Relevant Salyant services</p>
+                <div class="flex flex-wrap gap-2"><a href="service-seo-aeo-geo-automation.html" class="rr-link">Automated SEO/AEO/GEO Growth Engine <span aria-hidden="true">→</span></a><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="service-ai-sdr-agency.html" class="rr-link">AI Sales &amp; SDR Automation <span aria-hidden="true">→</span></a><a href="ai-feasibility-audit.html" class="rr-link">AI Feasibility &amp; Workflow Audit <span aria-hidden="true">→</span></a></div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mt-8 mb-4">Automation opportunities</p>
+                <ul class="list-disc list-inside space-y-2 text-gray-300 font-light leading-relaxed"><li>Reservation and catering enquiry qualification</li><li>Review monitoring and response preparation</li><li>Menu, location and offer content workflows for search and answer engines</li><li>Supplier-document intake, admin and management reporting</li></ul>
+              </div>
+              <div class="p-6 rounded-2xl bg-white/[0.025] border border-white/10">
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Example transformation</p>
+                <p class="text-gray-300 font-light leading-relaxed">A restaurant group can feed reservation enquiries, website forms and reviews into one workflow that answers routine questions, identifies catering opportunities, routes special requirements and prepares local content for approval.</p>
+                <div class="mt-6 pt-5 border-t border-white/10">
+                  <p class="text-sm text-gray-400 font-light">A practical starting point is to map the process, identify the data boundaries and approval points, then automate the repeatable work around the human decision layer.</p>
+                  <a href="#contact" class="btn-liquid-gold px-5 py-2.5 text-sm font-semibold mt-5">Discuss this industry</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="industry-detail hidden mt-8" data-industry-detail="property" aria-hidden="true">
+          <div class="glass-card rounded-3xl p-7 md:p-10 border-white/10">
+            <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Industry workflow architecture</p>
+                <h3 class="text-2xl md:text-3xl font-bold text-white mb-3">Property, Real Estate &amp; Facilities</h3>
+                <p class="text-gray-300 font-light leading-relaxed max-w-4xl">Property businesses coordinate listings, enquiries, viewings, contracts, maintenance requests, supplier documents and portfolio data. AI can reduce the administrative load between these systems and surface the next action.</p>
+              </div>
+              <button type="button" class="industry-detail-close shrink-0 self-start px-4 py-2 rounded-full bg-white/[0.04] border border-white/10 text-sm text-gray-300 hover:text-white hover:bg-white/[0.08] transition">Close</button>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-8 mt-8 pt-8 border-t border-white/10">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Relevant Salyant services</p>
+                <div class="flex flex-wrap gap-2"><a href="service-ai-sdr-agency.html" class="rr-link">AI Sales &amp; SDR Automation <span aria-hidden="true">→</span></a><a href="service-seo-aeo-geo-automation.html" class="rr-link">Automated SEO/AEO/GEO Growth Engine <span aria-hidden="true">→</span></a><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="service-legacy-system-ai-integration-uk.html" class="rr-link">Legacy System AI Integration <span aria-hidden="true">→</span></a></div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mt-8 mb-4">Automation opportunities</p>
+                <ul class="list-disc list-inside space-y-2 text-gray-300 font-light leading-relaxed"><li>Lead qualification, viewing preparation and follow-up</li><li>Listing content creation, structured property data and search optimisation</li><li>Tenant enquiry triage, maintenance routing and supplier coordination</li><li>Lease, compliance and portfolio-document extraction</li></ul>
+              </div>
+              <div class="p-6 rounded-2xl bg-white/[0.025] border border-white/10">
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Example transformation</p>
+                <p class="text-gray-300 font-light leading-relaxed">A property manager can connect enquiry forms, inboxes, CRM records and maintenance systems so requests are classified, property context is attached automatically and approved communications are sent without repeated data entry.</p>
+                <div class="mt-6 pt-5 border-t border-white/10">
+                  <p class="text-sm text-gray-400 font-light">A practical starting point is to map the process, identify the data boundaries and approval points, then automate the repeatable work around the human decision layer.</p>
+                  <a href="#contact" class="btn-liquid-gold px-5 py-2.5 text-sm font-semibold mt-5">Discuss this industry</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="industry-detail hidden mt-8" data-industry-detail="construction" aria-hidden="true">
+          <div class="glass-card rounded-3xl p-7 md:p-10 border-white/10">
+            <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Industry workflow architecture</p>
+                <h3 class="text-2xl md:text-3xl font-bold text-white mb-3">Construction, Architecture &amp; Engineering</h3>
+                <p class="text-gray-300 font-light leading-relaxed max-w-4xl">Construction and engineering businesses deal with fragmented project documentation, site updates, subcontractor information, procurement records and client reporting. AI can turn those documents into structured, searchable project knowledge and routed actions.</p>
+              </div>
+              <button type="button" class="industry-detail-close shrink-0 self-start px-4 py-2 rounded-full bg-white/[0.04] border border-white/10 text-sm text-gray-300 hover:text-white hover:bg-white/[0.08] transition">Close</button>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-8 mt-8 pt-8 border-t border-white/10">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Relevant Salyant services</p>
+                <div class="flex flex-wrap gap-2"><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="service-legacy-system-ai-integration-uk.html" class="rr-link">Legacy System AI Integration <span aria-hidden="true">→</span></a><a href="service-ai-sdr-agency.html" class="rr-link">AI Sales &amp; SDR Automation <span aria-hidden="true">→</span></a><a href="ai-feasibility-audit.html" class="rr-link">AI Feasibility &amp; Workflow Audit <span aria-hidden="true">→</span></a></div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mt-8 mb-4">Automation opportunities</p>
+                <ul class="list-disc list-inside space-y-2 text-gray-300 font-light leading-relaxed"><li>Tender and bid-document extraction and summarisation</li><li>RFI, submittal and change-request triage</li><li>Site-report consolidation and issue escalation</li><li>Supplier and subcontractor onboarding workflows</li></ul>
+              </div>
+              <div class="p-6 rounded-2xl bg-white/[0.025] border border-white/10">
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Example transformation</p>
+                <p class="text-gray-300 font-light leading-relaxed">A project team can route incoming RFIs, reports and supplier documents through an AI workflow that extracts project identifiers, summarises the issue, links prior context and prepares the next action for the project manager.</p>
+                <div class="mt-6 pt-5 border-t border-white/10">
+                  <p class="text-sm text-gray-400 font-light">A practical starting point is to map the process, identify the data boundaries and approval points, then automate the repeatable work around the human decision layer.</p>
+                  <a href="#contact" class="btn-liquid-gold px-5 py-2.5 text-sm font-semibold mt-5">Discuss this industry</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="industry-detail hidden mt-8" data-industry-detail="retail" aria-hidden="true">
+          <div class="glass-card rounded-3xl p-7 md:p-10 border-white/10">
+            <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Industry workflow architecture</p>
+                <h3 class="text-2xl md:text-3xl font-bold text-white mb-3">Retail &amp; E-commerce</h3>
+                <p class="text-gray-300 font-light leading-relaxed max-w-4xl">Retail businesses manage large product catalogues, customer questions, reviews, orders, returns, promotions and supplier information. AI can help interpret that information and move routine cases through the right process.</p>
+              </div>
+              <button type="button" class="industry-detail-close shrink-0 self-start px-4 py-2 rounded-full bg-white/[0.04] border border-white/10 text-sm text-gray-300 hover:text-white hover:bg-white/[0.08] transition">Close</button>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-8 mt-8 pt-8 border-t border-white/10">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Relevant Salyant services</p>
+                <div class="flex flex-wrap gap-2"><a href="service-seo-aeo-geo-automation.html" class="rr-link">Automated SEO/AEO/GEO Growth Engine <span aria-hidden="true">→</span></a><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="service-ai-sdr-agency.html" class="rr-link">AI Sales &amp; SDR Automation <span aria-hidden="true">→</span></a><a href="service-erp-crm-integration-services.html" class="rr-link">ERP-CRM Integration Services <span aria-hidden="true">→</span></a></div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mt-8 mb-4">Automation opportunities</p>
+                <ul class="list-disc list-inside space-y-2 text-gray-300 font-light leading-relaxed"><li>Product data enrichment and catalogue-content workflows</li><li>Customer-service triage for delivery, returns and product questions</li><li>Review, competitor and market-signal monitoring</li><li>B2B sales prospecting and account follow-up</li></ul>
+              </div>
+              <div class="p-6 rounded-2xl bg-white/[0.025] border border-white/10">
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Example transformation</p>
+                <p class="text-gray-300 font-light leading-relaxed">An e-commerce team can connect product feeds, helpdesk, CRM and website content so incoming product questions are answered from approved data, review themes are surfaced and content gaps are queued for approval.</p>
+                <div class="mt-6 pt-5 border-t border-white/10">
+                  <p class="text-sm text-gray-400 font-light">A practical starting point is to map the process, identify the data boundaries and approval points, then automate the repeatable work around the human decision layer.</p>
+                  <a href="#contact" class="btn-liquid-gold px-5 py-2.5 text-sm font-semibold mt-5">Discuss this industry</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="industry-detail hidden mt-8" data-industry-detail="healthcare" aria-hidden="true">
+          <div class="glass-card rounded-3xl p-7 md:p-10 border-white/10">
+            <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Industry workflow architecture</p>
+                <h3 class="text-2xl md:text-3xl font-bold text-white mb-3">Healthcare, Clinics &amp; Life Sciences</h3>
+                <p class="text-gray-300 font-light leading-relaxed max-w-4xl">Healthcare and life-science organisations contain sensitive data and highly controlled workflows. AI should therefore be deployed around clearly bounded administrative and knowledge tasks with strong access controls, auditability and human oversight.</p>
+              </div>
+              <button type="button" class="industry-detail-close shrink-0 self-start px-4 py-2 rounded-full bg-white/[0.04] border border-white/10 text-sm text-gray-300 hover:text-white hover:bg-white/[0.08] transition">Close</button>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-8 mt-8 pt-8 border-t border-white/10">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Relevant Salyant services</p>
+                <div class="flex flex-wrap gap-2"><a href="ai-feasibility-audit.html" class="rr-link">AI Feasibility &amp; Workflow Audit <span aria-hidden="true">→</span></a><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="service-legacy-system-ai-integration-uk.html" class="rr-link">Legacy System AI Integration <span aria-hidden="true">→</span></a><a href="service-ai-audit-discovery-service.html" class="rr-link">AI Audit &amp; Discovery Service <span aria-hidden="true">→</span></a></div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mt-8 mb-4">Automation opportunities</p>
+                <ul class="list-disc list-inside space-y-2 text-gray-300 font-light leading-relaxed"><li>Referral and document triage for administrative queues</li><li>Knowledge retrieval over approved policies and operational documentation</li><li>Appointment, form and records workflows</li><li>Operational reporting and exception routing</li></ul>
+              </div>
+              <div class="p-6 rounded-2xl bg-white/[0.025] border border-white/10">
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Example transformation</p>
+                <p class="text-gray-300 font-light leading-relaxed">A clinic can use an AI workflow to classify incoming administrative documents, extract required fields, identify missing information and route the case to the right queue. Clinical judgement remains outside the automation boundary unless separately governed.</p>
+                <div class="mt-6 pt-5 border-t border-white/10">
+                  <p class="text-sm text-gray-400 font-light">A practical starting point is to map the process, identify the data boundaries and approval points, then automate the repeatable work around the human decision layer.</p>
+                  <a href="#contact" class="btn-liquid-gold px-5 py-2.5 text-sm font-semibold mt-5">Discuss this industry</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="industry-detail hidden mt-8" data-industry-detail="education" aria-hidden="true">
+          <div class="glass-card rounded-3xl p-7 md:p-10 border-white/10">
+            <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Industry workflow architecture</p>
+                <h3 class="text-2xl md:text-3xl font-bold text-white mb-3">Education, Training &amp; EdTech</h3>
+                <p class="text-gray-300 font-light leading-relaxed max-w-4xl">Schools, universities and training providers manage enquiries, applications, schedules, documents, learner communications and large knowledge libraries. AI can reduce repetitive coordination while keeping teaching and assessment decisions with educators.</p>
+              </div>
+              <button type="button" class="industry-detail-close shrink-0 self-start px-4 py-2 rounded-full bg-white/[0.04] border border-white/10 text-sm text-gray-300 hover:text-white hover:bg-white/[0.08] transition">Close</button>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-8 mt-8 pt-8 border-t border-white/10">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Relevant Salyant services</p>
+                <div class="flex flex-wrap gap-2"><a href="service-enterprise-ai-business-training-uk.html" class="rr-link">Enterprise AI Business Training <span aria-hidden="true">→</span></a><a href="service-seo-aeo-geo-automation.html" class="rr-link">Automated SEO/AEO/GEO Growth Engine <span aria-hidden="true">→</span></a><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="ai-feasibility-audit.html" class="rr-link">AI Feasibility &amp; Workflow Audit <span aria-hidden="true">→</span></a></div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mt-8 mb-4">Automation opportunities</p>
+                <ul class="list-disc list-inside space-y-2 text-gray-300 font-light leading-relaxed"><li>Admissions and enquiry triage</li><li>Course and resource knowledge assistants</li><li>Learner communication and scheduling workflows</li><li>Content repurposing and internal reporting</li></ul>
+              </div>
+              <div class="p-6 rounded-2xl bg-white/[0.025] border border-white/10">
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Example transformation</p>
+                <p class="text-gray-300 font-light leading-relaxed">A training provider can connect enquiry forms, CRM, course information and calendars so prospects receive approved answers, suitable courses are identified, meetings are scheduled and the CRM is updated automatically.</p>
+                <div class="mt-6 pt-5 border-t border-white/10">
+                  <p class="text-sm text-gray-400 font-light">A practical starting point is to map the process, identify the data boundaries and approval points, then automate the repeatable work around the human decision layer.</p>
+                  <a href="#contact" class="btn-liquid-gold px-5 py-2.5 text-sm font-semibold mt-5">Discuss this industry</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="industry-detail hidden mt-8" data-industry-detail="automotive" aria-hidden="true">
+          <div class="glass-card rounded-3xl p-7 md:p-10 border-white/10">
+            <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Industry workflow architecture</p>
+                <h3 class="text-2xl md:text-3xl font-bold text-white mb-3">Automotive, Dealerships &amp; Mobility</h3>
+                <p class="text-gray-300 font-light leading-relaxed max-w-4xl">Automotive businesses operate across enquiry generation, vehicle stock, workshop bookings and aftersales communication. AI can connect those workflows and improve response consistency without removing human control.</p>
+              </div>
+              <button type="button" class="industry-detail-close shrink-0 self-start px-4 py-2 rounded-full bg-white/[0.04] border border-white/10 text-sm text-gray-300 hover:text-white hover:bg-white/[0.08] transition">Close</button>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-8 mt-8 pt-8 border-t border-white/10">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Relevant Salyant services</p>
+                <div class="flex flex-wrap gap-2"><a href="service-ai-sdr-agency.html" class="rr-link">AI Sales &amp; SDR Automation <span aria-hidden="true">→</span></a><a href="service-seo-aeo-geo-automation.html" class="rr-link">Automated SEO/AEO/GEO Growth Engine <span aria-hidden="true">→</span></a><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="service-erp-crm-integration-services.html" class="rr-link">ERP-CRM Integration Services <span aria-hidden="true">→</span></a></div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mt-8 mb-4">Automation opportunities</p>
+                <ul class="list-disc list-inside space-y-2 text-gray-300 font-light leading-relaxed"><li>Vehicle enquiry qualification and follow-up</li><li>Stock-data enrichment and listing-content workflows</li><li>Service and workshop booking administration</li><li>Fleet/B2B account research and outreach</li></ul>
+              </div>
+              <div class="p-6 rounded-2xl bg-white/[0.025] border border-white/10">
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Example transformation</p>
+                <p class="text-gray-300 font-light leading-relaxed">A dealer can connect website leads, stock data, CRM and workshop calendars so enquiries are matched to the right vehicle or service pathway, follow-up is prepared automatically and the customer record stays current.</p>
+                <div class="mt-6 pt-5 border-t border-white/10">
+                  <p class="text-sm text-gray-400 font-light">A practical starting point is to map the process, identify the data boundaries and approval points, then automate the repeatable work around the human decision layer.</p>
+                  <a href="#contact" class="btn-liquid-gold px-5 py-2.5 text-sm font-semibold mt-5">Discuss this industry</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="industry-detail hidden mt-8" data-industry-detail="energy" aria-hidden="true">
+          <div class="glass-card rounded-3xl p-7 md:p-10 border-white/10">
+            <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Industry workflow architecture</p>
+                <h3 class="text-2xl md:text-3xl font-bold text-white mb-3">Energy, Utilities &amp; Renewables</h3>
+                <p class="text-gray-300 font-light leading-relaxed max-w-4xl">Energy and utility businesses combine asset data, field work, customer service, regulatory obligations and large document estates. AI is well suited to bounded knowledge and coordination tasks that sit around those systems.</p>
+              </div>
+              <button type="button" class="industry-detail-close shrink-0 self-start px-4 py-2 rounded-full bg-white/[0.04] border border-white/10 text-sm text-gray-300 hover:text-white hover:bg-white/[0.08] transition">Close</button>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-8 mt-8 pt-8 border-t border-white/10">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Relevant Salyant services</p>
+                <div class="flex flex-wrap gap-2"><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="service-legacy-system-ai-integration-uk.html" class="rr-link">Legacy System AI Integration <span aria-hidden="true">→</span></a><a href="service-ai-audit-discovery-service.html" class="rr-link">AI Audit &amp; Discovery Service <span aria-hidden="true">→</span></a><a href="ai-feasibility-audit.html" class="rr-link">AI Feasibility &amp; Workflow Audit <span aria-hidden="true">→</span></a></div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mt-8 mb-4">Automation opportunities</p>
+                <ul class="list-disc list-inside space-y-2 text-gray-300 font-light leading-relaxed"><li>Work-order and field-document processing</li><li>Asset knowledge retrieval and maintenance preparation</li><li>Customer enquiry, billing-document and exception triage</li><li>Compliance evidence and operational reporting workflows</li></ul>
+              </div>
+              <div class="p-6 rounded-2xl bg-white/[0.025] border border-white/10">
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Example transformation</p>
+                <p class="text-gray-300 font-light leading-relaxed">An operator can connect field reports, asset records and maintenance documentation so a new issue automatically gathers the relevant history, checks for missing information and prepares a technician work package.</p>
+                <div class="mt-6 pt-5 border-t border-white/10">
+                  <p class="text-sm text-gray-400 font-light">A practical starting point is to map the process, identify the data boundaries and approval points, then automate the repeatable work around the human decision layer.</p>
+                  <a href="#contact" class="btn-liquid-gold px-5 py-2.5 text-sm font-semibold mt-5">Discuss this industry</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="industry-detail hidden mt-8" data-industry-detail="creative" aria-hidden="true">
+          <div class="glass-card rounded-3xl p-7 md:p-10 border-white/10">
+            <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Industry workflow architecture</p>
+                <h3 class="text-2xl md:text-3xl font-bold text-white mb-3">Photography Studios, Media &amp; Creative Production</h3>
+                <p class="text-gray-300 font-light leading-relaxed max-w-4xl">Photography studios and creative production businesses spend time on enquiries, quotations, scheduling, location planning, file organisation, delivery messages, marketing and client follow-up. AI can remove much of the coordination work surrounding the craft.</p>
+              </div>
+              <button type="button" class="industry-detail-close shrink-0 self-start px-4 py-2 rounded-full bg-white/[0.04] border border-white/10 text-sm text-gray-300 hover:text-white hover:bg-white/[0.08] transition">Close</button>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-8 mt-8 pt-8 border-t border-white/10">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Relevant Salyant services</p>
+                <div class="flex flex-wrap gap-2"><a href="service-seo-aeo-geo-automation.html" class="rr-link">Automated SEO/AEO/GEO Growth Engine <span aria-hidden="true">→</span></a><a href="service-ai-sdr-agency.html" class="rr-link">AI Sales &amp; SDR Automation <span aria-hidden="true">→</span></a><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="ai-feasibility-audit.html" class="rr-link">AI Feasibility &amp; Workflow Audit <span aria-hidden="true">→</span></a></div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mt-8 mb-4">Automation opportunities</p>
+                <ul class="list-disc list-inside space-y-2 text-gray-300 font-light leading-relaxed"><li>Enquiry qualification, quote preparation and follow-up</li><li>Shoot planning, scheduling and client-brief extraction</li><li>Image-library tagging, metadata and delivery workflows</li><li>Portfolio content, local SEO/AEO/GEO and referral outreach</li></ul>
+              </div>
+              <div class="p-6 rounded-2xl bg-white/[0.025] border border-white/10">
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Example transformation</p>
+                <p class="text-gray-300 font-light leading-relaxed">A studio can connect enquiry forms, CRM, calendar and delivery systems so a new prospect is classified, a structured brief is prepared, availability is checked and a quote workflow is started. After approval, the same system can create project tasks and client updates.</p>
+                <div class="mt-6 pt-5 border-t border-white/10">
+                  <p class="text-sm text-gray-400 font-light">A practical starting point is to map the process, identify the data boundaries and approval points, then automate the repeatable work around the human decision layer.</p>
+                  <a href="#contact" class="btn-liquid-gold px-5 py-2.5 text-sm font-semibold mt-5">Discuss this industry</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="industry-detail hidden mt-8" data-industry-detail="insurance" aria-hidden="true">
+          <div class="glass-card rounded-3xl p-7 md:p-10 border-white/10">
+            <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Industry workflow architecture</p>
+                <h3 class="text-2xl md:text-3xl font-bold text-white mb-3">Insurance, Risk &amp; Professional Compliance</h3>
+                <p class="text-gray-300 font-light leading-relaxed max-w-4xl">Insurance and risk functions combine policy documents, claims or case information, regulatory material, customer communication and internal controls. AI can help interpret and route that information while keeping high-impact decisions with qualified professionals.</p>
+              </div>
+              <button type="button" class="industry-detail-close shrink-0 self-start px-4 py-2 rounded-full bg-white/[0.04] border border-white/10 text-sm text-gray-300 hover:text-white hover:bg-white/[0.08] transition">Close</button>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-8 mt-8 pt-8 border-t border-white/10">
+              <div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Relevant Salyant services</p>
+                <div class="flex flex-wrap gap-2"><a href="ai-feasibility-audit.html" class="rr-link">AI Feasibility &amp; Workflow Audit <span aria-hidden="true">→</span></a><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="service-ai-compliance-automation-financial-services-uk.html" class="rr-link">AI Compliance Automation <span aria-hidden="true">→</span></a><a href="service-legacy-system-ai-integration-uk.html" class="rr-link">Legacy System AI Integration <span aria-hidden="true">→</span></a></div>
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mt-8 mb-4">Automation opportunities</p>
+                <ul class="list-disc list-inside space-y-2 text-gray-300 font-light leading-relaxed"><li>Document intake, classification and extraction</li><li>Compliance evidence and obligation tracking</li><li>Customer-service triage and correspondence preparation</li><li>Case summaries and exception routing</li></ul>
+              </div>
+              <div class="p-6 rounded-2xl bg-white/[0.025] border border-white/10">
+                <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Example transformation</p>
+                <p class="text-gray-300 font-light leading-relaxed">A risk team can connect approved policy sources, inboxes and case systems so new documents are classified, key information is extracted, exceptions are surfaced and review packs are assembled for human sign-off.</p>
+                <div class="mt-6 pt-5 border-t border-white/10">
+                  <p class="text-sm text-gray-400 font-light">A practical starting point is to map the process, identify the data boundaries and approval points, then automate the repeatable work around the human decision layer.</p>
+                  <a href="#contact" class="btn-liquid-gold px-5 py-2.5 text-sm font-semibold mt-5">Discuss this industry</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
       </div>
     </div>
   </section>
+
 
   <!-- Productised Solutions -->
   <section id="products" class="py-24 px-6 relative z-10">
@@ -2150,6 +2872,32 @@ Cal.config.forwardQueryParams = true;
       }
     });
 
+    // Industries dropdown uses the same glass panel but lives outside the existing Services/Guides list.
+    const desktopIndustriesMenu = document.getElementById('desktop-industries-menu');
+    const desktopIndustriesToggle = document.getElementById('desktop-industries-toggle');
+    const desktopIndustriesPanel = document.getElementById('desktop-industries-panel');
+    const closeIndustryDesktop = () => {
+      if (!desktopIndustriesMenu || !desktopIndustriesToggle || !desktopIndustriesPanel) return;
+      desktopIndustriesMenu.classList.remove('is-open');
+      desktopIndustriesPanel.classList.remove('is-open');
+      desktopIndustriesToggle.setAttribute('aria-expanded','false');
+    };
+    if (desktopIndustriesToggle) desktopIndustriesToggle.addEventListener('click', (event) => {
+      event.stopPropagation();
+      if (desktopServicesMenu) closeDesktopDropdown(desktopServicesMenu, desktopServicesToggle, desktopServicesPanel);
+      if (desktopGuidesMenu) closeDesktopDropdown(desktopGuidesMenu, desktopGuidesToggle, desktopGuidesPanel);
+      const open = !desktopIndustriesPanel.classList.contains('is-open');
+      if (open) desktopIndustriesMenu.classList.add('is-open'); else desktopIndustriesMenu.classList.remove('is-open');
+      desktopIndustriesPanel.classList.toggle('is-open', open);
+      desktopIndustriesToggle.setAttribute('aria-expanded', String(open));
+    });
+    document.addEventListener('click', (event) => {
+      if (desktopIndustriesPanel?.classList.contains('is-open') && !desktopIndustriesMenu.contains(event.target)) closeIndustryDesktop();
+    });
+    document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeIndustryDesktop(); });
+    desktopServicesToggle?.addEventListener('click', () => closeIndustryDesktop());
+    desktopGuidesToggle?.addEventListener('click', () => closeIndustryDesktop());
+
     // Mobile Menu Toggle
     const mobileBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -2196,6 +2944,20 @@ Cal.config.forwardQueryParams = true;
         });
       }
 
+      const industriesToggle = document.getElementById('mobile-industries-toggle');
+      const industriesPanel = document.getElementById('mobile-industries-panel');
+      const setIndustriesOpen = (open) => {
+        if (!industriesToggle || !industriesPanel) return;
+        if (open) { setPanelOpen(guidesToggle, guidesPanel, false); setPanelOpen(servicesToggle, servicesPanel, false); }
+        setPanelOpen(industriesToggle, industriesPanel, open);
+      };
+      industriesToggle?.addEventListener('click', (event) => {
+        event.stopPropagation();
+        setIndustriesOpen(industriesToggle.getAttribute('aria-expanded') !== 'true');
+      });
+      servicesToggle?.addEventListener('click', () => setIndustriesOpen(false));
+      guidesToggle?.addEventListener('click', () => setIndustriesOpen(false));
+
       const setMobileMenuState = (open) => {
         mobileMenu.classList.toggle('is-open', open);
         mobileBtn.setAttribute('aria-expanded', String(open));
@@ -2204,6 +2966,7 @@ Cal.config.forwardQueryParams = true;
         if (!open) {
           setGuidesOpen(false);
           setServicesOpen(false);
+          setIndustriesOpen(false);
         }
       };
 
@@ -2257,65 +3020,37 @@ Cal.config.forwardQueryParams = true;
       });
     });
 
-    // PPT-Style Auto-Flipping Slider (Speeded up to 3s)
-    const slides = document.querySelectorAll('.industry-slide');
-    const dots = document.querySelectorAll('.industry-dot');
+    // Industry Explorer: auto-advance + click-to-open detail panels.
+    const slides = Array.from(document.querySelectorAll('.industry-slide'));
+    const dotsHost = document.getElementById('industry-dots');
+    const currentIndustry = document.getElementById('industry-current');
+    const industryDetails = Array.from(document.querySelectorAll('.industry-detail'));
     let currentSlide = 0;
-    let slideInterval;
-
-    function showSlide(index) {
-        slides.forEach((slide, i) => {
-            slide.style.opacity = i === index ? '1' : '0';
-            slide.style.zIndex = i === index ? '10' : '0';
-        });
-        dots.forEach((dot, i) => {
-            if (i === index) {
-                dot.classList.add('bg-salyant-gold', 'w-8');
-                dot.classList.remove('bg-white/30', 'w-3');
-            } else {
-                dot.classList.remove('bg-salyant-gold', 'w-8');
-                dot.classList.add('bg-white/30', 'w-3');
-            }
-        });
-        currentSlide = index;
+    let industryTimer;
+    const openDetail = (id, scroll=true) => {
+      industryDetails.forEach(d => { const on=d.dataset.industryDetail===id; d.classList.toggle('hidden',!on); d.setAttribute('aria-hidden',String(!on)); });
+      if (scroll) document.getElementById('industry-details')?.scrollIntoView({behavior:'smooth',block:'start'});
+    };
+    const showSlide = (n) => {
+      if (!slides.length) return;
+      currentSlide=(n+slides.length)%slides.length;
+      slides.forEach((s,i)=>{s.style.opacity=i===currentSlide?'1':'0';s.style.zIndex=i===currentSlide?'10':'0';s.setAttribute('aria-hidden',String(i!==currentSlide));});
+      dotsHost?.querySelectorAll('button').forEach((b,i)=>{const on=i===currentSlide;b.classList.toggle('bg-salyant-gold',on);b.classList.toggle('w-8',on);b.classList.toggle('w-2.5',!on);b.classList.toggle('bg-white/30',!on);});
+      if(currentIndustry) currentIndustry.textContent=String(currentSlide+1).padStart(2,'0');
+    };
+    const restartIndustryTimer=()=>{clearInterval(industryTimer);industryTimer=setInterval(()=>showSlide(currentSlide+1),4500);};
+    if(slides.length){
+      slides.forEach((slide,i)=>{
+        const dot=document.createElement('button');dot.type='button';dot.className=i===0?'industry-dot h-1.5 w-8 shrink-0 rounded-full bg-salyant-gold transition-all duration-300':'industry-dot h-1.5 w-2.5 shrink-0 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300';dot.setAttribute('aria-label','Show '+(slide.dataset.industry||'industry'));dot.addEventListener('click',()=>{showSlide(i);restartIndustryTimer();});dotsHost?.appendChild(dot);
+        const open=()=>{showSlide(i);openDetail(slide.dataset.industry,true);restartIndustryTimer();};
+        slide.addEventListener('click',e=>{if(!e.target.closest('a,button'))open();});slide.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});
+      });
+      showSlide(0);restartIndustryTimer();
+      document.getElementById('next-industry-slide')?.addEventListener('click',()=>{showSlide(currentSlide+1);restartIndustryTimer();});
+      const slider=document.getElementById('industry-slider');slider?.addEventListener('mouseenter',()=>clearInterval(industryTimer));slider?.addEventListener('mouseleave',restartIndustryTimer);
+      document.querySelectorAll('[data-industry-target]').forEach(link=>link.addEventListener('click',e=>{e.preventDefault();const id=link.dataset.industryTarget;const i=slides.findIndex(s=>s.dataset.industry===id);if(i<0)return;showSlide(i);document.getElementById('industries')?.scrollIntoView({behavior:'smooth',block:'start'});openDetail(id,false);restartIndustryTimer();}));
+      document.querySelectorAll('.industry-detail-close').forEach(btn=>btn.addEventListener('click',()=>industryDetails.forEach(d=>{d.classList.add('hidden');d.setAttribute('aria-hidden','true');})));
     }
-
-    function nextSlide() {
-        showSlide((currentSlide + 1) % slides.length);
-    }
-
-    function startSlider() {
-        slideInterval = setInterval(nextSlide, 2000);
-    }
-
-    if(slides.length > 0) {
-        showSlide(0);
-        startSlider();
-
-        const nextIndustrySlideBtn = document.getElementById('next-industry-slide');
-        if (nextIndustrySlideBtn) {
-            nextIndustrySlideBtn.addEventListener('click', () => {
-                nextSlide();
-                clearInterval(slideInterval);
-                startSlider();
-            });
-        }
-
-        const sliderContainer = document.getElementById('industry-slider');
-        if (sliderContainer) {
-            sliderContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
-            sliderContainer.addEventListener('mouseleave', startSlider);
-        }
-
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                showSlide(index);
-                clearInterval(slideInterval);
-                startSlider();
-            });
-        });
-    }
-
     // Google Analytics Integration
     function loadGoogleAnalytics() {
       if (window.gaLoaded) return;
