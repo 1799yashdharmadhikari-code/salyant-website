@@ -11,3 +11,6 @@ AI feasibility and workflow audits; custom AI workflow automation; AI sales/SDR 
 Salyant presents AI workflow opportunities across law and professional services; marketing and creative agencies; recruitment and HR; finance and accounting; logistics and fleet; manufacturing and engineering; hotels and hospitality; food and beverage; property and real estate; construction and architecture; retail and e-commerce; healthcare and life sciences; education and training; automotive and mobility; energy, utilities and renewables; photography, media and creative production; insurance, risk and professional compliance.
 
 The homepage industry explorer connects each sector with relevant service areas, automation opportunities and workflow examples.
+
+## Recent news & analysis
+The site publishes source-led AI and technology news analysis. Latest: Trump Renames AI to “Super Intelligence”: 2026 Order Explained — https://www.salyant.co.uk/news-trump-super-intelligence-order-ai-2026.html
