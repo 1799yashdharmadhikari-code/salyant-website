@@ -144,6 +144,28 @@
   .article-prose ul { list-style: disc; padding-left: 1.4rem; margin-bottom: 1.5rem; color: #cbd5e1; font-weight: 300; }
   .article-prose li { margin-bottom: 0.5rem; line-height: 1.7; }
 
+
+  .news-visual-story { margin-top: -1rem; }
+  .news-carousel { display:flex; gap:1rem; overflow-x:auto; scroll-snap-type:x mandatory; overscroll-behavior-x:contain; scrollbar-width:none; padding:0.25rem 0.25rem 0.75rem; }
+  .news-carousel::-webkit-scrollbar { display:none; }
+  .news-slide { position:relative; flex:0 0 min(100%, 900px); min-height:420px; scroll-snap-align:start; overflow:hidden; border:1px solid rgba(255,255,255,.08); border-radius:28px; background:#0b0d12; box-shadow:0 24px 80px rgba(0,0,0,.28); }
+  .news-slide > img { width:100%; height:100%; min-height:420px; object-fit:cover; display:block; }
+  .news-slide::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(4,6,10,.04) 22%,rgba(4,6,10,.78) 100%); pointer-events:none; }
+  .news-slide-overlay { position:absolute; z-index:2; left:0; right:0; bottom:0; padding:2rem; max-width:760px; }
+  .news-slide-overlay h2,.news-diagram-wrap h2 { color:#fff; font-size:clamp(1.6rem,3.4vw,2.5rem); line-height:1.12; margin:.45rem 0 .7rem; font-weight:700; }
+  .news-slide-overlay p { color:#d4d8df; font-size:1rem; line-height:1.65; margin:0; }
+  .news-slide-kicker { color:#d4a574; font-size:.68rem; font-weight:800; letter-spacing:.16em; text-transform:uppercase; }
+  .news-credit { position:absolute; z-index:3; top:.9rem; right:1rem; max-width:70%; color:rgba(255,255,255,.72); font-size:.62rem; line-height:1.4; text-align:right; background:rgba(0,0,0,.32); backdrop-filter:blur(10px); padding:.35rem .55rem; border-radius:999px; }
+  .news-slide-diagram { display:flex; align-items:center; background:radial-gradient(circle at 80% 20%,rgba(212,165,116,.13),transparent 34%),linear-gradient(135deg,#10141d,#080a0f); }
+  .news-diagram-wrap { width:100%; padding:clamp(2rem,6vw,4.5rem); }
+  .news-flow { display:flex; align-items:stretch; gap:.7rem; margin-top:2rem; }
+  .news-flow > div { flex:1; padding:1.1rem; border:1px solid rgba(212,165,116,.2); border-radius:18px; background:rgba(255,255,255,.035); }
+  .news-flow strong { display:block; color:#fff; font-size:.95rem; margin-bottom:.4rem; }
+  .news-flow small { color:#9da5b2; line-height:1.45; }
+  .news-flow > span { align-self:center; color:#d4a574; font-size:1.4rem; }
+  .news-carousel-hint { display:flex; justify-content:center; gap:.45rem; margin-top:.45rem; color:#69717e; font-size:.7rem; letter-spacing:.04em; }
+  @media (max-width:640px) { .news-slide { min-height:350px; border-radius:22px; } .news-slide > img { min-height:350px; } .news-slide-overlay { padding:1.35rem; } .news-credit { max-width:90%; font-size:.55rem; } .news-flow { display:grid; grid-template-columns:1fr; } .news-flow > span { display:none; } .news-diagram-wrap { padding:1.5rem; } }
+
   .related-resources { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.06); }
   .related-resources h3 { margin-bottom: 1rem; font-size: 1.05rem; }
   .related-resources ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem; }
@@ -226,6 +248,44 @@
   </div>
 </header>
 <!-- Article Body -->
+<!-- Visual Story Carousel -->
+<section class="news-visual-story max-w-5xl mx-auto px-6 pb-14" aria-label="Visual story">
+  <div class="news-carousel" role="region" aria-label="Article visual carousel" tabindex="0">
+    <article class="news-slide">
+      <img src="assets/news/whitehouse.jpg" alt="The White House in Washington, DC" width="1800" height="1787" fetchpriority="high" decoding="async">
+      <div class="news-slide-overlay">
+        <span class="news-slide-kicker">THE POLICY MOMENT</span>
+        <h2>US executive-branch terminology is changing</h2>
+        <p>The September 29 order directs agencies to use “Super Intelligence” and “SI” in specified official materials.</p>
+      </div>
+      <div class="news-credit">Photo: Ivan Dražić / Pexels · Free to use under the Pexels licence</div>
+    </article>
+    <article class="news-slide">
+      <img src="assets/news/ai-server.jpg" alt="Blue-lit computer servers in a data centre" width="1800" height="1198" loading="lazy" decoding="async">
+      <div class="news-slide-overlay">
+        <span class="news-slide-kicker">THE TECHNOLOGY LAYER</span>
+        <h2>The underlying technology remains AI</h2>
+        <p>The order's initial legal reference point is the existing statutory definition of artificial intelligence.</p>
+      </div>
+      <div class="news-credit">Photo: panumas nikhomkhai / Pexels · Free to use under the Pexels licence</div>
+    </article>
+    <article class="news-slide news-slide-diagram">
+      <div class="news-diagram-wrap">
+        <span class="news-slide-kicker">AT A GLANCE</span>
+        <h2>What actually changes?</h2>
+        <div class="news-flow">
+          <div><strong>Existing AI definition</strong><small>Current US statutory starting point</small></div>
+          <span>→</span>
+          <div><strong>“Super Intelligence” / SI</strong><small>Executive-branch terminology</small></div>
+          <span>→</span>
+          <div><strong>60-day policy work</strong><small>Proposed federal definition &amp; legislative language</small></div>
+        </div>
+      </div>
+    </article>
+  </div>
+  <div class="news-carousel-hint"><span>Swipe</span> <span aria-hidden="true">← →</span> <span>for the visual summary</span></div>
+</section>
+
   <main class="px-6 pb-8">
 <article class="article-prose max-w-3xl mx-auto">
 <section class="mb-10"><h2 class="text-2xl md:text-3xl font-semibold mb-4">What happened?</h2>
