@@ -171,3 +171,21 @@
     scroll-behavior:auto;
   }
 }
+
+/* Responsive content widths for service, guide, FAQ and long-form article pages. */
+@media (min-width: 768px) {
+  body main.max-w-4xl { width: 94vw !important; max-width: min(94vw, 1420px) !important; margin-left: auto !important; margin-right: auto !important; }
+  body main > .max-w-3xl, body main > article.max-w-3xl, body main .article-prose.max-w-3xl { width: min(92vw, 1220px) !important; max-width: min(92vw, 1220px) !important; margin-left: auto !important; margin-right: auto !important; }
+  body main .article-prose { max-width: min(92vw, 1220px) !important; width: 100%; }
+}
+@media (min-width: 1280px) {
+  body main.max-w-4xl { width: 92vw !important; max-width: min(92vw, 1440px) !important; }
+  body main > article.article-prose.max-w-3xl, body main .article-prose.max-w-3xl { width: min(88vw, 1260px) !important; max-width: min(88vw, 1260px) !important; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  body main.max-w-4xl { width: calc(100vw - 48px) !important; max-width: calc(100vw - 48px) !important; }
+  body main > .max-w-3xl, body main > article.max-w-3xl, body main .article-prose.max-w-3xl { width: calc(100vw - 56px) !important; max-width: calc(100vw - 56px) !important; }
+}
+@media (max-width: 767px) {
+  body main.max-w-4xl, body main > .max-w-3xl, body main > article.max-w-3xl, body main .article-prose.max-w-3xl { width: auto; max-width: 100%; }
+}
