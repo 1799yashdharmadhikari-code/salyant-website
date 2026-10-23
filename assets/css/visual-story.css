@@ -195,3 +195,8 @@
   body main.max-w-4xl > .max-w-3xl, body main.max-w-4xl > article.max-w-3xl, body main.max-w-4xl .article-prose.max-w-3xl { width: calc(100vw - 96px) !important; max-width: calc(100vw - 96px) !important; }
   body main:not(.max-w-4xl) > .max-w-3xl, body main:not(.max-w-4xl) > article.max-w-3xl, body main:not(.max-w-4xl) .article-prose.max-w-3xl { width: calc(100vw - 48px) !important; max-width: calc(100vw - 48px) !important; }
 }
+
+/* Nested article safety: fit inside padded service containers from tablet to small desktop. */
+@media (min-width: 768px) and (max-width: 1279px) {
+  body main.max-w-4xl > .max-w-3xl, body main.max-w-4xl > article.max-w-3xl, body main.max-w-4xl .article-prose.max-w-3xl { width: 100% !important; max-width: 100% !important; }
+}
