@@ -1,0 +1,72 @@
+/* Salyant site-wide liquid-glass navigation */
+nav.sitewide-glass-nav {
+  background: rgba(255,255,255,.045) !important;
+  border-bottom: 1px solid rgba(255,255,255,.13) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(155%) !important;
+  backdrop-filter: blur(28px) saturate(155%) !important;
+  box-shadow: 0 8px 30px rgba(0,0,0,.12) !important;
+  transition: background 260ms ease, border-color 260ms ease, box-shadow 260ms ease !important;
+}
+nav.sitewide-glass-nav.sitewide-glass-scrolled {
+  background: rgba(7,8,12,.82) !important;
+  border-bottom-color: rgba(255,255,255,.13) !important;
+  box-shadow: 0 10px 36px rgba(0,0,0,.22) !important;
+}
+nav.sitewide-glass-nav .sitewide-glass-menu {
+  background: rgba(255,255,255,.035) !important;
+  border: 1px solid rgba(255,255,255,.12) !important;
+  border-radius: 9999px !important;
+  -webkit-backdrop-filter: blur(22px) saturate(150%) !important;
+  backdrop-filter: blur(22px) saturate(150%) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 6px 22px rgba(0,0,0,.08) !important;
+}
+nav.sitewide-glass-nav .sitewide-glass-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px !important;
+  transition: background 220ms ease, border-color 220ms ease, transform 220ms ease !important;
+}
+nav.sitewide-glass-nav .sitewide-glass-link:hover,
+nav.sitewide-glass-nav .sitewide-glass-link:focus-visible {
+  background: rgba(255,255,255,.105) !important;
+  border-color: rgba(255,255,255,.16) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.14), 0 5px 16px rgba(0,0,0,.10);
+  outline-offset: 3px;
+}
+nav.sitewide-glass-nav .sitewide-glass-label {
+  color: #fff !important;
+  mix-blend-mode: difference;
+  text-shadow: none !important;
+}
+nav.sitewide-glass-nav .sitewide-glass-link svg,
+nav.sitewide-glass-nav #mobile-menu-btn svg {
+  mix-blend-mode: difference;
+}
+nav.sitewide-glass-nav #mobile-menu-btn,
+nav.sitewide-glass-nav button[aria-label*="menu" i] {
+  color: #fff;
+  mix-blend-mode: difference;
+}
+.mobile-menu-glass.sitewide-glass-menu {
+  background: linear-gradient(135deg,rgba(255,255,255,.075),rgba(255,255,255,.025)),rgba(7,8,12,.86) !important;
+  border: 1px solid rgba(255,255,255,.13) !important;
+  border-radius: 20px !important;
+  -webkit-backdrop-filter: blur(28px) saturate(155%) !important;
+  backdrop-filter: blur(28px) saturate(155%) !important;
+}
+.mobile-menu-glass .sitewide-glass-label {
+  color: #fff !important;
+}
+.sv-credit, .news-credit, [class~="photo-credit"], [class~="image-credit"], [class~="pexels-credit"] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  nav.sitewide-glass-nav,
+  nav.sitewide-glass-nav .sitewide-glass-link {
+    transition: none !important;
+  }
+}
