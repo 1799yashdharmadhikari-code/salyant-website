@@ -80,6 +80,7 @@
   margin:0;
 }
 .salyant-visual-story .sv-credit{
+  display:none !important;
   position:absolute;
   z-index:3;
   top:.9rem;
