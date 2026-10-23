@@ -959,6 +959,18 @@
     ::-webkit-scrollbar-thumb:hover { background: #d4a574; }
   </style>
   <link rel="stylesheet" href="/assets/css/sitewide-glass-nav.css?v=20261024-hotfix2">
+<style id="salyant-scroll-performance-fix">
+/* Lightweight rendering for the two animated IP spotlights. */
+#ip-spotlight .glass-card, #seo-spotlight .glass-card { transition: border-color .22s ease, box-shadow .22s ease !important; }
+#ip-spotlight .glass-card:hover, #seo-spotlight .glass-card:hover { transform: none !important; }
+#ip-spotlight .sdr-demo, #seo-spotlight .geo-demo { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; contain: layout paint; }
+.sdr-demo:not(.demo-playing) .sdr-scene.active *, .geo-demo:not(.demo-playing) .geo-scene.active * { animation-play-state: paused !important; }
+.sdr-demo:not(.demo-playing) .sdr-seg-fill, .geo-demo:not(.demo-playing) .geo-seg-fill { transition: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  #ip-spotlight .glass-card, #seo-spotlight .glass-card { transition: none !important; }
+  .sdr-demo *, .geo-demo * { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+}
+</style>
 </head>
 
 <body class="relative antialiased selection:bg-salyant-gold selection:text-black">
@@ -1274,8 +1286,8 @@
   <!-- Autonomous AI SDR Section with 3D Depth & Glowing Background -->
   <section id="ip-spotlight" class="py-24 px-6 relative z-10">
     <div class="max-w-7xl mx-auto">
-      <div class="glass-card rounded-[2.5rem] p-8 md:p-14 overflow-hidden relative reveal shadow-[0_30px_70px_-15px_rgba(212,165,116,0.25)] border border-salyant-gold/40 bg-gradient-to-br from-white/[0.05] via-[#0b0e17]/90 to-salyant-gold/[0.07] transform hover:scale-[1.01] transition-transform duration-500">
-        <div class="absolute top-0 right-0 w-[550px] h-[550px] bg-salyant-gold/20 rounded-full blur-[130px] -z-10 pointer-events-none"></div>
+      <div class="glass-card rounded-[2.5rem] p-8 md:p-14 overflow-hidden relative reveal shadow-[0_16px_40px_-15px_rgba(212,165,116,0.16)] border border-salyant-gold/40 bg-gradient-to-br from-white/[0.05] via-[#0b0e17]/90 to-salyant-gold/[0.07] ">
+        <div class="absolute top-0 right-0 w-[380px] h-[380px] bg-salyant-gold/20 rounded-full blur-[85px] -z-10 pointer-events-none"></div>
 
         <div class="grid lg:grid-cols-2 gap-16 items-center">
           <div>
@@ -1425,7 +1437,7 @@
 .sdr-scene.active .sdr-node{ animation: sdrNodeMatch 3.2s ease-in-out forwards; animation-delay: calc(var(--i) * .08s); }
 @keyframes sdrNodeMatch{
   0%{ background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.1); }
-  40%{ background:rgba(212,165,116,.35); border-color:#d4a574; box-shadow:0 0 0 3px rgba(212,165,116,.15); }
+  40%{ background:rgba(212,165,116,.35); border-color:#d4a574;  }
   100%{ background:rgba(212,165,116,.35); border-color:#d4a574; }
 }
 
@@ -1538,13 +1550,13 @@
     track.appendChild(seg);
   });
 
-  let current = 0, timer = null;
+  let current = 0, timer = null, isInView = false, pageIsVisible = !document.hidden;
 
   function play(i){
+    if (!isInView || !pageIsVisible) { current = i; clearTimeout(timer); timer = null; root.classList.remove('demo-playing'); return; }
     scenes.forEach(s=>s.classList.remove('active'));
     const sc = scenes[i];
     sc.classList.add('active');
-    void sc.offsetWidth;
 
     const stageIndex = stageScenes.indexOf(i);
     root.querySelectorAll('.sdr-seg-fill').forEach((el,idx)=>{
@@ -1580,10 +1592,29 @@
     root.querySelectorAll('.sdr-seg-fill').forEach(el=>{ el.style.transition='none'; el.style.width='0%'; });
     root.querySelectorAll('#sdrTrackLabels span').forEach(el=>el.classList.remove('on'));
     current = 0;
+    void root.offsetWidth;
     play(0);
   });
 
-  play(0);
+  /* Only animate this demo while it is in the viewport and the tab is visible. */
+  function setVisible(visible) {
+    isInView = visible;
+    if (isInView && pageIsVisible) {
+      root.classList.add('demo-playing');
+      if (timer === null) play(current);
+    } else { clearTimeout(timer); timer = null; root.classList.remove('demo-playing'); }
+  }
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(function(entries) {
+      setVisible(entries.some(function(entry) { return entry.isIntersecting; }));
+    }, { rootMargin: '0px', threshold: 0.01 });
+    observer.observe(root);
+  } else { setVisible(true); }
+  document.addEventListener('visibilitychange', function() {
+    pageIsVisible = !document.hidden;
+    if (!pageIsVisible) { clearTimeout(timer); timer = null; root.classList.remove('demo-playing'); }
+    else if (isInView) { root.classList.add('demo-playing'); if (timer === null) play(current); }
+  });
 })();
 </script>
 
@@ -1600,8 +1631,8 @@
 
 <section id="seo-spotlight" class="py-24 px-6 relative z-10">
   <div class="max-w-7xl mx-auto">
-    <div class="glass-card rounded-[2.5rem] p-8 md:p-14 overflow-hidden relative reveal shadow-[0_30px_70px_-15px_rgba(212,165,116,0.25)] border border-salyant-gold/40 bg-gradient-to-br from-white/[0.05] via-[#0b0e17]/90 to-salyant-gold/[0.07] transform hover:scale-[1.01] transition-transform duration-500">
-      <div class="absolute top-0 left-0 w-[550px] h-[550px] bg-salyant-gold/20 rounded-full blur-[130px] -z-10 pointer-events-none"></div>
+    <div class="glass-card rounded-[2.5rem] p-8 md:p-14 overflow-hidden relative reveal shadow-[0_16px_40px_-15px_rgba(212,165,116,0.16)] border border-salyant-gold/40 bg-gradient-to-br from-white/[0.05] via-[#0b0e17]/90 to-salyant-gold/[0.07] ">
+      <div class="absolute top-0 left-0 w-[380px] h-[380px] bg-salyant-gold/20 rounded-full blur-[85px] -z-10 pointer-events-none"></div>
 
       <div class="grid lg:grid-cols-2 gap-16 items-center">
 
@@ -1893,13 +1924,13 @@
     track.appendChild(seg);
   });
 
-  let current = 0, timer = null;
+  let current = 0, timer = null, isInView = false, pageIsVisible = !document.hidden;
 
   function play(i){
+    if (!isInView || !pageIsVisible) { current = i; clearTimeout(timer); timer = null; root.classList.remove('demo-playing'); return; }
     scenes.forEach(s=>s.classList.remove('active'));
     const sc = scenes[i];
     sc.classList.add('active');
-    void sc.offsetWidth;
 
     const stageIndex = stageScenes.indexOf(i);
     root.querySelectorAll('.geo-seg-fill').forEach((el,idx)=>{
@@ -1935,10 +1966,29 @@
     root.querySelectorAll('.geo-seg-fill').forEach(el=>{ el.style.transition='none'; el.style.width='0%'; });
     root.querySelectorAll('#geoTrackLabels span').forEach(el=>el.classList.remove('on'));
     current = 0;
+    void root.offsetWidth;
     play(0);
   });
 
-  play(0);
+  /* Only animate this demo while it is in the viewport and the tab is visible. */
+  function setVisible(visible) {
+    isInView = visible;
+    if (isInView && pageIsVisible) {
+      root.classList.add('demo-playing');
+      if (timer === null) play(current);
+    } else { clearTimeout(timer); timer = null; root.classList.remove('demo-playing'); }
+  }
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(function(entries) {
+      setVisible(entries.some(function(entry) { return entry.isIntersecting; }));
+    }, { rootMargin: '0px', threshold: 0.01 });
+    observer.observe(root);
+  } else { setVisible(true); }
+  document.addEventListener('visibilitychange', function() {
+    pageIsVisible = !document.hidden;
+    if (!pageIsVisible) { clearTimeout(timer); timer = null; root.classList.remove('demo-playing'); }
+    else if (isInView) { root.classList.add('demo-playing'); if (timer === null) play(current); }
+  });
 })();
 </script>
 
