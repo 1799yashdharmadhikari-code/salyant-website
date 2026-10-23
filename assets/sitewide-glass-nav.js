@@ -9,6 +9,8 @@
   }
   function addReadableLabel(element) {
     if (!element || element.dataset.sitewideGlassProcessed === 'true') return;
+    /* Keep links within dropdown lists as normal block rows, not top-bar pills. */
+    if (element.closest('.desktop-dropdown-panel, .mobile-guides-panel')) return;
     element.dataset.sitewideGlassProcessed = 'true';
     if (isCallToAction(element) || element.querySelector('img')) return;
     element.classList.add('sitewide-glass-link');
@@ -47,6 +49,17 @@
       if (count >= 2 && parent !== nav && horizontalFlex && !verticalFlex && !dropdownPanel && !parent.classList.contains('mobile-menu-glass')) {
         parent.classList.add('sitewide-glass-menu');
       }
+    });
+    /* Hide expansion controls when the list contains six or fewer links. */
+    document.querySelectorAll('.dropdown-more-toggle').forEach(function (button) {
+      var panel = button.closest('.desktop-dropdown-panel');
+      var links = panel && panel.querySelector('.desktop-dropdown-links');
+      button.hidden = !links || links.querySelectorAll('a').length <= 6;
+    });
+    document.querySelectorAll('.mobile-dropdown-more').forEach(function (button) {
+      var panel = button.closest('.mobile-guides-panel');
+      var links = panel && panel.querySelector('.mobile-list-compact');
+      button.hidden = !links || links.querySelectorAll('a').length <= 6;
     });
     document.querySelectorAll('.mobile-menu-glass').forEach(function (menu) {
       menu.classList.add('sitewide-glass-menu');
