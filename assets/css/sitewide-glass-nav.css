@@ -1,4 +1,115 @@
 /* Salyant site-wide liquid-glass navigation */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Consistent navigation typography and reliable dropdown contrast across browsers. */
+nav.sitewide-glass-nav,
+nav.sitewide-glass-nav *,
+.mobile-menu-glass,
+.mobile-menu-glass * {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+nav.sitewide-glass-nav .desktop-dropdown-panel {
+  z-index: 1000 !important;
+  isolation: isolate;
+  background: rgba(11,13,19,.97) !important;
+  color: #e5e7eb !important;
+  border: 1px solid rgba(255,255,255,.16) !important;
+  box-shadow: 0 22px 60px rgba(0,0,0,.58), inset 0 1px 0 rgba(255,255,255,.06) !important;
+  -webkit-backdrop-filter: blur(26px) saturate(145%) !important;
+  backdrop-filter: blur(26px) saturate(145%) !important;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+nav.sitewide-glass-nav .desktop-dropdown-panel .desktop-dropdown-links > a {
+  display: block !important;
+  width: 100%;
+  min-height: 42px;
+  padding: .7rem .8rem !important;
+  margin: 0 0 2px !important;
+  border-radius: 11px !important;
+  background: rgba(255,255,255,.025) !important;
+  border: 1px solid transparent !important;
+  color: #d1d5db !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  font-size: .82rem !important;
+  font-weight: 400 !important;
+  line-height: 1.4 !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+  text-shadow: none !important;
+}
+nav.sitewide-glass-nav .desktop-dropdown-panel .desktop-dropdown-links > a:hover,
+nav.sitewide-glass-nav .desktop-dropdown-panel .desktop-dropdown-links > a:focus-visible {
+  background: rgba(255,255,255,.085) !important;
+  border-color: rgba(255,255,255,.13) !important;
+  color: #fff !important;
+  outline-offset: 2px;
+}
+nav.sitewide-glass-nav .dropdown-more-toggle,
+.mobile-menu-glass .mobile-dropdown-more {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  margin-top: .45rem;
+  padding: .7rem .9rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.13);
+  background: rgba(255,255,255,.065);
+  color: #f3f4f6;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  font-size: .82rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: center;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(212,165,116,.18);
+}
+nav.sitewide-glass-nav .dropdown-more-toggle:hover,
+nav.sitewide-glass-nav .dropdown-more-toggle:focus-visible,
+.mobile-menu-glass .mobile-dropdown-more:hover,
+.mobile-menu-glass .mobile-dropdown-more:focus-visible {
+  background: rgba(255,255,255,.11);
+  border-color: rgba(255,255,255,.22);
+  color: #fff;
+  outline-offset: 2px;
+}
+.desktop-dropdown-links.compact > a:nth-of-type(n + 7) { display: none !important; }
+.desktop-dropdown-links.compact.is-expanded > a:nth-of-type(n + 7) { display: block !important; }
+.mobile-guides-panel .mobile-list-compact > a:nth-of-type(n + 7) { display: none !important; }
+.mobile-guides-panel .mobile-list-compact.is-expanded > a:nth-of-type(n + 7) { display: block !important; }
+.mobile-guides-panel .mobile-list-compact > a {
+  min-height: 40px;
+  padding-top: .55rem !important;
+  padding-bottom: .55rem !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  font-size: .9rem !important;
+  line-height: 1.4 !important;
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  nav.sitewide-glass-nav { background: rgba(7,8,12,.94) !important; }
+  nav.sitewide-glass-nav .desktop-dropdown-panel { background: rgba(11,13,19,.99) !important; }
+  .mobile-menu-glass.sitewide-glass-menu { background: rgba(7,8,12,.97) !important; }
+}
+@media (max-width: 1279px) {
+  .mobile-menu-glass.sitewide-glass-menu {
+    max-height: min(88dvh, 760px);
+    overflow: hidden;
+  }
+  .mobile-menu-glass.sitewide-glass-menu > div {
+    max-height: min(88dvh, 760px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+    touch-action: pan-y;
+  }
+  .mobile-menu-glass .mobile-dropdown-more {
+    margin-top: .35rem;
+    margin-bottom: .25rem;
+  }
+}
+
 nav.sitewide-glass-nav {
   background: rgba(255,255,255,.045) !important;
   border-bottom: 1px solid rgba(255,255,255,.13) !important;
