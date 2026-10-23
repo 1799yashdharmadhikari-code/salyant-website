@@ -10,7 +10,8 @@
   function addReadableLabel(element) {
     if (!element || element.dataset.sitewideGlassProcessed === 'true') return;
     /* Keep links within dropdown lists as normal block rows, not top-bar pills. */
-    if (element.closest('.desktop-dropdown-panel, .mobile-guides-panel')) return;
+    /* Mobile menu links must keep their native full-width row layout. */
+    if (element.closest('.mobile-menu-glass, .desktop-dropdown-panel, .mobile-guides-panel')) return;
     element.dataset.sitewideGlassProcessed = 'true';
     if (isCallToAction(element) || element.querySelector('img')) return;
     element.classList.add('sitewide-glass-link');
@@ -61,10 +62,7 @@
       var links = panel && panel.querySelector('.mobile-list-compact');
       button.hidden = !links || links.querySelectorAll('a').length <= 6;
     });
-    document.querySelectorAll('.mobile-menu-glass').forEach(function (menu) {
-      menu.classList.add('sitewide-glass-menu');
-      menu.querySelectorAll('a, button').forEach(addReadableLabel);
-    });
+    /* Mobile menu keeps its native stacked layout and is styled by shared CSS. */
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initialise, { once: true });
