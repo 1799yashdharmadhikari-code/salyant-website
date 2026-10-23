@@ -693,16 +693,16 @@
     .desktop-dropdown-panel {
       width: min(24rem, calc(100vw - 2rem));
     }
-    .desktop-dropdown-links.compact a:nth-of-type(n + 6) {
+    .desktop-dropdown-links.compact a:nth-of-type(n + 7) {
       display: none;
     }
-    .desktop-dropdown-links.compact.is-expanded a:nth-of-type(n + 6) {
+    .desktop-dropdown-links.compact.is-expanded a:nth-of-type(n + 7) {
       display: block;
     }
-    .desktop-guides-links.compact a:nth-of-type(n + 6) {
+    .desktop-guides-links.compact a:nth-of-type(n + 7) {
       display: none;
     }
-    .desktop-guides-links.compact.is-expanded a:nth-of-type(n + 6) {
+    .desktop-guides-links.compact.is-expanded a:nth-of-type(n + 7) {
       display: block;
     }
     .dropdown-more-toggle {
@@ -990,7 +990,7 @@
             <svg class="w-3.5 h-3.5 transition-transform duration-300" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
           </button>
           <div id="desktop-industries-panel" class="desktop-dropdown-panel absolute top-full right-0 mt-2 max-h-[70vh] overflow-y-auto rounded-2xl guides-dropdown-glass p-2 transition-all duration-200" role="menu">
-            <div class="desktop-dropdown-links desktop-industries-links">
+            <div class="desktop-dropdown-links desktop-industries-links compact">
             <a href="#industries" data-industry-target="legal" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">UK Law Firms &amp; Chambers</a>
             <a href="#industries" data-industry-target="marketing" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">Marketing, Advertising &amp; Creative Agencies</a>
             <a href="#industries" data-industry-target="recruitment" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">Recruitment, Staffing & HR</a>
@@ -1009,6 +1009,7 @@
             <a href="#industries" data-industry-target="creative" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">Photography Studios, Media & Creative Production</a>
             <a href="#industries" data-industry-target="insurance" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">Insurance, Risk & Professional Compliance</a>
             </div>
+            <button type="button" class="dropdown-more-toggle" data-more-target="industries" aria-expanded="false">More Industries</button>
           </div>
         </div>
         <a href="#products" class="text-sm nav-glass-hover">Products</a>
@@ -1095,7 +1096,7 @@
             <span>Industries We Serve</span>
             <svg id="mobile-industries-chevron" class="w-3.5 h-3.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
           </button>
-          <div id="mobile-industries-panel" class="mobile-guides-panel"><div class="flex flex-col gap-4 pt-2"><a href="#industries" data-industry-target="legal" class="block text-base font-medium text-gray-300 hover:text-white py-1">UK Law Firms &amp; Chambers</a>
+          <div id="mobile-industries-panel" class="mobile-guides-panel"><div class="flex flex-col gap-4 pt-2 mobile-list-compact"><a href="#industries" data-industry-target="legal" class="block text-base font-medium text-gray-300 hover:text-white py-1">UK Law Firms &amp; Chambers</a>
             <a href="#industries" data-industry-target="marketing" class="block text-base font-medium text-gray-300 hover:text-white py-1">Marketing, Advertising &amp; Creative Agencies</a>
             <a href="#industries" data-industry-target="recruitment" class="block text-base font-medium text-gray-300 hover:text-white py-1">Recruitment, Staffing & HR</a>
             <a href="#industries" data-industry-target="finance" class="block text-base font-medium text-gray-300 hover:text-white py-1">Finance, Accounting & FinTech</a>
@@ -1112,7 +1113,9 @@
             <a href="#industries" data-industry-target="energy" class="block text-base font-medium text-gray-300 hover:text-white py-1">Energy, Utilities & Renewables</a>
             <a href="#industries" data-industry-target="creative" class="block text-base font-medium text-gray-300 hover:text-white py-1">Photography Studios, Media & Creative Production</a>
             <a href="#industries" data-industry-target="insurance" class="block text-base font-medium text-gray-300 hover:text-white py-1">Insurance, Risk & Professional Compliance</a>
-            </div></div>
+            </div>
+            <button type="button" class="mobile-dropdown-more" data-more-target="industries" aria-expanded="false">More Industries</button>
+          </div>
         </div>
         <a href="#products" class="text-base font-medium text-gray-300 hover:text-white">Products</a>
         <a href="#services" class="text-base font-medium text-gray-300 hover:text-white">Services</a>
@@ -1135,7 +1138,7 @@
             <svg id="mobile-services-chevron" class="w-3.5 h-3.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
           </button>
           <div id="mobile-services-panel" class="mobile-guides-panel">
-          <div class="flex flex-col gap-4 pt-2">
+          <div class="flex flex-col gap-4 pt-2 mobile-list-compact">
           <!-- GROWTH_SERVICE_MOBILE_NAV_LINKS_START -->
           <a href="ai-feasibility-audit.html" class="block text-base font-medium text-gray-300 hover:text-white py-1">AI Feasibility & Workflow Audit</a>
           <a href="service-seo-aeo-geo-automation.html" class="block text-base font-medium text-gray-300 hover:text-white py-1">Automated SEO/AEO/GEO Growth Engine</a>
@@ -1158,6 +1161,7 @@
           <a href="service-manufacturing-ai-automation-services.html" class="block text-base font-medium text-gray-300 hover:text-white py-1">Manufacturing AI Automation Services</a>
           <!-- GROWTH_SERVICE_MOBILE_NAV_LINKS_END -->
           </div>
+          <button type="button" class="mobile-dropdown-more" data-more-target="services" aria-expanded="false">More Services</button>
           </div>
         </div>
 
@@ -1167,7 +1171,7 @@
             <svg id="mobile-guides-chevron" class="w-3.5 h-3.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
           </button>
           <div id="mobile-guides-panel" class="mobile-guides-panel">
-          <div class="flex flex-col gap-4 pt-2">
+          <div class="flex flex-col gap-4 pt-2 mobile-list-compact">
           <!-- GROWTH_MOBILE_NAV_LINKS_START -->
           <a href="compare-ai-automation-platform-comparison.html" class="block text-base font-medium text-gray-300 hover:text-white py-1">AI Automation Platform Comparison: Enterprise</a>
           <a href="service-managed-ai-ops.html" class="block text-base font-medium text-gray-300 hover:text-white py-1">Managed AI Ops – End‑to‑End AI Operations for</a>
@@ -1177,6 +1181,7 @@
           <a href="service-ai-automation-implementation.html" class="block text-base font-medium text-gray-300 hover:text-white py-1">AI‑Based Automation Implementation Services</a>
         <!-- GROWTH_MOBILE_NAV_LINKS_END -->
           </div>
+          <button type="button" class="mobile-dropdown-more" data-more-target="guides" aria-expanded="false">More Guides</button>
           </div>
         </div>
 
@@ -3082,7 +3087,8 @@ Cal.config.forwardQueryParams = true;
       if (links) links.classList.remove('is-expanded');
       if (moreButton) {
         moreButton.setAttribute('aria-expanded', 'false');
-        moreButton.textContent = moreButton.dataset.moreTarget === 'guides' ? 'More Guides' : 'More Services';
+        const moreLabels = { industries: 'More Industries', services: 'More Services', guides: 'More Guides' };
+        moreButton.textContent = moreLabels[moreButton.dataset.moreTarget] || 'Show More';
       }
     };
 
@@ -3112,6 +3118,19 @@ Cal.config.forwardQueryParams = true;
       });
     }
 
+    document.querySelectorAll('.mobile-dropdown-more').forEach((button) => {
+      button.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const panel = button.closest('.mobile-guides-panel');
+        const links = panel && panel.querySelector('.mobile-list-compact');
+        if (!links) return;
+        const expanded = links.classList.toggle('is-expanded');
+        button.setAttribute('aria-expanded', String(expanded));
+        const labels = { industries: 'Industries', services: 'Services', guides: 'Guides' };
+        const label = labels[button.dataset.moreTarget] || 'Items';
+        button.textContent = expanded ? 'Show Fewer ' + label : 'More ' + label;
+      });
+    });
     document.querySelectorAll('.dropdown-more-toggle').forEach((button) => {
       button.addEventListener('click', (event) => {
         event.stopPropagation();
@@ -3120,9 +3139,9 @@ Cal.config.forwardQueryParams = true;
         if (!links) return;
         const expanded = links.classList.toggle('is-expanded');
         button.setAttribute('aria-expanded', String(expanded));
-        button.textContent = expanded
-          ? (button.dataset.moreTarget === 'guides' ? 'Show Fewer Guides' : 'Show Fewer Services')
-          : (button.dataset.moreTarget === 'guides' ? 'More Guides' : 'More Services');
+        const moreLabels = { industries: 'Industries', services: 'Services', guides: 'Guides' };
+        const label = moreLabels[button.dataset.moreTarget] || 'Items';
+        button.textContent = expanded ? 'Show Fewer ' + label : 'More ' + label;
       });
     });
 
@@ -3149,6 +3168,10 @@ Cal.config.forwardQueryParams = true;
       desktopIndustriesMenu.classList.remove('is-open');
       desktopIndustriesPanel.classList.remove('is-open');
       desktopIndustriesToggle.setAttribute('aria-expanded','false');
+      const links = desktopIndustriesPanel.querySelector('.desktop-dropdown-links');
+      const more = desktopIndustriesPanel.querySelector('.dropdown-more-toggle');
+      if (links) links.classList.remove('is-expanded');
+      if (more) { more.setAttribute('aria-expanded','false'); more.textContent='More Industries'; }
     };
     if (desktopIndustriesToggle) desktopIndustriesToggle.addEventListener('click', (event) => {
       event.stopPropagation();
