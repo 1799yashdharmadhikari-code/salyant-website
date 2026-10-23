@@ -39,7 +39,14 @@
       addReadableLabel(element);
     });
     parentCounts.forEach(function (count, parent) {
-      if (count >= 2 && parent !== nav) parent.classList.add('sitewide-glass-menu');
+      var className = typeof parent.className === 'string' ? parent.className : '';
+      var tokens = className.split(' ');
+      var horizontalFlex = tokens.some(function (token) { return token === 'flex' || token.endsWith(':flex'); });
+      var verticalFlex = tokens.some(function (token) { return token === 'flex-col' || token.endsWith(':flex-col'); });
+      var dropdownPanel = className.indexOf('dropdown') >= 0 || className.indexOf('panel') >= 0 || className.indexOf('desktop-dropdown-links') >= 0;
+      if (count >= 2 && parent !== nav && horizontalFlex && !verticalFlex && !dropdownPanel && !parent.classList.contains('mobile-menu-glass')) {
+        parent.classList.add('sitewide-glass-menu');
+      }
     });
     document.querySelectorAll('.mobile-menu-glass').forEach(function (menu) {
       menu.classList.add('sitewide-glass-menu');
