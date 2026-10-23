@@ -189,3 +189,9 @@
 @media (max-width: 767px) {
   body main.max-w-4xl, body main > .max-w-3xl, body main > article.max-w-3xl, body main .article-prose.max-w-3xl { width: auto; max-width: 100%; }
 }
+
+/* Tablet inner-width guard for padded service pages versus full-width articles. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  body main.max-w-4xl > .max-w-3xl, body main.max-w-4xl > article.max-w-3xl, body main.max-w-4xl .article-prose.max-w-3xl { width: calc(100vw - 96px) !important; max-width: calc(100vw - 96px) !important; }
+  body main:not(.max-w-4xl) > .max-w-3xl, body main:not(.max-w-4xl) > article.max-w-3xl, body main:not(.max-w-4xl) .article-prose.max-w-3xl { width: calc(100vw - 48px) !important; max-width: calc(100vw - 48px) !important; }
+}
