@@ -181,3 +181,7 @@ nav.sitewide-glass-nav button[aria-label*="menu" i] {
     transition: none !important;
   }
 }
+
+/* The HTML hidden attribute must win over component display rules. */
+nav.sitewide-glass-nav .dropdown-more-toggle[hidden],
+.mobile-menu-glass .mobile-dropdown-more[hidden] { display: none !important; }
