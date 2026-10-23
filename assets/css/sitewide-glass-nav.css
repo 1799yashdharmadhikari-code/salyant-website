@@ -189,7 +189,7 @@ nav.sitewide-glass-nav .dropdown-more-toggle[hidden],
 /* Fix the hamburger panel without changing it into a desktop glass pill. */
 nav.sitewide-glass-nav .mobile-menu-glass {
   position: absolute !important;
-  top: 5rem !important;
+  top: 100% !important;
   left: 0 !important;
   right: 0 !important;
   width: 100% !important;
