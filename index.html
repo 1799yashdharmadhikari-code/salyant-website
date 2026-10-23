@@ -777,6 +777,18 @@
       color: #ffffff;
     }
 
+    /* Adaptive contrast over the light hero image. */
+    #navbar.nav-on-light .nav-glass-hover,
+    #navbar.nav-on-light .liquid-tab-hover,
+    #navbar.nav-on-light #mobile-menu-btn { color:#111827; text-shadow:0 1px 1px rgba(255,255,255,.16); }
+    #navbar.nav-on-light .nav-glass-hover:hover,
+    #navbar.nav-on-light .nav-glass-hover.active,
+    #navbar.nav-on-light .liquid-tab-hover:hover,
+    #navbar.nav-on-light .liquid-tab-hover.active,
+    #navbar.nav-on-light #mobile-menu-btn:hover { color:#030712; }
+    #navbar.nav-on-light .nav-glass-hover::before,
+    #navbar.nav-on-light .liquid-tab-hover::before { background:rgba(255,255,255,.18); border-color:rgba(17,24,39,.14); box-shadow:0 4px 20px rgba(15,23,42,.1); }
+
     /* Keep the desktop header compact and predictable at all desktop widths. */
     .nav-glass-hover {
       padding: 0.45rem 0.8rem;
@@ -969,7 +981,7 @@
     <div class="absolute inset-0 opacity-[0.012] mix-blend-overlay" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%221.8%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div>
   </div>
 
-  <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent">
+  <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent nav-on-light">
     <div class="max-w-7xl mx-auto w-full px-5 sm:px-6 h-20 flex items-center justify-between">
       <a href="/" class="flex items-center shrink-0">
         <img src="IMG_20251230_004752.png"
@@ -3061,17 +3073,11 @@ Cal.config.forwardQueryParams = true;
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Navbar Glass Effect
-    const nav = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 20) {
-        nav.classList.add('bg-[#07080C]/85', 'backdrop-blur-2xl', 'border-white/10', 'shadow-2xl');
-        nav.classList.remove('border-transparent');
-      } else {
-        nav.classList.remove('bg-[#07080C]/85', 'backdrop-blur-2xl', 'border-white/10', 'shadow-2xl');
-        nav.classList.add('border-transparent');
-      }
-    });
+    // Adaptive nav contrast: dark labels over the light hero; light labels over dark glass.
+    const nav=document.getElementById('navbar');
+    const updateNavbarGlass=()=>{const light=window.scrollY<=20;nav.classList.toggle('nav-on-light',light);if(!light){nav.classList.add('bg-[#07080C]/85','backdrop-blur-2xl','border-white/10','shadow-2xl');nav.classList.remove('border-transparent');}else{nav.classList.remove('bg-[#07080C]/85','backdrop-blur-2xl','border-white/10','shadow-2xl');nav.classList.add('border-transparent');}};
+    updateNavbarGlass();
+    window.addEventListener('scroll',updateNavbarGlass,{passive:true});
 
     // Desktop dropdowns: click-to-open, mutual exclusivity, outside-click + Escape close.
     const desktopServicesMenu = document.getElementById('desktop-services-menu');
