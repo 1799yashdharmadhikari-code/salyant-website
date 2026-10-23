@@ -79,23 +79,7 @@
   line-height:1.65;
   margin:0;
 }
-.salyant-visual-story .sv-credit{
-  display:none !important;
-  position:absolute;
-  z-index:3;
-  top:.9rem;
-  right:1rem;
-  max-width:72%;
-  color:rgba(255,255,255,.74);
-  font-size:.62rem;
-  line-height:1.4;
-  text-align:right;
-  background:rgba(0,0,0,.34);
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-  padding:.35rem .55rem;
-  border-radius:999px;
-}
+
 .salyant-visual-story .sv-panel{
   display:flex;
   align-items:center;
@@ -168,10 +152,7 @@
   .salyant-visual-story .sv-overlay{
     padding:1.35rem;
   }
-  .salyant-visual-story .sv-credit{
-    max-width:90%;
-    font-size:.55rem;
-  }
+
   .salyant-visual-story .sv-panel-inner{
     padding:1.5rem;
   }
