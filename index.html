@@ -972,6 +972,35 @@
 }
 </style>
   <link rel="stylesheet" href="/assets/css/visual-story.css?v=20261024-layout2">
+<style id="salyant-homepage-design-refinement">
+@media (min-width:1280px) { body section .max-w-7xl.mx-auto, body main .max-w-7xl.mx-auto, body footer .max-w-7xl.mx-auto, body header .max-w-7xl.mx-auto { width:min(94vw,1600px) !important; max-width:min(94vw,1600px) !important; } }
+.featured-workflows-heading { max-width:1100px; margin-left:auto; margin-right:auto; }
+.featured-workflows-kicker,.faq-kicker { display:inline-block; margin-bottom:1rem; color:#d4a574; font-size:.68rem; font-weight:800; letter-spacing:.18em; line-height:1.5; text-transform:uppercase; }
+.featured-workflows-heading h2,.news-section-heading h2 { margin-left:auto; margin-right:auto; letter-spacing:-.035em; }
+.featured-workflows-heading p { max-width:760px; }
+.founder-note-panel { display:grid; grid-template-columns:minmax(0,.7fr) minmax(0,1.7fr); align-items:center; gap:clamp(1.5rem,4vw,4rem); max-width:1320px; margin:0 auto; padding:clamp(1.4rem,3vw,2.5rem) 0; border-top:1px solid rgba(255,255,255,.09); border-bottom:1px solid rgba(255,255,255,.09); }
+.founder-note-label { display:flex; align-items:center; gap:1rem; }
+.founder-note-kicker { color:#d4a574; font-size:.68rem; font-weight:800; letter-spacing:.17em; text-transform:uppercase; line-height:1.6; }
+.founder-note-mark { color:rgba(212,165,116,.38); font-family:'Plus Jakarta Sans','Inter',sans-serif; font-size:4.5rem; font-weight:800; line-height:.75; }
+.founder-note-copy { margin:0; color:#d4d9e2; font-size:clamp(1.05rem,1.45vw,1.3rem); line-height:1.7; font-weight:350; max-width:940px; }
+.founder-note-signature { display:flex; flex-wrap:wrap; align-items:baseline; gap:.55rem; margin-top:1.25rem; color:#f8fafc; font-size:.84rem; }
+.founder-note-signature span { color:#858e9d; font-size:.8rem; }
+.news-section-heading { max-width:1000px; }
+.news-section-heading p { max-width:780px; }
+.faq-content-shell { width:min(94vw,1600px); max-width:min(94vw,1600px); }
+.faq-kicker { margin-bottom:.85rem; }
+.faq-answers-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); align-items:stretch; gap:1rem; }
+.faq-answer-card { min-width:0; padding:clamp(1.25rem,1.75vw,2rem) !important; border:1px solid rgba(255,255,255,.08); border-radius:22px !important; background:linear-gradient(135deg,rgba(23,97,176,.07),rgba(212,165,116,.035)),rgba(255,255,255,.025); transition:border-color .2s ease,background .2s ease; }
+.faq-answer-card:hover { border-color:rgba(212,165,116,.24); background:linear-gradient(135deg,rgba(23,97,176,.09),rgba(212,165,116,.045)),rgba(255,255,255,.03); }
+.faq-answer-card h3 { font-size:1rem; line-height:1.45; letter-spacing:-.015em; }
+.faq-answer-card p { margin:0; line-height:1.7; }
+.faq-answer-card:last-child { grid-column:1 / -1; width:calc(50% - .5rem); justify-self:center; }
+.growth-internal-links::before { content:"RELATED RESOURCES"; grid-column:1 / -1; color:#d4a574; font-size:.65rem; font-weight:800; letter-spacing:.17em; }
+.sdr-demo .sdr-typewrite,.geo-demo .geo-typewrite { display:block; width:100%; max-width:100%; box-sizing:border-box; white-space:normal; overflow-wrap:anywhere; word-break:normal; }
+@media (max-width:960px) { .faq-answers-grid { grid-template-columns:minmax(0,1fr); } .faq-answer-card:last-child { grid-column:auto; width:100%; } }
+@media (max-width:640px) { .founder-note-panel { grid-template-columns:minmax(0,1fr); gap:1rem; } .founder-note-label { gap:.65rem; } .founder-note-mark { font-size:3rem; } .faq-content-shell { width:100%; max-width:100%; } .faq-answer-card { padding:1.25rem !important; border-radius:18px !important; } .featured-workflows-heading { margin-bottom:1.5rem; } }
+@media (prefers-reduced-motion:reduce) { .faq-answer-card { transition:none !important; } }
+</style>
 </head>
 
 <body class="relative antialiased selection:bg-salyant-gold selection:text-black">
@@ -1040,7 +1069,7 @@
             <div class="desktop-dropdown-links compact">
             <!-- GROWTH_SERVICE_NAV_LINKS_START -->
             <a href="ai-feasibility-audit.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">AI Feasibility & Workflow Audit</a>
-            <a href="service-seo-aeo-geo-automation.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">Automated SEO/AEO/GEO Growth Engine</a>
+            <a href="service-seo-aeo-geo-automation.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">AI-Powered SEO, AEO &amp; GEO Growth Engine</a>
             <a href="service-custom-automation.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">Custom Automation Services</a>
             <a href="service-ai-sdr-agency.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">AI SDR Agency Services</a>
             <a href="service-ai-integration-sap-dynamics-365-uk.html" class="block px-4 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/5 transition">AI Integration for SAP & Dynamics 365</a>
@@ -1154,7 +1183,7 @@
           <div class="flex flex-col gap-4 pt-2 mobile-list-compact">
           <!-- GROWTH_SERVICE_MOBILE_NAV_LINKS_START -->
           <a href="ai-feasibility-audit.html" class="block text-base font-medium text-gray-300 hover:text-white py-1">AI Feasibility & Workflow Audit</a>
-          <a href="service-seo-aeo-geo-automation.html" class="block text-base font-medium text-gray-300 hover:text-white py-1">Automated SEO/AEO/GEO Growth Engine</a>
+          <a href="service-seo-aeo-geo-automation.html" class="block text-base font-medium text-gray-300 hover:text-white py-1">AI-Powered SEO, AEO &amp; GEO Growth Engine</a>
           <a href="service-custom-automation.html" class="block text-base font-medium text-gray-300 hover:text-white py-1">Custom Automation Services</a>
           <a href="service-ai-sdr-agency.html" class="block text-base font-medium text-gray-300 hover:text-white py-1">AI SDR Agency Services</a>
           <a href="service-ai-integration-sap-dynamics-365-uk.html" class="block text-base font-medium text-gray-300 hover:text-white py-1">AI Integration for SAP & Dynamics 365</a>
@@ -1221,7 +1250,7 @@
       </p>
 
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up mb-12" style="animation-delay: 0.3s; animation-fill-mode: both;">
-        <a href="#products" class="btn-liquid-gold px-8 py-4 w-full sm:w-auto font-medium text-lg">Explore Solutions</a>
+        <a href="#featured-workflows" class="btn-liquid-gold px-8 py-4 w-full sm:w-auto font-medium text-lg">Explore AI Workflows</a>
         <a href="#contact" class="bg-transparent border border-white/20 text-white hover:bg-white/10 hover:border-white/40 transition-all duration-300 rounded-full px-8 py-4 w-full sm:w-auto font-medium text-lg backdrop-blur-md">Speak to an Architect</a>
       </div>
 
@@ -1284,9 +1313,14 @@
     </div>
   </header>
 
-  <!-- Autonomous AI SDR Section with 3D Depth & Glowing Background -->
-  <section id="ip-spotlight" class="py-24 px-6 relative z-10">
+  <!-- Featured AI workflows: the two signature systems visitors should discover first. -->
+  <section id="ip-spotlight" class="pt-10 pb-8 px-6 relative z-10">
     <div class="max-w-7xl mx-auto">
+      <div id="featured-workflows" class="featured-workflows-heading text-center mb-10 reveal">
+        <span class="featured-workflows-kicker">Signature AI workflows</span>
+        <h2 class="text-3xl md:text-5xl font-bold text-white leading-tight">Two flagship workflows. One practical goal.</h2>
+        <p class="max-w-3xl mx-auto mt-4 text-gray-400 font-light text-lg leading-relaxed">Reduce repetitive work across outbound sales and search visibility with two focused AI systems.</p>
+      </div>
       <div class="glass-card rounded-[2.5rem] p-8 md:p-14 overflow-hidden relative reveal shadow-[0_16px_40px_-15px_rgba(212,165,116,0.16)] border border-salyant-gold/40 bg-gradient-to-br from-white/[0.05] via-[#0b0e17]/90 to-salyant-gold/[0.07] ">
         <div class="absolute top-0 right-0 w-[380px] h-[380px] bg-salyant-gold/20 rounded-full blur-[85px] -z-10 pointer-events-none"></div>
 
@@ -1296,31 +1330,31 @@
               Salyant Exclusive IP
             </div>
 
-            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white leading-tight">Autonomous AI SDR</h2>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white leading-tight">AI-Powered Sales Development</h2>
             <p class="text-gray-300 mb-8 font-light text-lg leading-relaxed">
-              Experience the future of outbound growth. Our proprietary AI Sales Development Representative manages discovery, drafting, approval, replies, and self-healing reliability—end to end, completely autonomously, worldwide.
+              Our AI SDR workflow supports prospect discovery, personalised drafting, review, reply handling and recovery—reducing repetitive outbound work while keeping sending rules and human approval in your control.
             </p>
             <ul class="space-y-5 mb-10 text-base text-gray-300">
               <li class="flex items-start gap-4">
                 <div class="mt-0.5 p-1.5 rounded-full bg-salyant-gold/20 text-salyant-gold border border-salyant-gold/30 shadow-[0_0_10px_rgba(212,165,116,0.2)]">
                   <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                 </div>
-                Personalised outbound drafting at infinite scale
+                Personalised outbound drafts at scale
               </li>
               <li class="flex items-start gap-4">
                 <div class="mt-0.5 p-1.5 rounded-full bg-salyant-gold/20 text-salyant-gold border border-salyant-gold/30 shadow-[0_0_10px_rgba(212,165,116,0.2)]">
                   <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                 </div>
-                Context-aware intelligent conversation handling
+                Context-aware reply triage and conversation handling
               </li>
               <li class="flex items-start gap-4">
                 <div class="mt-0.5 p-1.5 rounded-full bg-salyant-gold/20 text-salyant-gold border border-salyant-gold/30 shadow-[0_0_10px_rgba(212,165,116,0.2)]">
                   <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                 </div>
-                Self-healing system reliability & data enrichment
+                Workflow recovery checks and contact-data enrichment
               </li>
             </ul>
-            <a href="#contact" class="btn-liquid-gold px-8 py-3.5 text-base font-semibold shadow-lg">Deploy Autonomous Sales</a>
+            <a href="#contact" class="btn-liquid-gold px-8 py-3.5 text-base font-semibold shadow-lg">Discuss AI SDR</a>
           </div>
 
 <div class="relative w-full aspect-[4/3] rounded-3xl overflow-hidden glass-panel shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-salyant-gold/30 sdr-demo" id="sdrDemo">
@@ -1333,7 +1367,7 @@
   <div class="sdr-scene active" data-dur="3600">
     <div class="sdr-eyebrow">Salyant Exclusive IP</div>
     <div class="sdr-headline">Your Pipeline,<br/>Running 24/7</div>
-    <div class="sdr-sub">The autonomous AI Sales Development Representative.</div>
+    <div class="sdr-sub">An AI SDR workflow for prospect discovery, drafting and reply handling.</div>
   </div>
 
   <!-- SCENE 1: Discovery -->
@@ -1452,10 +1486,13 @@
 @keyframes sdrCardIn{ to{ opacity:1; transform:translateY(0) scale(1);} }
 .sdr-to{ font-size:.65rem; color:#6b7280; margin-bottom:6px; }
 .sdr-typewrite{
-  font-size:.75rem; color:#111827; line-height:1.55; white-space:pre-wrap; overflow:hidden;
-  border-right:2px solid #d4a574; width:0ch;
-  animation: sdrType 1.9s steps(46,end) .45s forwards, sdrBlink .8s step-end infinite;
+  font-size:.75rem; color:#111827; line-height:1.55;
+  width:100%; max-width:100%; box-sizing:border-box;
+  white-space:normal; overflow-wrap:anywhere; overflow:hidden;
+  border-right:0; opacity:0; transform:translateY(4px);
+  animation:sdrTypeReveal .6s ease .45s forwards;
 }
+@keyframes sdrTypeReveal{ to{opacity:1;transform:translateY(0);} }
 @keyframes sdrType{ to{ width:46ch; } }
 @keyframes sdrBlink{ 50%{ border-color:transparent; } }
 .sdr-badge{
@@ -1630,7 +1667,7 @@
 
 </section>
 
-<section id="seo-spotlight" class="py-24 px-6 relative z-10">
+<section id="seo-spotlight" class="pt-8 pb-10 px-6 relative z-10">
   <div class="max-w-7xl mx-auto">
     <div class="glass-card rounded-[2.5rem] p-8 md:p-14 overflow-hidden relative reveal shadow-[0_16px_40px_-15px_rgba(212,165,116,0.16)] border border-salyant-gold/40 bg-gradient-to-br from-white/[0.05] via-[#0b0e17]/90 to-salyant-gold/[0.07] ">
       <div class="absolute top-0 left-0 w-[380px] h-[380px] bg-salyant-gold/20 rounded-full blur-[85px] -z-10 pointer-events-none"></div>
@@ -1648,7 +1685,7 @@
           <div class="geo-scene active" data-dur="3600">
             <div class="geo-eyebrow">Salyant Exclusive IP</div>
             <div class="geo-headline">Your Visibility,<br/>Rebuilt Hourly</div>
-            <div class="geo-sub">The autonomous SEO / AEO / GEO Growth Engine.</div>
+            <div class="geo-sub">AI-powered SEO, AEO &amp; GEO growth.</div>
           </div>
 
           <!-- SCENE 1: Scan -->
@@ -1709,31 +1746,31 @@
             Salyant Exclusive IP
           </div>
 
-          <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white leading-tight">Autonomous SEO / AEO / GEO Growth Engine</h2>
+          <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white leading-tight">AI-Powered SEO, AEO &amp; GEO Growth Engine</h2>
           <p class="text-gray-300 mb-8 font-light text-lg leading-relaxed">
-            The same engine that keeps this site itself visible — across Google, featured answers, and AI platforms like ChatGPT and Perplexity. It scans, diagnoses, rewrites, and ships fixes end-to-end, on an hourly cycle, with zero manual publishing.
+            The search-visibility workflow Salyant runs on its own site. It checks technical SEO, improves answer-ready content and keeps structured information current—then moves changes through defined design and quality gates.
           </p>
           <ul class="space-y-5 mb-10 text-base text-gray-300">
             <li class="flex items-start gap-4">
               <div class="mt-0.5 p-1.5 rounded-full bg-salyant-gold/20 text-salyant-gold border border-salyant-gold/30 shadow-[0_0_10px_rgba(212,165,116,0.2)]">
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
               </div>
-              Hourly technical, schema &amp; AI-citation audits
+              Technical, schema and AI-citation audits
             </li>
             <li class="flex items-start gap-4">
               <div class="mt-0.5 p-1.5 rounded-full bg-salyant-gold/20 text-salyant-gold border border-salyant-gold/30 shadow-[0_0_10px_rgba(212,165,116,0.2)]">
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
               </div>
-              Design-gated rewrites — nothing ships broken or off-brand
+              Design-gated updates that protect brand and layout consistency
             </li>
             <li class="flex items-start gap-4">
               <div class="mt-0.5 p-1.5 rounded-full bg-salyant-gold/20 text-salyant-gold border border-salyant-gold/30 shadow-[0_0_10px_rgba(212,165,116,0.2)]">
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
               </div>
-              Auto-commits straight to production, self-heals layout drift
+              Automated publishing with layout-drift checks
             </li>
           </ul>
-          <a href="#contact" class="btn-liquid-gold px-8 py-3.5 text-base font-semibold shadow-lg">Deploy Your Growth Engine</a>
+          <a href="#contact" class="btn-liquid-gold px-8 py-3.5 text-base font-semibold shadow-lg">Discuss the Growth Engine</a>
         </div>
 
       </div>
@@ -1742,22 +1779,35 @@
     <div class="related-resources"><h3>Related Resources</h3><ul>
       <li><a href="blog-automated-seo-aeo-geo-growth-engine.html" class="rr-link" data-link-type="service-pillar">How We Automated Our Own SEO/AEO/GEO — A Build Log<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10"/></svg></a></li>
       <li><a href="news-trump-super-intelligence-order-ai-2026.html" class="rr-link" data-link-type="news">Latest AI Policy News: Trump’s “Super Intelligence” Order<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path fill="none" stroke-linejoin="round" stroke-linecap="round" d="M7 17L17 7M7 7h10v10"/></svg></a></li>
-       <li><a href="#contact" class="rr-link" data-link-type="cta">Request an SEO/AEO/GEO Automation Quote<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10"/></svg></a></li>
+       <li><a href="#contact" class="rr-link" data-link-type="cta">Request an SEO, AEO &amp; GEO Automation Quote<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10"/></svg></a></li>
       <li><a href="#ip-spotlight" class="rr-link" data-link-type="authority">View Our IP Spotlight: Autonomous AI SDR<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10"/></svg></a></li>
     </ul></div>
   </div>
 </section>
 
 <!-- Latest News -->
+<section id="founder-note" class="founder-note-section px-6 py-10 md:py-14 relative z-10">
+    <div class="max-w-7xl mx-auto">
+      <div class="founder-note-panel reveal">
+        <div class="founder-note-label">
+          <span class="founder-note-kicker">A note from the founder</span>
+          <span class="founder-note-mark" aria-hidden="true">“</span>
+        </div>
+        <div>
+          <p class="founder-note-copy">We build AI to remove repetitive work, not add another system to manage. These two workflows reflect that approach: make the process visible, keep guardrails clear, and leave important decisions in human hands.</p>
+          <div class="founder-note-signature"><strong>Yash Dharmadhikari</strong><span>Founder, Salyant</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 <section id="news" class="py-24 px-6 relative z-10">
   <div class="max-w-7xl mx-auto">
-    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
-      <div>
-        <div class="inline-block px-5 py-2 bg-salyant-gold/15 text-salyant-gold text-xs font-bold rounded-full mb-5 border border-salyant-gold/50 tracking-widest uppercase">News &amp; Analysis</div>
-        <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white leading-tight">What’s happening in AI &amp; technology</h2>
-        <p class="text-gray-300 font-light text-lg leading-relaxed max-w-2xl">Timely, source-led analysis of major AI, automation and technology developments — with a practical view of what changes for businesses.</p>
-      </div>
-      <a href="news-trump-super-intelligence-order-ai-2026.html" class="btn-liquid-gold px-7 py-3 text-sm font-semibold shrink-0">Read the latest</a>
+    <div class="news-section-heading text-center max-w-4xl mx-auto mb-10 reveal">
+      <div class="inline-block px-5 py-2 bg-salyant-gold/15 text-salyant-gold text-xs font-bold rounded-full mb-5 border border-salyant-gold/50 tracking-widest uppercase">News &amp; Analysis</div>
+      <h2 class="text-3xl md:text-5xl font-bold mb-4 text-white leading-tight">What’s happening in AI &amp; technology</h2>
+      <p class="text-gray-300 font-light text-lg leading-relaxed max-w-3xl mx-auto">Timely, source-led analysis of major AI, automation and technology developments — with a practical view of what changes for businesses.</p>
+      <a href="news-trump-super-intelligence-order-ai-2026.html" class="btn-liquid-gold inline-flex mt-6 px-7 py-3 text-sm font-semibold">Read the latest <span aria-hidden="true" class="ml-2">↗</span></a>
     </div>
     <a href="news-trump-super-intelligence-order-ai-2026.html" class="block glass-card rounded-[2rem] p-7 md:p-10 overflow-hidden relative group">
       <div class="absolute top-0 right-0 w-72 h-72 bg-salyant-gold/10 rounded-full blur-[100px] pointer-events-none"></div>
@@ -1829,15 +1879,13 @@
 /* Diagnose card */
 .geo-card{ position:relative; background:#fff; color:#111827; border-radius:14px; padding:16px 18px; width:min(300px,85%); text-align:left; box-shadow:0 20px 40px -14px rgba(0,0,0,.55); }
 .geo-to{ font-size:.65rem; color:#6b7280; margin-bottom:6px; font-family:'Plus Jakarta Sans',sans-serif; font-weight:600; }
-.geo-typewrite{ font-size:.72rem; line-height:1.5; white-space:nowrap; overflow:hidden; border-right:2px solid #d4a574; width:0; animation: geoType 2.4s steps(46,end) .4s forwards, geoBlink .8s step-end infinite; }
-@keyframes geoType{ to{ width:44ch; } }
-@keyframes geoBlink{ 50%{ border-color:transparent; } }
-.geo-badge{
-  position:absolute; top:-10px; right:-8px; background:#d4a574; color:#1a1206;
-  font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:.6rem;
-  padding:5px 9px; border-radius:20px; box-shadow:0 6px 14px -4px rgba(0,0,0,.4);
-  opacity:0; transform:scale(.5);
+.geo-typewrite{
+  font-size:.72rem; line-height:1.5; width:100%; max-width:100%; box-sizing:border-box;
+  white-space:normal; overflow-wrap:anywhere; overflow:hidden;
+  border-right:0; opacity:0; transform:translateY(4px);
+  animation:geoTextReveal .6s ease .4s forwards;
 }
+@keyframes geoTextReveal{ to{opacity:1;transform:translateY(0);} }
 .geo-scene.active .geo-badge{ animation: geoBadgeIn .4s cubic-bezier(.3,1.6,.5,1) 2.4s forwards; }
 @keyframes geoBadgeIn{ to{ opacity:1; transform:scale(1);} }
 
@@ -2284,7 +2332,7 @@
             <div class="grid lg:grid-cols-2 gap-8 mt-8 pt-8 border-t border-white/10">
               <div>
                 <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Relevant Salyant services</p>
-                <div class="flex flex-wrap gap-2"><a href="ai-feasibility-audit.html" class="rr-link">AI Feasibility &amp; Workflow Audit <span aria-hidden="true">→</span></a><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="service-seo-aeo-geo-automation.html" class="rr-link">Automated SEO/AEO/GEO Growth Engine <span aria-hidden="true">→</span></a><a href="service-ai-sdr-agency.html" class="rr-link">AI Sales &amp; SDR Automation <span aria-hidden="true">→</span></a></div>
+                <div class="flex flex-wrap gap-2"><a href="ai-feasibility-audit.html" class="rr-link">AI Feasibility &amp; Workflow Audit <span aria-hidden="true">→</span></a><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="service-seo-aeo-geo-automation.html" class="rr-link">AI-Powered SEO, AEO &amp; GEO Growth Engine <span aria-hidden="true">→</span></a><a href="service-ai-sdr-agency.html" class="rr-link">AI Sales &amp; SDR Automation <span aria-hidden="true">→</span></a></div>
                 <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mt-8 mb-4">Automation opportunities</p>
                 <ul class="list-disc list-inside space-y-2 text-gray-300 font-light leading-relaxed"><li>Matter and precedent knowledge search with cited retrieval</li><li>Contract intake, clause extraction and review queues</li><li>Client onboarding, conflict-check preparation and document routing</li><li>Marketing, referral and BD research with controlled approval</li></ul>
               </div>
@@ -2313,7 +2361,7 @@
             <div class="grid lg:grid-cols-2 gap-8 mt-8 pt-8 border-t border-white/10">
               <div>
                 <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Relevant Salyant services</p>
-                <div class="flex flex-wrap gap-2"><a href="service-ai-sdr-agency.html" class="rr-link">AI Sales &amp; SDR Automation <span aria-hidden="true">→</span></a><a href="service-seo-aeo-geo-automation.html" class="rr-link">Automated SEO/AEO/GEO Growth Engine <span aria-hidden="true">→</span></a><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="ai-feasibility-audit.html" class="rr-link">AI Feasibility &amp; Workflow Audit <span aria-hidden="true">→</span></a></div>
+                <div class="flex flex-wrap gap-2"><a href="service-ai-sdr-agency.html" class="rr-link">AI Sales &amp; SDR Automation <span aria-hidden="true">→</span></a><a href="service-seo-aeo-geo-automation.html" class="rr-link">AI-Powered SEO, AEO &amp; GEO Growth Engine <span aria-hidden="true">→</span></a><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="ai-feasibility-audit.html" class="rr-link">AI Feasibility &amp; Workflow Audit <span aria-hidden="true">→</span></a></div>
                 <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mt-8 mb-4">Automation opportunities</p>
                 <ul class="list-disc list-inside space-y-2 text-gray-300 font-light leading-relaxed"><li>Prospect research, account enrichment and personalised outbound preparation</li><li>Brief-to-content workflows with approval gates and brand controls</li><li>Campaign reporting, anomaly detection and client-ready summaries</li><li>Lead routing, meeting preparation and CRM updates</li></ul>
               </div>
@@ -2458,7 +2506,7 @@
             <div class="grid lg:grid-cols-2 gap-8 mt-8 pt-8 border-t border-white/10">
               <div>
                 <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Relevant Salyant services</p>
-                <div class="flex flex-wrap gap-2"><a href="service-seo-aeo-geo-automation.html" class="rr-link">Automated SEO/AEO/GEO Growth Engine <span aria-hidden="true">→</span></a><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="service-ai-sdr-agency.html" class="rr-link">AI Sales &amp; SDR Automation <span aria-hidden="true">→</span></a><a href="service-erp-crm-integration-services.html" class="rr-link">ERP-CRM Integration Services <span aria-hidden="true">→</span></a></div>
+                <div class="flex flex-wrap gap-2"><a href="service-seo-aeo-geo-automation.html" class="rr-link">AI-Powered SEO, AEO &amp; GEO Growth Engine <span aria-hidden="true">→</span></a><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="service-ai-sdr-agency.html" class="rr-link">AI Sales &amp; SDR Automation <span aria-hidden="true">→</span></a><a href="service-erp-crm-integration-services.html" class="rr-link">ERP-CRM Integration Services <span aria-hidden="true">→</span></a></div>
                 <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mt-8 mb-4">Automation opportunities</p>
                 <ul class="list-disc list-inside space-y-2 text-gray-300 font-light leading-relaxed"><li>AI concierge and guest enquiry triage across web and messaging</li><li>Booking-change, cancellation and request routing</li><li>Review analysis, response preparation and service-recovery workflows</li><li>Corporate account outreach, event lead research and follow-up</li></ul>
               </div>
@@ -2487,7 +2535,7 @@
             <div class="grid lg:grid-cols-2 gap-8 mt-8 pt-8 border-t border-white/10">
               <div>
                 <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Relevant Salyant services</p>
-                <div class="flex flex-wrap gap-2"><a href="service-seo-aeo-geo-automation.html" class="rr-link">Automated SEO/AEO/GEO Growth Engine <span aria-hidden="true">→</span></a><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="service-ai-sdr-agency.html" class="rr-link">AI Sales &amp; SDR Automation <span aria-hidden="true">→</span></a><a href="ai-feasibility-audit.html" class="rr-link">AI Feasibility &amp; Workflow Audit <span aria-hidden="true">→</span></a></div>
+                <div class="flex flex-wrap gap-2"><a href="service-seo-aeo-geo-automation.html" class="rr-link">AI-Powered SEO, AEO &amp; GEO Growth Engine <span aria-hidden="true">→</span></a><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="service-ai-sdr-agency.html" class="rr-link">AI Sales &amp; SDR Automation <span aria-hidden="true">→</span></a><a href="ai-feasibility-audit.html" class="rr-link">AI Feasibility &amp; Workflow Audit <span aria-hidden="true">→</span></a></div>
                 <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mt-8 mb-4">Automation opportunities</p>
                 <ul class="list-disc list-inside space-y-2 text-gray-300 font-light leading-relaxed"><li>Reservation and catering enquiry qualification</li><li>Review monitoring and response preparation</li><li>Menu, location and offer content workflows for search and answer engines</li><li>Supplier-document intake, admin and management reporting</li></ul>
               </div>
@@ -2516,7 +2564,7 @@
             <div class="grid lg:grid-cols-2 gap-8 mt-8 pt-8 border-t border-white/10">
               <div>
                 <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Relevant Salyant services</p>
-                <div class="flex flex-wrap gap-2"><a href="service-ai-sdr-agency.html" class="rr-link">AI Sales &amp; SDR Automation <span aria-hidden="true">→</span></a><a href="service-seo-aeo-geo-automation.html" class="rr-link">Automated SEO/AEO/GEO Growth Engine <span aria-hidden="true">→</span></a><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="service-legacy-system-ai-integration-uk.html" class="rr-link">Legacy System AI Integration <span aria-hidden="true">→</span></a></div>
+                <div class="flex flex-wrap gap-2"><a href="service-ai-sdr-agency.html" class="rr-link">AI Sales &amp; SDR Automation <span aria-hidden="true">→</span></a><a href="service-seo-aeo-geo-automation.html" class="rr-link">AI-Powered SEO, AEO &amp; GEO Growth Engine <span aria-hidden="true">→</span></a><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="service-legacy-system-ai-integration-uk.html" class="rr-link">Legacy System AI Integration <span aria-hidden="true">→</span></a></div>
                 <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mt-8 mb-4">Automation opportunities</p>
                 <ul class="list-disc list-inside space-y-2 text-gray-300 font-light leading-relaxed"><li>Lead qualification, viewing preparation and follow-up</li><li>Listing content creation, structured property data and search optimisation</li><li>Tenant enquiry triage, maintenance routing and supplier coordination</li><li>Lease, compliance and portfolio-document extraction</li></ul>
               </div>
@@ -2574,7 +2622,7 @@
             <div class="grid lg:grid-cols-2 gap-8 mt-8 pt-8 border-t border-white/10">
               <div>
                 <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Relevant Salyant services</p>
-                <div class="flex flex-wrap gap-2"><a href="service-seo-aeo-geo-automation.html" class="rr-link">Automated SEO/AEO/GEO Growth Engine <span aria-hidden="true">→</span></a><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="service-ai-sdr-agency.html" class="rr-link">AI Sales &amp; SDR Automation <span aria-hidden="true">→</span></a><a href="service-erp-crm-integration-services.html" class="rr-link">ERP-CRM Integration Services <span aria-hidden="true">→</span></a></div>
+                <div class="flex flex-wrap gap-2"><a href="service-seo-aeo-geo-automation.html" class="rr-link">AI-Powered SEO, AEO &amp; GEO Growth Engine <span aria-hidden="true">→</span></a><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="service-ai-sdr-agency.html" class="rr-link">AI Sales &amp; SDR Automation <span aria-hidden="true">→</span></a><a href="service-erp-crm-integration-services.html" class="rr-link">ERP-CRM Integration Services <span aria-hidden="true">→</span></a></div>
                 <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mt-8 mb-4">Automation opportunities</p>
                 <ul class="list-disc list-inside space-y-2 text-gray-300 font-light leading-relaxed"><li>Product data enrichment and catalogue-content workflows</li><li>Customer-service triage for delivery, returns and product questions</li><li>Review, competitor and market-signal monitoring</li><li>B2B sales prospecting and account follow-up</li></ul>
               </div>
@@ -2632,7 +2680,7 @@
             <div class="grid lg:grid-cols-2 gap-8 mt-8 pt-8 border-t border-white/10">
               <div>
                 <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Relevant Salyant services</p>
-                <div class="flex flex-wrap gap-2"><a href="service-enterprise-ai-business-training-uk.html" class="rr-link">Enterprise AI Business Training <span aria-hidden="true">→</span></a><a href="service-seo-aeo-geo-automation.html" class="rr-link">Automated SEO/AEO/GEO Growth Engine <span aria-hidden="true">→</span></a><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="ai-feasibility-audit.html" class="rr-link">AI Feasibility &amp; Workflow Audit <span aria-hidden="true">→</span></a></div>
+                <div class="flex flex-wrap gap-2"><a href="service-enterprise-ai-business-training-uk.html" class="rr-link">Enterprise AI Business Training <span aria-hidden="true">→</span></a><a href="service-seo-aeo-geo-automation.html" class="rr-link">AI-Powered SEO, AEO &amp; GEO Growth Engine <span aria-hidden="true">→</span></a><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="ai-feasibility-audit.html" class="rr-link">AI Feasibility &amp; Workflow Audit <span aria-hidden="true">→</span></a></div>
                 <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mt-8 mb-4">Automation opportunities</p>
                 <ul class="list-disc list-inside space-y-2 text-gray-300 font-light leading-relaxed"><li>Admissions and enquiry triage</li><li>Course and resource knowledge assistants</li><li>Learner communication and scheduling workflows</li><li>Content repurposing and internal reporting</li></ul>
               </div>
@@ -2661,7 +2709,7 @@
             <div class="grid lg:grid-cols-2 gap-8 mt-8 pt-8 border-t border-white/10">
               <div>
                 <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Relevant Salyant services</p>
-                <div class="flex flex-wrap gap-2"><a href="service-ai-sdr-agency.html" class="rr-link">AI Sales &amp; SDR Automation <span aria-hidden="true">→</span></a><a href="service-seo-aeo-geo-automation.html" class="rr-link">Automated SEO/AEO/GEO Growth Engine <span aria-hidden="true">→</span></a><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="service-erp-crm-integration-services.html" class="rr-link">ERP-CRM Integration Services <span aria-hidden="true">→</span></a></div>
+                <div class="flex flex-wrap gap-2"><a href="service-ai-sdr-agency.html" class="rr-link">AI Sales &amp; SDR Automation <span aria-hidden="true">→</span></a><a href="service-seo-aeo-geo-automation.html" class="rr-link">AI-Powered SEO, AEO &amp; GEO Growth Engine <span aria-hidden="true">→</span></a><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="service-erp-crm-integration-services.html" class="rr-link">ERP-CRM Integration Services <span aria-hidden="true">→</span></a></div>
                 <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mt-8 mb-4">Automation opportunities</p>
                 <ul class="list-disc list-inside space-y-2 text-gray-300 font-light leading-relaxed"><li>Vehicle enquiry qualification and follow-up</li><li>Stock-data enrichment and listing-content workflows</li><li>Service and workshop booking administration</li><li>Fleet/B2B account research and outreach</li></ul>
               </div>
@@ -2719,7 +2767,7 @@
             <div class="grid lg:grid-cols-2 gap-8 mt-8 pt-8 border-t border-white/10">
               <div>
                 <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">Relevant Salyant services</p>
-                <div class="flex flex-wrap gap-2"><a href="service-seo-aeo-geo-automation.html" class="rr-link">Automated SEO/AEO/GEO Growth Engine <span aria-hidden="true">→</span></a><a href="service-ai-sdr-agency.html" class="rr-link">AI Sales &amp; SDR Automation <span aria-hidden="true">→</span></a><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="ai-feasibility-audit.html" class="rr-link">AI Feasibility &amp; Workflow Audit <span aria-hidden="true">→</span></a></div>
+                <div class="flex flex-wrap gap-2"><a href="service-seo-aeo-geo-automation.html" class="rr-link">AI-Powered SEO, AEO &amp; GEO Growth Engine <span aria-hidden="true">→</span></a><a href="service-ai-sdr-agency.html" class="rr-link">AI Sales &amp; SDR Automation <span aria-hidden="true">→</span></a><a href="service-custom-automation.html" class="rr-link">Custom Automation Services <span aria-hidden="true">→</span></a><a href="ai-feasibility-audit.html" class="rr-link">AI Feasibility &amp; Workflow Audit <span aria-hidden="true">→</span></a></div>
                 <p class="text-salyant-gold text-xs font-bold uppercase tracking-[0.16em] mt-8 mb-4">Automation opportunities</p>
                 <ul class="list-disc list-inside space-y-2 text-gray-300 font-light leading-relaxed"><li>Enquiry qualification, quote preparation and follow-up</li><li>Shoot planning, scheduling and client-brief extraction</li><li>Image-library tagging, metadata and delivery workflows</li><li>Portfolio content, local SEO/AEO/GEO and referral outreach</li></ul>
               </div>
@@ -3028,82 +3076,20 @@ Cal.config.forwardQueryParams = true;
   <!-- Footer -->
   <!-- FAQ -->
   <section id="faq" class="py-24 md:py-28 px-6 relative z-10">
-    <div class="max-w-7xl mx-auto faq-content-shell">
+    <div class="faq-content-shell mx-auto">
       <div class="text-center mb-12 md:mb-14 reveal">
-        <span class="inline-block text-xs uppercase tracking-[.2em] font-bold text-salyant-gold mb-4">Clear answers. Practical delivery.</span>
+        <span class="faq-kicker">Clear answers. Practical delivery.</span>
         <h2 class="text-3xl md:text-5xl font-bold mb-5 text-white">Frequently Asked Questions</h2>
         <p class="text-gray-400 max-w-2xl mx-auto font-light text-lg">Straight answers about AI workflow automation for UK businesses.</p>
       </div>
-      <div class="faq-layout-grid">
-        <div class="faq-list">
-          <div class="space-y-4">
-            <div class="service-glass-block p-8 rounded-3xl reveal">
-              <h3 class="text-lg font-bold text-white mb-2">What is AI workflow automation and how can it benefit my business?</h3>
-              <p class="text-sm text-gray-400 font-light leading-relaxed">AI workflow automation uses artificial intelligence to streamline and execute repetitive business processes without manual intervention. This helps UK businesses reduce operational costs, eliminate time-consuming manual tasks, and free up staff to focus on higher-value work that drives growth.</p>
-            </div>
-            <div class="service-glass-block p-8 rounded-3xl reveal">
-              <h3 class="text-lg font-bold text-white mb-2">What types of business processes can be automated?</h3>
-              <p class="text-sm text-gray-400 font-light leading-relaxed">We help automate a wide range of repetitive tasks including data entry, document processing, customer service workflows, reporting, and administrative processes. Each automation solution is tailored to your specific business needs and existing systems.</p>
-            </div>
-            <div class="service-glass-block p-8 rounded-3xl reveal">
-              <h3 class="text-lg font-bold text-white mb-2">How does Salyant ensure the security of AI automation solutions?</h3>
-              <p class="text-sm text-gray-400 font-light leading-relaxed">Security is fundamental to our approach. We implement secure AI workflow automation that complies with UK data protection standards, ensuring your business data and processes are protected throughout the automation implementation.</p>
-            </div>
-            <div class="service-glass-block p-8 rounded-3xl reveal">
-              <h3 class="text-lg font-bold text-white mb-2">What does the AI automation implementation process look like?</h3>
-              <p class="text-sm text-gray-400 font-light leading-relaxed">We begin by understanding your current workflows and identifying automation opportunities. Then we design, develop, and deploy AI solutions that integrate with your existing systems, followed by testing and staff training to ensure smooth adoption.</p>
-            </div>
-            <div class="service-glass-block p-8 rounded-3xl reveal">
-              <h3 class="text-lg font-bold text-white mb-2">How long does it take to implement AI automation?</h3>
-              <p class="text-sm text-gray-400 font-light leading-relaxed">Implementation timelines vary based on the complexity of your processes and the scope of automation. We work efficiently to deliver solutions that provide measurable results while minimising disruption to your daily operations.</p>
-            </div>
-            <div class="service-glass-block p-8 rounded-3xl reveal">
-              <h3 class="text-lg font-bold text-white mb-2">Do I need technical expertise to use AI automation?</h3>
-              <p class="text-sm text-gray-400 font-light leading-relaxed">No technical background is required. We design solutions that are accessible and easy to use, and we provide guidance and training to ensure your team can effectively work with the automated systems we implement.</p>
-            </div>
-            <div class="service-glass-block p-8 rounded-3xl reveal">
-              <h3 class="text-lg font-bold text-white mb-2">Can AI automation scale with my business?</h3>
-              <p class="text-sm text-gray-400 font-light leading-relaxed">Yes. Our AI workflow automation solutions are designed to grow with your business, allowing you to handle increased workload and expand capabilities without proportionally increasing resources or costs.</p>
-            </div>
-          </div>
-        </div>
-
-        <aside class="faq-search-aside reveal" aria-labelledby="faq-search-stack-title">
-          <div class="faq-search-top">
-            <span class="faq-search-kicker">A related capability</span>
-            <div class="faq-search-count" aria-label="Three connected search visibility layers"><strong>3</strong><span>connected layers</span></div>
-          </div>
-          <h3 id="faq-search-stack-title">One growth engine. Three search surfaces.</h3>
-          <p class="faq-search-intro">Search visibility now spans classic search, direct answers and generative AI. Salyant’s growth engine treats them as connected signals rather than separate monthly tasks.</p>
-
-          <div class="faq-search-layers" aria-label="SEO, AEO and GEO explained">
-            <div class="faq-search-layer">
-              <span class="faq-search-layer-mark" aria-hidden="true">01</span>
-              <div><h4>SEO</h4><p>Technical crawlability, site structure and search fundamentals.</p></div>
-            </div>
-            <div class="faq-search-layer">
-              <span class="faq-search-layer-mark" aria-hidden="true">02</span>
-              <div><h4>AEO</h4><p>Clear, answer-ready content for questions people ask.</p></div>
-            </div>
-            <div class="faq-search-layer">
-              <span class="faq-search-layer-mark" aria-hidden="true">03</span>
-              <div><h4>GEO</h4><p>Well-structured information for generative search and source discovery.</p></div>
-            </div>
-          </div>
-
-          <p class="faq-search-loop-label">The improvement loop</p>
-          <div class="faq-search-loop" aria-label="Audit, prioritise, validate, publish">
-            <span>Audit</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m-5-5 5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Prioritise</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m-5-5 5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Validate</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m-5-5 5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Publish</span>
-          </div>
-          <p class="faq-search-footnote">The exact scope and baseline are agreed before work begins. Results depend on the site, competition and implementation; no ranking or citation outcome is guaranteed.</p>
-          <div class="faq-search-actions">
-            <a href="service-seo-aeo-geo-automation.html">Explore the SEO/AEO/GEO growth engine <span aria-hidden="true">↗</span></a>
-            <a href="blog-automated-seo-aeo-geo-growth-engine.html">Read how the growth engine works <span aria-hidden="true">↗</span></a>
-          </div>
-        </aside>
+      <div class="faq-answers-grid">
+        <article class="service-glass-block rounded-3xl reveal faq-answer-card"><h3 class="text-lg font-bold text-white mb-2">What is AI workflow automation and how can it benefit my business?</h3><p class="text-sm text-gray-400 font-light leading-relaxed">AI workflow automation uses artificial intelligence to streamline and execute repetitive business processes without manual intervention. This helps UK businesses reduce operational costs, eliminate time-consuming manual tasks, and free up staff to focus on higher-value work that drives growth.</p></article>
+        <article class="service-glass-block rounded-3xl reveal faq-answer-card"><h3 class="text-lg font-bold text-white mb-2">What types of business processes can be automated?</h3><p class="text-sm text-gray-400 font-light leading-relaxed">We help automate a wide range of repetitive tasks including data entry, document processing, customer service workflows, reporting, and administrative processes. Each automation solution is tailored to your specific business needs and existing systems.</p></article>
+        <article class="service-glass-block rounded-3xl reveal faq-answer-card"><h3 class="text-lg font-bold text-white mb-2">How does Salyant ensure the security of AI automation solutions?</h3><p class="text-sm text-gray-400 font-light leading-relaxed">Security is fundamental to our approach. We implement secure AI workflow automation that complies with UK data protection standards, ensuring your business data and processes are protected throughout the automation implementation.</p></article>
+        <article class="service-glass-block rounded-3xl reveal faq-answer-card"><h3 class="text-lg font-bold text-white mb-2">What does the AI automation implementation process look like?</h3><p class="text-sm text-gray-400 font-light leading-relaxed">We begin by understanding your current workflows and identifying automation opportunities. Then we design, develop, and deploy AI solutions that integrate with your existing systems, followed by testing and staff training to ensure smooth adoption.</p></article>
+        <article class="service-glass-block rounded-3xl reveal faq-answer-card"><h3 class="text-lg font-bold text-white mb-2">How long does it take to implement AI automation?</h3><p class="text-sm text-gray-400 font-light leading-relaxed">Implementation timelines vary based on the complexity of your processes and the scope of automation. We work efficiently to deliver solutions that provide measurable results while minimising disruption to your daily operations.</p></article>
+        <article class="service-glass-block rounded-3xl reveal faq-answer-card"><h3 class="text-lg font-bold text-white mb-2">Do I need technical expertise to use AI automation?</h3><p class="text-sm text-gray-400 font-light leading-relaxed">No technical background is required. We design solutions that are accessible and easy to use, and we provide guidance and training to ensure your team can effectively work with the automated systems we implement.</p></article>
+        <article class="service-glass-block rounded-3xl reveal faq-answer-card"><h3 class="text-lg font-bold text-white mb-2">Can AI automation scale with my business?</h3><p class="text-sm text-gray-400 font-light leading-relaxed">Yes. Our AI workflow automation solutions are designed to grow with your business, allowing you to handle increased workload and expand capabilities without proportionally increasing resources or costs.</p></article>
       </div>
     </div>
   </section>
