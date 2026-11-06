@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Automating SEO, AEO & GEO: How We Built Our Own Growth Engine | Salyant</title>
+<title>Automated SEO, AEO &amp; GEO Growth Engine | Salyant</title>
 
 <!-- Favicons & Manifest -->
 <link rel="icon" href="/favicon.ico">
@@ -13,8 +13,8 @@
 <link rel="manifest" href="favicon_io/site.webmanifest">
 
 <!-- SEO Meta Tags -->
-<meta name="description" content="How Salyant built an hourly SEO, AEO and GEO workflow for its own website, including scan, rewrite, design gates, publishing and lessons learned.">
-<meta name="keywords" content="SEO AEO GEO automation, automated SEO workflow, n8n SEO automation, answer engine optimization, generative engine optimization">
+<meta name="description" content="A technical case study of Salyant’s automated SEO, AEO and GEO workflow: n8n design, validation gates, publishing controls and lessons.">
+<meta name="keywords" content="automated SEO, auto SEO AEO GEO, SEO AEO GEO automation, n8n SEO workflow, automated AEO, answer engine optimisation, generative engine optimisation">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="author" content="Salyant Ltd">
 <meta name="theme-color" content="#07080C">
@@ -25,7 +25,7 @@
 
 <!-- Open Graph / Social Tags -->
 <meta property="og:title" content="Automating SEO, AEO & GEO: How We Built Our Own Growth Engine">
-<meta property="og:description" content="How Salyant built an hourly n8n workflow that scans, rewrites, and auto-publishes fixes for SEO, AEO and GEO on its own website.">
+<meta property="og:description" content="A technical case study of Salyant’s automated SEO, AEO and GEO workflow, including n8n architecture, validation gates, publishing controls and lessons learned.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://www.salyant.co.uk/blog-automated-seo-aeo-geo-growth-engine.html">
 <meta property="og:site_name" content="Salyant Ltd">
@@ -63,7 +63,7 @@
     {
       "@type": "BlogPosting",
       "headline": "Automating SEO, AEO & GEO: How We Built Our Own Growth Engine",
-      "description": "How Salyant built an hourly n8n workflow that scans, rewrites, and auto-publishes fixes for SEO, AEO and GEO on its own website — architecture, guardrails, and lessons learned.",
+      "description": "A technical case study of Salyant’s own automated SEO, AEO and GEO workflow, including n8n architecture, validation gates, publishing controls and lessons learned. This build log is not a self-serve product specification.",
       "mainEntityOfPage": "https://www.salyant.co.uk/blog-automated-seo-aeo-geo-growth-engine.html",
       "inLanguage": "en-GB",
       "publisher": {
@@ -245,7 +245,7 @@
       </h1>
 
       <p class="text-lg text-gray-400 font-light max-w-2xl">
-        We didn't write a listicle about SEO/AEO/GEO tools. We built an hourly automation that scans, rewrites, and ships its own fixes to this website — this is the architecture, the guardrails, and what broke along the way.
+        This is a technical build log of the SEO, AEO and GEO automation Salyant developed for its own website. It explains the workflow design, validation gates, publishing controls and lessons from implementation. It is not a promise that every stage is available as self-serve software or that a customer website is changed without an agreed approval process.
       </p>
     </div>
   </header>
@@ -296,7 +296,7 @@
       <section class="mb-10">
         <h2 class="text-2xl md:text-3xl font-semibold mb-4">Why we built this instead of buying it</h2>
         <p>Most content on "SEO, AEO, GEO automation" comes from platforms selling a dashboard: a tool that scores your site and tells you what to fix. We're an automation engineering firm, so we asked a narrower question — could the fixing itself be automated, end-to-end, without a human opening a CMS?</p>
-        <p>We pointed the answer at our own site first. Not a client's, and not a demo environment — the live salyant.co.uk you're reading this on right now.</p>
+        <p>We pointed the first implementation at our own site, not a client environment. The workflow and its controls have evolved as the infrastructure and validation rules have changed; the live configuration, schedule and permissions should always be checked before assuming a particular capability is active.</p>
       </section>
 
       <section class="mb-10">
@@ -306,12 +306,12 @@
 
       <section class="mb-10">
         <h2 class="text-2xl md:text-3xl font-semibold mb-4">The architecture: scan, rewrite, gate, publish</h2>
-        <p>The engine runs as an n8n workflow on an hourly trigger, structured in four stages:</p>
+        <p>The build was organised in four stages. The exact trigger cadence and publishing permissions are configuration-dependent; this historical architecture description should not be read as a service-level promise that every client receives an hourly autonomous workflow.</p>
         <ul>
           <li><strong>Scan</strong> — crawls the live site and checks each page against a running checklist: missing schema, thin meta descriptions, weak snippet structure, internal linking gaps.</li>
           <li><strong>Diagnose &amp; rewrite</strong> — for anything that fails the checklist, drafts the fix directly: a schema block, a rewritten intro, a new FAQ entry.</li>
           <li><strong>Design gate</strong> — every proposed change is checked against a canonical template before anything ships, so a fix can't land as unstyled HTML or break the layout.</li>
-          <li><strong>Publish</strong> — passed changes are auto-committed straight to the site's repository. No manual deploy step.</li>
+          <li><strong>Publish</strong> — where repository publishing is enabled, a validated change can be committed through the configured deployment route. A generated draft or a successful scan is not, by itself, proof that a live production change has been approved or deployed.</li>
         </ul>
         <p>That design-gate stage exists because we hit exactly the failure it's meant to prevent.</p>
       </section>
@@ -323,8 +323,10 @@
       </section>
 
       <section class="mb-14">
-        <h2 class="text-2xl md:text-3xl font-semibold mb-4">Where this is headed</h2>
-        <p>The same engine is what now keeps this page — and the rest of salyant.co.uk — up to date without anyone manually editing HTML. We're rolling the same architecture out as a service for clients who want their own site scanned and maintained on the same cycle, with the same design-gate discipline before anything goes live.</p>
+        <h2 class="text-2xl md:text-3xl font-semibold mb-4">Where the growth engine sits today</h2>
+        <p>This article documents an internal engineering build: the way Salyant has designed automation for SEO, AEO and GEO research, diagnosis, validation and controlled website updates. The workflow's live schedule, provider availability and publication gates can change as the system is maintained; this article is a technical case study, not a guarantee of uninterrupted hourly operation.</p>
+        <p>For customers, the current offer is a scoped AI SEO, AEO and GEO service. The work begins with evidence, prioritisation, a written scope and agreed approval responsibilities. Do not assume that a customer site receives the same internal automation, direct repository publishing or unattended changes by default.</p>
+        <p><a href="service-seo-aeo-geo-automation.html" class="text-salyant-gold underline">Explore Salyant's AI SEO services and managed optimisation</a> for the current commercial model, or <a href="https://signal.salyant.co.uk/seo-aeo-geo-audit.html" class="text-salyant-gold underline">use Salyant Signal's AI SEO audit tool</a> to review website readiness before deciding what to improve.</p>
       </section>
 
       <!-- FAQ Section -->
@@ -352,9 +354,12 @@
 
       <!-- CTA -->
       <section class="glass-panel rounded-3xl p-8 md:p-10 text-center mb-14">
-        <h2 class="text-2xl font-semibold mb-3">Want this running on your own site?</h2>
-        <p class="text-gray-400 font-light mb-6 max-w-xl mx-auto">Speak to a Salyant automation architect about deploying the same scan-rewrite-gate-publish cycle for your SEO, AEO and GEO visibility.</p>
-        <a href="index.html#contact" class="btn-liquid-gold px-8 py-3.5 font-bold inline-block">Book a Strategy Call</a>
+        <h2 class="text-2xl font-semibold mb-3">Need an AI SEO, AEO and GEO programme for your website?</h2>
+        <p class="text-gray-400 font-light mb-6 max-w-xl mx-auto">Discuss a supervised, individually scoped engagement. We will review the site, agree priorities, define implementation permissions and set measurable delivery objectives before work begins.</p>
+        <div class="flex flex-wrap justify-center gap-3">
+          <a href="https://cal.com/salyant.co.uk/30min" target="_blank" rel="noopener noreferrer" class="btn-liquid-gold px-8 py-3.5 font-bold inline-block">Book a 30-minute strategy call</a>
+          <a href="https://signal.salyant.co.uk/seo-aeo-geo-audit.html" class="px-8 py-3.5 rounded-full border border-white/20 text-white inline-block">Try the Signal audit tool</a>
+        </div>
       </section>
 
       <a href="index.html" class="text-salyant-gold hover:text-[#e8c9a3] text-sm font-medium inline-flex items-center gap-2">&larr; Back to home</a>
