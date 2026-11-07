@@ -245,14 +245,14 @@ nav.sitewide-glass-nav .mobile-menu-glass .mobile-dropdown-more { text-align: ce
   .industry-card,.resource-card,.pricing-card,.benefit-card,.step-card,.metric-card,
   .stat-card,.proof-card,.testimonial-card,.case-study-card,.tile,.card
 ){
-  transform:translateZ(0);
+  transform:translateZ(0)!important;
   transition:
     transform var(--salyant-motion-duration) var(--salyant-motion-ease),
     box-shadow var(--salyant-motion-duration) var(--salyant-motion-ease),
     border-color var(--salyant-motion-duration) var(--salyant-motion-ease),
     background-color var(--salyant-motion-duration) var(--salyant-motion-ease),
     backdrop-filter var(--salyant-motion-duration) var(--salyant-motion-ease),
-    -webkit-backdrop-filter var(--salyant-motion-duration) var(--salyant-motion-ease);
+    -webkit-backdrop-filter var(--salyant-motion-duration) var(--salyant-motion-ease)!important;
 }
 @media(hover:hover) and (pointer:fine){
   :where(
@@ -267,15 +267,15 @@ nav.sitewide-glass-nav .mobile-menu-glass .mobile-dropdown-more { text-align: ce
     .industry-card,.resource-card,.pricing-card,.benefit-card,.step-card,.metric-card,
     .stat-card,.proof-card,.testimonial-card,.case-study-card,.tile,.card
   ):focus-within{
-    transform:translate3d(0,-4px,0);
+    transform:translate3d(0,-4px,0)!important;
     border-color:rgba(212,165,116,.48)!important;
     box-shadow:
       inset 0 1px 0 rgba(255,255,255,.16),
       inset 0 -1px 0 rgba(255,255,255,.035),
       0 18px 42px rgba(0,0,0,.24),
       0 0 28px rgba(212,165,116,.135)!important;
-    -webkit-backdrop-filter:blur(25px) saturate(170%);
-    backdrop-filter:blur(25px) saturate(170%);
+    -webkit-backdrop-filter:blur(25px) saturate(170%)!important;
+    backdrop-filter:blur(25px) saturate(170%)!important;
   }
 }
 :where(
