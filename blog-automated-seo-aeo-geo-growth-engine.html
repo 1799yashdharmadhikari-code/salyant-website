@@ -35,7 +35,7 @@
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Automating SEO, AEO & GEO: How We Built Our Own Growth Engine">
-<meta name="twitter:description" content="A Salyant engineering case study on SEO automation, Auto SEO, AEO and GEO: n8n research, quality gates, human approval and verified publishing.">
+  <meta name="twitter:description" content="A Salyant engineering case study on automated SEO, AEO and GEO: n8n research, quality gates and approval-controlled publishing.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -90,7 +90,7 @@
         {
           "@type": "Question",
           "name": "How often should an automated SEO/AEO/GEO scan run?",
-          "acceptedAnswer": { "@type": "Answer", "text": "The right cadence depends on the site, its release cycle, available research capacity and the checks being performed. Salyant’s current internal system separates daily research and content drafting from approval-controlled publishing checks. A continuous hourly cadence should not be assumed." }
+          "acceptedAnswer": { "@type": "Answer", "text": "The right cadence depends on the site, its release cycle, available research capacity and the checks being performed. Salyant’s current internal system separates daily research and content drafting from approval-controlled publishing checks. The scan cadence is configured according to the site's operating needs." }
         },
         {
           "@type": "Question",
@@ -306,7 +306,7 @@
 
       <section class="mb-10">
         <h2 class="text-2xl md:text-3xl font-semibold mb-4">The architecture: scan, rewrite, gate, publish</h2>
-        <p>The build was organised in four stages. The exact trigger cadence and publishing permissions are configuration-dependent; this historical architecture description should not be read as a service-level promise that every client receives a continuous autonomous workflow.</p>
+        <p>The build was organised in four stages. The exact trigger cadence and publishing permissions are configuration-dependent; this historical architecture description should not be read as a service-level promise that every client receives a recurring autonomous workflow.</p>
         <ul>
           <li><strong>Scan</strong> — crawls the live site and checks each page against a running checklist: missing schema, thin meta descriptions, weak snippet structure, internal linking gaps.</li>
           <li><strong>Diagnose &amp; rewrite</strong> — for anything that fails the checklist, drafts the fix directly: a schema block, a rewritten intro, a new FAQ entry.</li>
@@ -343,7 +343,7 @@
           </div>
           <div class="glass-card rounded-2xl p-6">
             <h3 class="text-base font-semibold text-white mb-2">How often should an automated SEO/AEO/GEO scan run?</h3>
-            <p class="mb-0">The right cadence depends on the site, its release cycle, available research capacity and the checks being performed. Salyant’s current internal system separates daily research and content drafting from approval-controlled publishing checks. A continuous hourly cadence should not be assumed.</p>
+            <p class="mb-0">The right cadence depends on the site, its release cycle, available research capacity and the checks being performed. Salyant’s current internal system separates daily research and content drafting from approval-controlled publishing checks. The scan cadence is configured according to the site's operating needs.</p>
           </div>
           <div class="glass-card rounded-2xl p-6">
             <h3 class="text-base font-semibold text-white mb-2">What can go wrong with automated SEO fixes?</h3>
