@@ -3086,7 +3086,7 @@ Cal.config.forwardQueryParams = true;
 
   Cal.ns["30min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
   Cal.ns["30min"]("on", {
-    action: "bookingSuccessful",
+    action: "bookingSuccessfulV2",
     callback: function (event) {
       var detail = event && event.detail ? event.detail : {};
       var data = detail.data || {};
@@ -3094,8 +3094,7 @@ Cal.config.forwardQueryParams = true;
         window.gtag("event", "manual_event_BOOK_APPOINTMENT", {
           booking_provider: "cal.com",
           booking_event_type: "30min",
-          booking_confirmed: Boolean(data.confirmed),
-          booking_duration_minutes: Number(data.duration || 30)
+          booking_status: String(data.status || "created")
         });
       }
     }
