@@ -75,6 +75,7 @@
       document.head.appendChild(script);
     }
   }
+  window.salyantLoadAnalytics = loadAnalytics;
   function makeButton(label, background, foreground) {
     var button = document.createElement('button');
     button.type = 'button';
