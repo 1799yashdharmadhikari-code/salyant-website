@@ -13,6 +13,34 @@
     catch (error) { return false; }
     return true;
   }
+  function clearAnalyticsCookies() {
+    try {
+      var names = ['_ga', '_gid'];
+      String(document.cookie || '').split(';').forEach(function (part) {
+        var name = part.split('=')[0].trim();
+        if (/^_ga(?:_|$)|^_gid$/i.test(name) && names.indexOf(name) < 0) names.push(name);
+      });
+      var domains = [null, window.location.hostname, '.' + window.location.hostname, '.salyant.co.uk'];
+      names.forEach(function (name) {
+        domains.forEach(function (domain) {
+          var cookie = name + '=; Max-Age=0; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=Lax';
+          if (domain) cookie += '; domain=' + domain;
+          document.cookie = cookie;
+        });
+      });
+    } catch (error) {}
+  }
+
+  function setAnalyticsConsent(value) {
+    if (typeof window.gtag === 'function') {
+      window.gtag('consent', 'update', { analytics_storage: value === 'accepted' ? 'granted' : 'denied' });
+    }
+    if (value !== 'accepted') clearAnalyticsCookies();
+  }
+
+  window.salyantUpdateAnalyticsConsent = setAnalyticsConsent;
+  window.salyantClearAnalyticsCookies = clearAnalyticsCookies;
+
   function safePageLocation(raw) {
     try {
       var url = new URL(raw || window.location.href);
@@ -28,10 +56,12 @@
   }
 
   function loadAnalytics() {
-    if (readConsent() !== 'accepted' || window.gaLoaded) return;
+    if (readConsent() !== 'accepted') return;
+    if (window.gaLoaded) { setAnalyticsConsent('accepted'); return; }
     window.gaLoaded = true;
     window.dataLayer = window.dataLayer || [];
     window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+    window.gtag('consent', 'default', { analytics_storage: 'granted' });
     window.gtag('js', new Date());
     window.gtag('config', MEASUREMENT_ID, { anonymize_ip: true, send_page_view: false });
     var pageView = { page_location: safePageLocation(), page_title: document.title };
@@ -52,8 +82,13 @@
     button.style.cssText = 'border:1px solid rgba(255,255,255,.28);border-radius:9px;padding:10px 16px;font:600 13px system-ui;cursor:pointer;min-width:94px;background:' + background + ';color:' + foreground + ';';
     return button;
   }
-  function showConsentBanner() {
-    if (readConsent() || document.getElementById(BANNER_ID) || document.getElementById('ai-cookie-bot')) return;
+  function showConsentBanner(force) {
+    var homepageBanner = document.getElementById('ai-cookie-bot');
+    if (homepageBanner) {
+      if (force) { homepageBanner.style.transform = 'translateY(0)'; homepageBanner.style.visibility = 'visible'; }
+      return;
+    }
+    if ((!force && readConsent()) || document.getElementById(BANNER_ID)) return;
     var banner = document.createElement('section');
     banner.id = BANNER_ID;
     banner.setAttribute('role', 'dialog');
@@ -76,10 +111,11 @@
     var accept = makeButton('Accept', '#d4a574', '#111827');
     decline.addEventListener('click', function () {
       writeConsent('declined');
+      setAnalyticsConsent('declined');
       banner.remove();
     });
     accept.addEventListener('click', function () {
-      if (writeConsent('accepted')) loadAnalytics();
+      if (writeConsent('accepted')) { setAnalyticsConsent('accepted'); loadAnalytics(); }
       banner.remove();
     });
     actions.appendChild(decline);
@@ -90,7 +126,21 @@
     banner.appendChild(actions);
     document.body.appendChild(banner);
   }
+  function addSettingsControl() {
+    var footer = document.querySelector('footer');
+    if (!footer || document.getElementById('salyant-cookie-settings')) return;
+    var button = document.createElement('button');
+    button.id = 'salyant-cookie-settings';
+    button.type = 'button';
+    button.textContent = 'Cookie settings';
+    button.setAttribute('aria-label', 'Change cookie preferences');
+    button.style.cssText = 'margin-top:12px;padding:6px 10px;border:1px solid rgba(212,165,116,.45);border-radius:8px;background:transparent;color:#e8c9a3;font:13px system-ui;cursor:pointer;';
+    button.addEventListener('click', function () { showConsentBanner(true); });
+    footer.appendChild(button);
+  }
+
   function initialise() {
+    addSettingsControl();
     var consent = readConsent();
     if (consent === 'accepted') loadAnalytics();
     else if (!consent) showConsentBanner();
