@@ -3483,7 +3483,9 @@ Cal.config.forwardQueryParams = true;
           return window.location.origin + window.location.pathname;
         }
       };
-      gtag('event', 'page_view', { page_location: safePageLocation(), page_title: document.title });
+      var pageView = { page_location: safePageLocation(), page_title: document.title };
+      if (document.referrer) pageView.page_referrer = safePageLocation(document.referrer);
+      gtag('event', 'page_view', pageView);
     }
 
     // Cookie Assistant Logic
