@@ -43,8 +43,8 @@
 
   function safePageLocation(raw) {
     try {
-      var url = new URL(raw || window.location.href);
-      var allowed = new URLSearchParams();
+      var url = new window.URL(raw || window.location.href);
+      var allowed = new window.URLSearchParams();
       ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'gbraid', 'wbraid', 'msclkid'].forEach(function (key) {
         var value = url.searchParams.get(key);
         if (value) allowed.set(key, value);
