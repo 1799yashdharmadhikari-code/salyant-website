@@ -34,7 +34,9 @@
     window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
     window.gtag('js', new Date());
     window.gtag('config', MEASUREMENT_ID, { anonymize_ip: true, send_page_view: false });
-    window.gtag('event', 'page_view', { page_location: safePageLocation(), page_title: document.title });
+    var pageView = { page_location: safePageLocation(), page_title: document.title };
+    if (document.referrer) pageView.page_referrer = safePageLocation(document.referrer);
+    window.gtag('event', 'page_view', pageView);
     if (!document.querySelector('script[data-salyant-ga4="true"]')) {
       var script = document.createElement('script');
       script.async = true;
