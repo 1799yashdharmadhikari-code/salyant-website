@@ -3090,7 +3090,7 @@ Cal.config.forwardQueryParams = true;
     callback: function (event) {
       var detail = event && event.detail ? event.detail : {};
       var data = detail.data || {};
-      if (typeof window.gtag === "function") {
+      if (typeof window.gtag === "function" && hasAnalyticsConsent()) {
         window.gtag("event", "manual_event_BOOK_APPOINTMENT", {
           booking_provider: "cal.com",
           booking_event_type: "30min",
@@ -3457,6 +3457,11 @@ Cal.config.forwardQueryParams = true;
       document.querySelectorAll('[data-industry-target]').forEach(link=>link.addEventListener('click',e=>{e.preventDefault();const id=link.dataset.industryTarget;const i=slides.findIndex(s=>s.dataset.industry===id);if(i<0)return;showSlide(i);document.getElementById('industries')?.scrollIntoView({behavior:'smooth',block:'start'});openDetail(id,false);restartIndustryTimer();}));
       document.querySelectorAll('.industry-detail-close').forEach(btn=>btn.addEventListener('click',()=>industryDetails.forEach(d=>{d.classList.add('hidden');d.setAttribute('aria-hidden','true');})));
     }
+    function hasAnalyticsConsent() {
+      try { return window.localStorage.getItem('salyant_cookie_consent') === 'accepted'; }
+      catch (error) { return false; }
+    }
+
     // Google Analytics Integration
     function loadGoogleAnalytics() {
       if (window.gaLoaded) { if (typeof window.gtag === 'function') window.gtag('consent', 'update', { analytics_storage: 'granted' }); return; }
@@ -3553,7 +3558,7 @@ Cal.config.forwardQueryParams = true;
           }
           status.textContent = "Thank you — your message has been sent. We will be in touch.";
           form.reset();
-          if (typeof window.gtag === "function") {
+          if (typeof window.gtag === "function" && hasAnalyticsConsent()) {
             window.gtag("event", "generate_lead", {
               method: "contact_form",
               form_id: "contact-form"
