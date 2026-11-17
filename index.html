@@ -3481,6 +3481,7 @@ Cal.config.forwardQueryParams = true;
 
       btnAccept.addEventListener('click', () => {
         localStorage.setItem('salyant_cookie_consent', 'accepted');
+        if (typeof window.salyantUpdateAnalyticsConsent === "function") window.salyantUpdateAnalyticsConsent("accepted");
         if (typeof window.salyantLoadAnalytics === "function") window.salyantLoadAnalytics();
         cookieBot.style.transform = 'translateY(150%)';
       });
