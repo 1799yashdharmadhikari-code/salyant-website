@@ -3462,37 +3462,7 @@ Cal.config.forwardQueryParams = true;
       catch (error) { return false; }
     }
 
-    // Google Analytics Integration
-    function loadGoogleAnalytics() {
-      if (window.gaLoaded) { if (typeof window.gtag === 'function') window.gtag('consent', 'update', { analytics_storage: 'granted' }); return; }
-      window.gaLoaded = true;
-      var s = document.createElement('script');
-      s.async = true;
-      s.src = "https://www.googletagmanager.com/gtag/js?id=G-3ZF3X6JFWQ";
-      document.head.appendChild(s);
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      window.gtag = gtag;
-      gtag('consent', 'default', { analytics_storage: 'granted' });
-      gtag('js', new Date());
-      gtag('config', 'G-3ZF3X6JFWQ', { anonymize_ip: true, send_page_view: false });
-      var safePageLocation = function () {
-        try {
-          var url = new window.URL(window.location.href);
-          var allowed = new window.URLSearchParams();
-          ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'gbraid', 'wbraid', 'msclkid'].forEach(function (key) {
-            var value = url.searchParams.get(key);
-            if (value) allowed.set(key, value);
-          });
-          return url.origin + url.pathname + (allowed.toString() ? '?' + allowed.toString() : '');
-        } catch (error) {
-          return window.location.origin + window.location.pathname;
-        }
-      };
-      var pageView = { page_location: safePageLocation(), page_title: document.title };
-      if (document.referrer) pageView.page_referrer = safePageLocation(document.referrer);
-      gtag('event', 'page_view', pageView);
-    }
+    // GA4 is loaded exclusively by the shared consent controller.
 
     // Cookie Assistant Logic
     document.addEventListener("DOMContentLoaded", () => {
@@ -3505,12 +3475,13 @@ Cal.config.forwardQueryParams = true;
           cookieBot.style.transform = 'translateY(0)';
         }, 2000);
       } else if (localStorage.getItem('salyant_cookie_consent') === 'accepted') {
-        loadGoogleAnalytics();
+        if (typeof window.salyantUpdateAnalyticsConsent === "function") window.salyantUpdateAnalyticsConsent("accepted");
+        if (typeof window.salyantLoadAnalytics === "function") window.salyantLoadAnalytics();
       }
 
       btnAccept.addEventListener('click', () => {
         localStorage.setItem('salyant_cookie_consent', 'accepted');
-        loadGoogleAnalytics();
+        if (typeof window.salyantLoadAnalytics === "function") window.salyantLoadAnalytics();
         cookieBot.style.transform = 'translateY(150%)';
       });
 
