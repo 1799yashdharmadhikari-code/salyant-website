@@ -13,13 +13,28 @@
     catch (error) { return false; }
     return true;
   }
+  function safePageLocation(raw) {
+    try {
+      var url = new URL(raw || window.location.href);
+      var allowed = new URLSearchParams();
+      ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'gbraid', 'wbraid', 'msclkid'].forEach(function (key) {
+        var value = url.searchParams.get(key);
+        if (value) allowed.set(key, value);
+      });
+      return url.origin + url.pathname + (allowed.toString() ? '?' + allowed.toString() : '');
+    } catch (error) {
+      return window.location.origin + window.location.pathname;
+    }
+  }
+
   function loadAnalytics() {
     if (readConsent() !== 'accepted' || window.gaLoaded) return;
     window.gaLoaded = true;
     window.dataLayer = window.dataLayer || [];
     window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
     window.gtag('js', new Date());
-    window.gtag('config', MEASUREMENT_ID, { anonymize_ip: true });
+    window.gtag('config', MEASUREMENT_ID, { anonymize_ip: true, send_page_view: false });
+    window.gtag('event', 'page_view', { page_location: safePageLocation(), page_title: document.title });
     if (!document.querySelector('script[data-salyant-ga4="true"]')) {
       var script = document.createElement('script');
       script.async = true;
