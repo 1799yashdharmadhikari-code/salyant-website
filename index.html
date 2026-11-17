@@ -3085,6 +3085,20 @@ Cal.config.forwardQueryParams = true;
   });
 
   Cal.ns["30min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+  Cal.ns["30min"]("on", {
+    action: "bookingSuccessfulV2",
+    callback: function (event) {
+      var detail = event && event.detail ? event.detail : {};
+      var data = detail.data || {};
+      if (typeof window.gtag === "function" && hasAnalyticsConsent()) {
+        window.gtag("event", "manual_event_BOOK_APPOINTMENT", {
+          booking_provider: "cal.com",
+          booking_event_type: "30min",
+          booking_status: String(data.status || "created")
+        });
+      }
+    }
+  });
   </script>
   <!-- Cal inline embed code ends -->        </div>
 
@@ -3443,20 +3457,12 @@ Cal.config.forwardQueryParams = true;
       document.querySelectorAll('[data-industry-target]').forEach(link=>link.addEventListener('click',e=>{e.preventDefault();const id=link.dataset.industryTarget;const i=slides.findIndex(s=>s.dataset.industry===id);if(i<0)return;showSlide(i);document.getElementById('industries')?.scrollIntoView({behavior:'smooth',block:'start'});openDetail(id,false);restartIndustryTimer();}));
       document.querySelectorAll('.industry-detail-close').forEach(btn=>btn.addEventListener('click',()=>industryDetails.forEach(d=>{d.classList.add('hidden');d.setAttribute('aria-hidden','true');})));
     }
-    // Google Analytics Integration
-    function loadGoogleAnalytics() {
-      if (window.gaLoaded) return;
-      window.gaLoaded = true;
-      var s = document.createElement('script');
-      s.async = true;
-      s.src = "https://www.googletagmanager.com/gtag/js?id=G-3ZF3X6JFWQ";
-      document.head.appendChild(s);
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      window.gtag = gtag;
-      gtag('js', new Date());
-      gtag('config', 'G-3ZF3X6JFWQ', { anonymize_ip: true });
+    function hasAnalyticsConsent() {
+      try { return window.localStorage.getItem('salyant_cookie_consent') === 'accepted'; }
+      catch (error) { return false; }
     }
+
+    // GA4 is loaded exclusively by the shared consent controller.
 
     // Cookie Assistant Logic
     document.addEventListener("DOMContentLoaded", () => {
@@ -3464,23 +3470,110 @@ Cal.config.forwardQueryParams = true;
       const btnAccept = document.getElementById('cookie-accept');
       const btnDecline = document.getElementById('cookie-decline');
 
-      if (!localStorage.getItem('salyant_cookie_consent')) {
-        setTimeout(() => {
-          cookieBot.style.transform = 'translateY(0)';
-        }, 2000);
-      } else if (localStorage.getItem('salyant_cookie_consent') === 'accepted') {
-        loadGoogleAnalytics();
+      function readCookieConsent() {
+        try { return window.localStorage.getItem('salyant_cookie_consent'); }
+        catch (error) { return null; }
+      }
+      function writeCookieConsent(value) {
+        try {
+          window.localStorage.setItem('salyant_cookie_consent', value);
+          return window.localStorage.getItem('salyant_cookie_consent') === value;
+        } catch (error) {
+          return false;
+        }
+      }
+      function showConsentStorageError() {
+        if (!cookieBot) return;
+        let status = cookieBot.querySelector('[data-consent-storage-status]');
+        if (!status) {
+          status = document.createElement('p');
+          status.dataset.consentStorageStatus = 'true';
+          status.setAttribute('role', 'status');
+          status.className = 'text-xs text-gray-300 mt-2';
+          cookieBot.appendChild(status);
+        }
+        status.textContent = 'Your browser could not save this choice. Analytics will remain off until your preference can be saved.';
       }
 
-      btnAccept.addEventListener('click', () => {
-        localStorage.setItem('salyant_cookie_consent', 'accepted');
-        loadGoogleAnalytics();
-        cookieBot.style.transform = 'translateY(150%)';
+      const savedConsent = readCookieConsent();
+      if (!savedConsent) {
+        setTimeout(() => {
+          if (cookieBot) cookieBot.style.transform = 'translateY(0)';
+        }, 2000);
+      } else if (savedConsent === 'accepted') {
+        if (typeof window.salyantUpdateAnalyticsConsent === "function") window.salyantUpdateAnalyticsConsent("accepted");
+        if (typeof window.salyantLoadAnalytics === "function") window.salyantLoadAnalytics();
+      }
+
+      if (btnAccept) btnAccept.addEventListener('click', () => {
+        if (!writeCookieConsent('accepted')) {
+          showConsentStorageError();
+          return;
+        }
+        if (typeof window.salyantUpdateAnalyticsConsent === "function") window.salyantUpdateAnalyticsConsent("accepted");
+        if (typeof window.salyantLoadAnalytics === "function") window.salyantLoadAnalytics();
+        if (cookieBot) cookieBot.style.transform = 'translateY(150%)';
       });
 
-      btnDecline.addEventListener('click', () => {
-        localStorage.setItem('salyant_cookie_consent', 'declined');
-        cookieBot.style.transform = 'translateY(150%)';
+      if (btnDecline) btnDecline.addEventListener('click', () => {
+        writeCookieConsent('declined');
+        if (typeof window.salyantUpdateAnalyticsConsent === 'function') window.salyantUpdateAnalyticsConsent('declined');
+        else if (typeof window.gtag === 'function') window.gtag('consent', 'update', { analytics_storage: 'denied' });
+        if (cookieBot) cookieBot.style.transform = 'translateY(150%)';
+      });
+    });
+
+    // Track a lead only after Formspree confirms a successful submission.
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("contact-form");
+      if (!form) return;
+      const submitButton = form.querySelector('button[type="submit"]');
+      const status = document.createElement("p");
+      status.setAttribute("role", "status");
+      status.setAttribute("aria-live", "polite");
+      status.className = "text-sm text-gray-300 mt-3";
+      form.appendChild(status);
+      let submitting = false;
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        if (submitting) return;
+        submitting = true;
+        const originalLabel = submitButton ? submitButton.textContent : "";
+        if (submitButton) {
+          submitButton.disabled = true;
+          submitButton.textContent = "Sending…";
+        }
+        status.textContent = "";
+
+        try {
+          const response = await fetch(form.action, {
+            method: form.method || "POST",
+            body: new FormData(form),
+            headers: { Accept: "application/json" }
+          });
+          const result = await response.json().catch(() => ({}));
+          if (!response.ok) {
+            const errors = Array.isArray(result.errors) ? result.errors.map(item => item.message).filter(Boolean).join(" ") : "";
+            throw new Error(errors || "Form submission failed.");
+          }
+          status.textContent = "Thank you — your message has been sent. We will be in touch.";
+          form.reset();
+          if (typeof window.gtag === "function" && hasAnalyticsConsent()) {
+            window.gtag("event", "generate_lead", {
+              method: "contact_form",
+              form_id: "contact-form"
+            });
+          }
+        } catch (error) {
+          status.textContent = "We could not send your message. Please try again or email contact@salyant.co.uk.";
+        } finally {
+          submitting = false;
+          if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.textContent = originalLabel;
+          }
+        }
       });
     });
   </script>
