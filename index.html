@@ -3470,27 +3470,56 @@ Cal.config.forwardQueryParams = true;
       const btnAccept = document.getElementById('cookie-accept');
       const btnDecline = document.getElementById('cookie-decline');
 
-      if (!localStorage.getItem('salyant_cookie_consent')) {
+      function readCookieConsent() {
+        try { return window.localStorage.getItem('salyant_cookie_consent'); }
+        catch (error) { return null; }
+      }
+      function writeCookieConsent(value) {
+        try {
+          window.localStorage.setItem('salyant_cookie_consent', value);
+          return window.localStorage.getItem('salyant_cookie_consent') === value;
+        } catch (error) {
+          return false;
+        }
+      }
+      function showConsentStorageError() {
+        if (!cookieBot) return;
+        let status = cookieBot.querySelector('[data-consent-storage-status]');
+        if (!status) {
+          status = document.createElement('p');
+          status.dataset.consentStorageStatus = 'true';
+          status.setAttribute('role', 'status');
+          status.className = 'text-xs text-gray-300 mt-2';
+          cookieBot.appendChild(status);
+        }
+        status.textContent = 'Your browser could not save this choice. Analytics will remain off until your preference can be saved.';
+      }
+
+      const savedConsent = readCookieConsent();
+      if (!savedConsent) {
         setTimeout(() => {
-          cookieBot.style.transform = 'translateY(0)';
+          if (cookieBot) cookieBot.style.transform = 'translateY(0)';
         }, 2000);
-      } else if (localStorage.getItem('salyant_cookie_consent') === 'accepted') {
+      } else if (savedConsent === 'accepted') {
         if (typeof window.salyantUpdateAnalyticsConsent === "function") window.salyantUpdateAnalyticsConsent("accepted");
         if (typeof window.salyantLoadAnalytics === "function") window.salyantLoadAnalytics();
       }
 
-      btnAccept.addEventListener('click', () => {
-        localStorage.setItem('salyant_cookie_consent', 'accepted');
+      if (btnAccept) btnAccept.addEventListener('click', () => {
+        if (!writeCookieConsent('accepted')) {
+          showConsentStorageError();
+          return;
+        }
         if (typeof window.salyantUpdateAnalyticsConsent === "function") window.salyantUpdateAnalyticsConsent("accepted");
         if (typeof window.salyantLoadAnalytics === "function") window.salyantLoadAnalytics();
-        cookieBot.style.transform = 'translateY(150%)';
+        if (cookieBot) cookieBot.style.transform = 'translateY(150%)';
       });
 
-      btnDecline.addEventListener('click', () => {
-        localStorage.setItem('salyant_cookie_consent', 'declined');
+      if (btnDecline) btnDecline.addEventListener('click', () => {
+        writeCookieConsent('declined');
         if (typeof window.salyantUpdateAnalyticsConsent === 'function') window.salyantUpdateAnalyticsConsent('declined');
         else if (typeof window.gtag === 'function') window.gtag('consent', 'update', { analytics_storage: 'denied' });
-        cookieBot.style.transform = 'translateY(150%)';
+        if (cookieBot) cookieBot.style.transform = 'translateY(150%)';
       });
     });
 
