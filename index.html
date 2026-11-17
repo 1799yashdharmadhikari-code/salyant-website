@@ -3085,6 +3085,21 @@ Cal.config.forwardQueryParams = true;
   });
 
   Cal.ns["30min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+  Cal.ns["30min"]("on", {
+    action: "bookingSuccessful",
+    callback: function (event) {
+      var detail = event && event.detail ? event.detail : {};
+      var data = detail.data || {};
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "manual_event_BOOK_APPOINTMENT", {
+          booking_provider: "cal.com",
+          booking_event_type: "30min",
+          booking_confirmed: Boolean(data.confirmed),
+          booking_duration_minutes: Number(data.duration || 30)
+        });
+      }
+    }
+  });
   </script>
   <!-- Cal inline embed code ends -->        </div>
 
@@ -3481,6 +3496,60 @@ Cal.config.forwardQueryParams = true;
       btnDecline.addEventListener('click', () => {
         localStorage.setItem('salyant_cookie_consent', 'declined');
         cookieBot.style.transform = 'translateY(150%)';
+      });
+    });
+
+    // Track a lead only after Formspree confirms a successful submission.
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("contact-form");
+      if (!form) return;
+      const submitButton = form.querySelector('button[type="submit"]');
+      const status = document.createElement("p");
+      status.setAttribute("role", "status");
+      status.setAttribute("aria-live", "polite");
+      status.className = "text-sm text-gray-300 mt-3";
+      form.appendChild(status);
+      let submitting = false;
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        if (submitting) return;
+        submitting = true;
+        const originalLabel = submitButton ? submitButton.textContent : "";
+        if (submitButton) {
+          submitButton.disabled = true;
+          submitButton.textContent = "Sending…";
+        }
+        status.textContent = "";
+
+        try {
+          const response = await fetch(form.action, {
+            method: form.method || "POST",
+            body: new FormData(form),
+            headers: { Accept: "application/json" }
+          });
+          const result = await response.json().catch(() => ({}));
+          if (!response.ok) {
+            const errors = Array.isArray(result.errors) ? result.errors.map(item => item.message).filter(Boolean).join(" ") : "";
+            throw new Error(errors || "Form submission failed.");
+          }
+          status.textContent = "Thank you — your message has been sent. We will be in touch.";
+          form.reset();
+          if (typeof window.gtag === "function") {
+            window.gtag("event", "generate_lead", {
+              method: "contact_form",
+              form_id: "contact-form"
+            });
+          }
+        } catch (error) {
+          status.textContent = "We could not send your message. Please try again or email contact@salyant.co.uk.";
+        } finally {
+          submitting = false;
+          if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.textContent = originalLabel;
+          }
+        }
       });
     });
   </script>
