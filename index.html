@@ -3478,8 +3478,8 @@ Cal.config.forwardQueryParams = true;
       gtag('config', 'G-3ZF3X6JFWQ', { anonymize_ip: true, send_page_view: false });
       var safePageLocation = function () {
         try {
-          var url = new URL(window.location.href);
-          var allowed = new URLSearchParams();
+          var url = new window.URL(window.location.href);
+          var allowed = new window.URLSearchParams();
           ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'gbraid', 'wbraid', 'msclkid'].forEach(function (key) {
             var value = url.searchParams.get(key);
             if (value) allowed.set(key, value);
