@@ -3459,7 +3459,7 @@ Cal.config.forwardQueryParams = true;
     }
     // Google Analytics Integration
     function loadGoogleAnalytics() {
-      if (window.gaLoaded) return;
+      if (window.gaLoaded) { if (typeof window.gtag === 'function') window.gtag('consent', 'update', { analytics_storage: 'granted' }); return; }
       window.gaLoaded = true;
       var s = document.createElement('script');
       s.async = true;
@@ -3468,6 +3468,7 @@ Cal.config.forwardQueryParams = true;
       window.dataLayer = window.dataLayer || [];
       function gtag() { dataLayer.push(arguments); }
       window.gtag = gtag;
+      gtag('consent', 'default', { analytics_storage: 'granted' });
       gtag('js', new Date());
       gtag('config', 'G-3ZF3X6JFWQ', { anonymize_ip: true, send_page_view: false });
       var safePageLocation = function () {
@@ -3510,6 +3511,8 @@ Cal.config.forwardQueryParams = true;
 
       btnDecline.addEventListener('click', () => {
         localStorage.setItem('salyant_cookie_consent', 'declined');
+        if (typeof window.salyantUpdateAnalyticsConsent === 'function') window.salyantUpdateAnalyticsConsent('declined');
+        else if (typeof window.gtag === 'function') window.gtag('consent', 'update', { analytics_storage: 'denied' });
         cookieBot.style.transform = 'translateY(150%)';
       });
     });
