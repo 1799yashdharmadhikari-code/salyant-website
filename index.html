@@ -3470,7 +3470,21 @@ Cal.config.forwardQueryParams = true;
       function gtag() { dataLayer.push(arguments); }
       window.gtag = gtag;
       gtag('js', new Date());
-      gtag('config', 'G-3ZF3X6JFWQ', { anonymize_ip: true });
+      gtag('config', 'G-3ZF3X6JFWQ', { anonymize_ip: true, send_page_view: false });
+      var safePageLocation = function () {
+        try {
+          var url = new URL(window.location.href);
+          var allowed = new URLSearchParams();
+          ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'gbraid', 'wbraid', 'msclkid'].forEach(function (key) {
+            var value = url.searchParams.get(key);
+            if (value) allowed.set(key, value);
+          });
+          return url.origin + url.pathname + (allowed.toString() ? '?' + allowed.toString() : '');
+        } catch (error) {
+          return window.location.origin + window.location.pathname;
+        }
+      };
+      gtag('event', 'page_view', { page_location: safePageLocation(), page_title: document.title });
     }
 
     // Cookie Assistant Logic
