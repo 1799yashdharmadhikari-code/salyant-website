@@ -69,4 +69,12 @@
   } else {
     initialise();
   }
+  /* Load the shared analytics-consent controller on every page using the sitewide asset. */
+  if (!document.querySelector('script[data-salyant-consent-loader="true"]')) {
+    var consentController = document.createElement('script');
+    consentController.src = '/assets/analytics-consent.js';
+    consentController.async = false;
+    consentController.dataset.salyantConsentLoader = 'true';
+    document.head.appendChild(consentController);
+  }
 })();
