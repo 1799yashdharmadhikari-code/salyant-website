@@ -140,8 +140,54 @@
     footer.appendChild(button);
   }
 
+
+  function installCtaIntentTracking() {
+    if (window.salyantCtaIntentTrackingInstalled) return;
+    window.salyantCtaIntentTrackingInstalled = true;
+
+    document.addEventListener('click', function (event) {
+      if (readConsent() !== 'accepted' || typeof window.gtag !== 'function') return;
+
+      var target = event.target;
+      if (target && target.nodeType !== 1) target = target.parentElement;
+      var link = target && typeof target.closest === 'function' ? target.closest('a[href]') : null;
+      if (!link) return;
+
+      var href = String(link.getAttribute('href') || '').trim();
+      var label = String(link.getAttribute('aria-label') || link.textContent || '')
+        .replace(/\s+/g, ' ').trim().slice(0, 120);
+      var isScheduler = /^https?:\/\/(?:www\.)?(?:cal\.com|calendly\.com)(?:\/|$)/i.test(href);
+      var isEmail = /^mailto:/i.test(href);
+      var bookingIntent = isScheduler ||
+        /\b(book|booking|schedule|calendar|strategy call|executive briefing|discovery call|introductory call)\b/i.test(label);
+      var contactIntent = isEmail ||
+        /(?:^|[#/])contact(?:$|[/?#])/i.test(href) ||
+        /\b(contact|get in touch|enquir(?:e|y|ies)|request (?:a|an)|discuss)\b/i.test(label);
+
+      var eventName = '';
+      var destination = '';
+      if (bookingIntent) {
+        eventName = 'booking_cta_click';
+        destination = isScheduler ? 'scheduler' :
+          (isEmail ? 'email' : (/(?:^|[#/])contact(?:$|[/?#])/i.test(href) ? 'contact_section' : 'site_path'));
+      } else if (contactIntent) {
+        eventName = 'contact_cta_click';
+        destination = isEmail ? 'email' :
+          (/(?:^|[#/])contact(?:$|[/?#])/i.test(href) ? 'contact_section' : 'contact_link');
+      }
+      if (!eventName) return;
+
+      window.gtag('event', eventName, {
+        page_path: window.location.pathname,
+        cta_destination: destination,
+        transport_type: 'beacon'
+      });
+    }, true);
+  }
+
   function initialise() {
     addSettingsControl();
+    installCtaIntentTracking();
     var consent = readConsent();
     if (consent === 'accepted') loadAnalytics();
     else if (!consent) showConsentBanner();
